@@ -1,8 +1,8 @@
-package br.com.edu.ufcg.osindico.registroDoSindico.mvp;
+package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
 
-import br.com.edu.ufcg.osindico.registroDoSindico.model.CondoModel;
-import br.com.edu.ufcg.osindico.registroDoSindico.model.SyndicDetails;
+import br.com.edu.ufcg.osindico.registerSyndic.model.CondoModel;
+import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 
 public class RegisterSyndicModelImpl implements RegisterSyndicMVPContract.RegisterSyndicModel{
 

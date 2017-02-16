@@ -8,14 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".registroDoSindico.ui.RegistrarSindicoActivity">
+        <activity android:name=".registerSyndic.ui.RegistrarSindicoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
     </application>
 
 </manifest>
