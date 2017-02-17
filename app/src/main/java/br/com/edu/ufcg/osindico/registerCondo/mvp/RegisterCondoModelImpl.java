@@ -2,10 +2,12 @@ package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
+import br.com.edu.ufcg.osindico.data.models.SyndicServerRequest;
+import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterCondoModelImpl implements RegisterCondoMVPContract.RegisterCondoModel {
 
@@ -17,44 +19,44 @@ public class RegisterCondoModelImpl implements RegisterCondoMVPContract.Register
 
     @Override
     public void register(SyndicDetails syndicDetails, CondoDetails condoModel,
-                         OnRegisterCondoFinishedListener listener) {
-        mSyndicService.getSyndicApi()
-                .registerSyndic(syndicDetails, condoModel, new Callback<Response>() {
+                         final OnRegisterCondoFinishedListener listener) {
+        SyndicServerRequest request = new SyndicServerRequest();
+        request.setCondoDetails(condoModel);
+        request.setSyndicDetails(syndicDetails);
+        Call<SyndicServerResponse> mService = mSyndicService.getSyndicApi().registerSyndic(request);
 
-                    @Override
-                    public void success(Response response, Response response2) {
+        mService.enqueue(new Callback<SyndicServerResponse>() {
+            @Override
+            public void onResponse(Call<SyndicServerResponse> call, Response<SyndicServerResponse> response) {
+                listener.onSuccess();
+            }
 
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-
-                    }
-                });
+            @Override
+            public void onFailure(Call<SyndicServerResponse> call, Throwable t) {
+                call.cancel();
+                listener.onServerError();
+            }
+        });
     }
 
     @Override
     public void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoFinishedListener listener) {
         if(condoModel.getName().isEmpty()){
             listener.onNameError();
-        } else if(condoModel.getPhone().isEmpty()){
+        } else if(condoModel.getAddress().getAddress().isEmpty()) {
+            listener.onAddressError();
+        } else if(condoModel.getPhone().getPhoneNumber().isEmpty()) {
             listener.onPhoneError();
-        } else if (condoModel.getAddress().getStreet().isEmpty()){
-            listener.onStreetError();
         } else if (condoModel.getAddress().getNumber() <= 0){
             listener.onNumberError();
         } else if (condoModel.getAddress().getCity().isEmpty()){
             listener.onCityError();
-        } else if (condoModel.getAddress().getNeighborhood().isEmpty()){
-            listener.onNeighborhoodError();
         } else if (condoModel.getAddress().getState().isEmpty()){
             listener.onStateError();
-        } else if (condoModel.getAddress().getCountry().isEmpty()){
-            listener.onCountyError();
         } else if (condoModel.getAddress().getZipCode().isEmpty()){
             listener.onZipCodeError();
         } else {
-            listener.onSuccess();
+            listener.onSuccessValidation(condoModel);
         }
     }
 }

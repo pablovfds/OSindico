@@ -1,27 +1,19 @@
 package br.com.edu.ufcg.osindico.data.services;
 
-import retrofit.RequestInterceptor;
-import retrofit.RestAdapter;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SyndicService {
     private static final String SERVER_URL = "http://jsonplaceholder.typicode.com";
     private SyndicApi mSyndicApi;
 
     public SyndicService() {
-        RequestInterceptor requestInterceptor = new RequestInterceptor() {
-            @Override
-            public void intercept(RequestFacade request) {
-                request.addHeader("Accept", "application/json");
-            }
-        };
 
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(SERVER_URL)
-                .setRequestInterceptor(requestInterceptor)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SERVER_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        mSyndicApi = restAdapter.create(SyndicApi.class);
+        mSyndicApi = retrofit.create(SyndicApi.class);
     }
 
     public SyndicApi getSyndicApi() {

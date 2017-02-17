@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">OSindico</string>
+    <string name="msg_name_error">Insira um nome valido.</string>
+    <string name="msg_phone_error">Insira um telefone valido.</string>
+    <string name="msg_street_error">Insira uma rua valida.</string>
+    <string name="msg_condo_number_error">Insira um número valido.</string>
+    <string name="msg_neighborhood_error">Insira um bairro valido</string>
+    <string name="msg_city_error">Insira uma cidade valida.</string>
+    <string name="msg_zipcode_error">Insira um CEP valido</string>
+    <string name="msg_state_error">Insira um estado valido</string>
+    <string name="msg_country_error">Insira um pais valido</string>
+    <string name="msg_server_error">Erro na requisição.</string>
+    <string name="label_register">Cadastrar</string>
 </resources>

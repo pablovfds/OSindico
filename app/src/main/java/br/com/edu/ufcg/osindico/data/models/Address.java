@@ -2,31 +2,18 @@ package br.com.edu.ufcg.osindico.data.models;
 
 public class Address {
 
-    private String street;
+    private final String address;
     private int number;
-    private String neighborhood;
     private String city;
     private String zipCode;
     private String state;
-    private String country;
 
-    public Address(String street, int number, String neighborhood, String city, String zipCode,
-                   String state, String country) {
-        this.street = street;
+    public Address(String address, int number, String city, String zipCode, String state) {
+        this.address = address;
         this.number = number;
-        this.neighborhood = neighborhood;
         this.city = city;
         this.zipCode = zipCode;
         this.state = state;
-        this.country = country;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
     }
 
     public int getNumber() {
@@ -35,14 +22,6 @@ public class Address {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
     }
 
     public String getCity() {
@@ -69,11 +48,7 @@ public class Address {
         this.state = state;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public String getAddress() {
+        return address;
     }
 }

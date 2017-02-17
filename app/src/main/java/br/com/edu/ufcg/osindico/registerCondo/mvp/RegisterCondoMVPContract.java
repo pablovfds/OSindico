@@ -17,11 +17,9 @@ public interface RegisterCondoMVPContract {
 
             void onPhoneError();
 
-            void onStreetError();
+            void onAddressError();
 
             void onNumberError();
-
-            void onNeighborhoodError();
 
             void onCityError();
 
@@ -29,9 +27,7 @@ public interface RegisterCondoMVPContract {
 
             void onStateError();
 
-            void onCountyError();
-
-            void onSuccess();
+            void onSuccessValidation(CondoDetails condoDetails);
         }
 
         void register(SyndicDetails syndicDetails, CondoDetails condoModel, OnRegisterCondoFinishedListener listener);
@@ -40,11 +36,8 @@ public interface RegisterCondoMVPContract {
     }
 
     interface RegisterCondoPresenter {
-        void validateCondoCredentials(String name, String phone, String street, int number,
-                                 String neighborhood, String city, String zipCode, String state,
-                                 String country);
-
-        void setView(RegisterCondoView view);
+        void validateCondoCredentials(String name, String phone, String address, int number,
+                                      String city, String zipCode, String state);
 
         void onDestroy();
     }
@@ -54,11 +47,25 @@ public interface RegisterCondoMVPContract {
 
         void hideProgress();
 
-        void setUsernameError();
+        void setNameError();
 
-        void setPasswordError();
+        void setPhoneError();
 
-        void navigateToHome();
+        void setAddressError();
+
+        void setNumberError();
+
+        void setCityError();
+
+        void setZipCodeError();
+
+        void setStateError();
+
+        void navigateToLogin();
+
+        void navigateToRegisterSyndic(CondoDetails condoDetails);
+
+        void setServerError();
     }
 }
 
