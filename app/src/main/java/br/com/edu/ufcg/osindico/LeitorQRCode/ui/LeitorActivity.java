@@ -12,6 +12,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.cadastroMorador.ui.CadastroMoradorActivity;
 
 public class LeitorActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class LeitorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Scan");
+                integrator.setPrompt("Posicione o QRCode para leitura.");
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
@@ -45,6 +46,11 @@ public class LeitorActivity extends AppCompatActivity {
                 Toast.makeText(this, "Erro", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, CadastroMoradorActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("condominio", result.getContents());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
