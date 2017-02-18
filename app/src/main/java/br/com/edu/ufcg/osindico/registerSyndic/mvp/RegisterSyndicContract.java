@@ -6,7 +6,7 @@ public interface RegisterSyndicContract {
 
     interface Model {
 
-        interface OnValidateSyndicListener {
+        interface OnRegisterSyndicListener {
             void onNameError();
 
             void onEmailError();
@@ -18,13 +18,17 @@ public interface RegisterSyndicContract {
             void onConfirmPasswordError();
 
             void onSuccess();
+
+            void onServerError();
         }
 
-        void validateCredentialsSyndic(SyndicDetails syndicModel, OnValidateSyndicListener listener);
+        void registerSyndic(String name, String email, String password, String confirmPassword,
+                            String phone, OnRegisterSyndicListener listener);
     }
 
     interface Presenter {
-        void validateCredentials(String username, String password);
+        void validateCredentials(String name,String email, String password,
+                                 String confirmPassword, String phone);
 
         void setView(View view);
 
@@ -36,9 +40,17 @@ public interface RegisterSyndicContract {
 
         void hideProgress();
 
-        void setUsernameError();
+        void setNameError();
+
+        void setEmailError();
 
         void setPasswordError();
+
+        void setConfirmPasswordError();
+
+        void setPhoneError();
+
+        void setServerError();
 
         void navigateToRegisterCondo();
     }

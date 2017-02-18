@@ -11,7 +11,7 @@
     tools:context="br.com.edu.ufcg.osindico.registerCondo.ui.RegisterCondoActivity">
 
     <ProgressBar
-        android:id="@+id/register_progress"
+        android:id="@+id/register_condo_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:layout_below="@+id/editTextCondoName"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="25dp"
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editTextCondoPhone"
                 android:hint="Phone"
                 android:inputType="phone" />
 
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:layout_below="@+id/editTextPhone"
+                android:layout_below="@+id/editTextCondoPhone"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="25dp"
                 android:id="@+id/editTextAddress"

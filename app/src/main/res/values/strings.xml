@@ -12,4 +12,9 @@
     <string name="msg_server_error">Erro na requisição.</string>
     <string name="label_register">Cadastrar</string>
     <string name="label_next">Proximo</string>
+    <string name="msg_syndic_name_error">Insira um nome valido.</string>
+    <string name="msg_syndic_email_error">Insira um email valido</string>
+    <string name="msg_syndic_password_error">Insira uma senha valida</string>
+    <string name="msg_syndic_confirm_password_error">A senha e a confirmação de senha são diferentes</string>
+    <string name="msg_syndic_phone_error">Insira um telefone valido</string>
 </resources>

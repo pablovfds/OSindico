@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SyndicService {
-    private static final String SERVER_URL = "http://jsonplaceholder.typicode.com";
+    private static final String SERVER_URL = "https://sindico.herokuapp.com";
     private SyndicApi mSyndicApi;
 
     public SyndicService() {

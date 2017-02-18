@@ -33,14 +33,14 @@
                 android:hint="Nome"
                 android:layout_marginTop="25dp"
                 android:layout_below="@id/textViewTitle"
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextSyndicName"
                 android:inputType="textPersonName" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:layout_marginTop="25dp"
-                android:layout_below="@+id/editTextName"
+                android:layout_below="@+id/editTextSyndicName"
                 android:id="@+id/editTextEmail"
                 android:inputType="textEmailAddress" />
 
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Telefone (Opcional)"
-                android:id="@+id/editTextPhone"
+                android:id="@+id/editTextSyndicPhone"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/editTextConfirmPassword"
                 android:inputType="phone" />
@@ -74,7 +74,7 @@
         </RelativeLayout>
     </ScrollView>
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/register_syndic_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

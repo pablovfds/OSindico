@@ -1,6 +1,8 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
+import br.com.edu.ufcg.osindico.data.models.CondoServerRequest;
+import br.com.edu.ufcg.osindico.data.models.CondoServerResponse;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.SyndicServerRequest;
 import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
@@ -20,19 +22,18 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
     @Override
     public void register(SyndicDetails syndicDetails, CondoDetails condoModel,
                          final OnRegisterCondoListener listener) {
-        SyndicServerRequest request = new SyndicServerRequest();
+        CondoServerRequest request = new CondoServerRequest();
         request.setCondoDetails(condoModel);
-        request.setSyndicDetails(syndicDetails);
-        Call<SyndicServerResponse> mService = mSyndicService.getSyndicApi().registerSyndic(request);
+        Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(request);
 
-        mService.enqueue(new Callback<SyndicServerResponse>() {
+        mService.enqueue(new Callback<CondoServerResponse>() {
             @Override
-            public void onResponse(Call<SyndicServerResponse> call, Response<SyndicServerResponse> response) {
+            public void onResponse(Call<CondoServerResponse> call, Response<CondoServerResponse> response) {
                 listener.onSuccess();
             }
 
             @Override
-            public void onFailure(Call<SyndicServerResponse> call, Throwable t) {
+            public void onFailure(Call<CondoServerResponse> call, Throwable t) {
                 call.cancel();
                 listener.onServerError();
             }

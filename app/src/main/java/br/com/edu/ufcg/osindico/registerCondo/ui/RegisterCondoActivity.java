@@ -23,7 +23,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @BindView(R.id.editTextCondoName) EditText editTextName;
 
-    @BindView(R.id.editTextPhone) EditText editTextPhone;
+    @BindView(R.id.editTextCondoPhone) EditText editTextPhone;
 
     @BindView(R.id.editTextNumber) EditText editTextNumber;
 
@@ -35,7 +35,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @BindView(R.id.editTextCity) EditText editTextCity;
 
-    @BindView(R.id.register_progress) ProgressBar progressBar;
+    @BindView(R.id.register_condo_progress) ProgressBar progressBar;
 
     private RegisterCondoContract.Presenter presenter;
 
