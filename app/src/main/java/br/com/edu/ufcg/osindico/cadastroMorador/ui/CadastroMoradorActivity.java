@@ -4,8 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.cadastroMorador.mvp.ICadastroMoradorMVP;
 
-public class CadastroMoradorActivity extends AppCompatActivity {
+public class CadastroMoradorActivity extends AppCompatActivity implements ICadastroMoradorMVP.CadastroMoradorView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
