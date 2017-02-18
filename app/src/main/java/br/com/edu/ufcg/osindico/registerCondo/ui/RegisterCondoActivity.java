@@ -13,13 +13,13 @@ import android.widget.Toast;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoMVPContract;
+import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterCondoActivity extends AppCompatActivity implements
-        RegisterCondoMVPContract.RegisterCondoView {
+        RegisterCondoContract.View {
 
     @BindView(R.id.editTextCondoName) EditText editTextName;
 
@@ -37,7 +37,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @BindView(R.id.register_progress) ProgressBar progressBar;
 
-    private RegisterCondoMVPContract.RegisterCondoPresenter presenter;
+    private RegisterCondoContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

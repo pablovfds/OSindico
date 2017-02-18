@@ -2,11 +2,11 @@ package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 
-public interface RegisterSyndicMVPContract {
+public interface RegisterSyndicContract {
 
-    interface RegisterSyndicModel {
+    interface Model {
 
-        interface OnValidateSyndicFinishedListener {
+        interface OnValidateSyndicListener {
             void onNameError();
 
             void onEmailError();
@@ -20,18 +20,18 @@ public interface RegisterSyndicMVPContract {
             void onSuccess();
         }
 
-        void validateCredentialsSyndic(SyndicDetails syndicModel, OnValidateSyndicFinishedListener listener);
+        void validateCredentialsSyndic(SyndicDetails syndicModel, OnValidateSyndicListener listener);
     }
 
-    interface RegisterSyndicPresenter {
+    interface Presenter {
         void validateCredentials(String username, String password);
 
-        void setView(RegisterSyndicView view);
+        void setView(View view);
 
         void onDestroy();
     }
 
-    interface RegisterSyndicView {
+    interface View {
         void showProgress();
 
         void hideProgress();

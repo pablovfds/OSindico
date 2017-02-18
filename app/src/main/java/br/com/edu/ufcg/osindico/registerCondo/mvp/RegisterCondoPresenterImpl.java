@@ -5,13 +5,13 @@ import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
-public class RegisterCondoPresenterImpl implements RegisterCondoMVPContract.RegisterCondoPresenter,
-        RegisterCondoMVPContract.RegisterCondoModel.OnValidateCondoFinishedListener, RegisterCondoMVPContract.RegisterCondoModel.OnRegisterCondoFinishedListener {
+public class RegisterCondoPresenterImpl implements RegisterCondoContract.Presenter,
+        RegisterCondoContract.Model.OnValidateCondoListener, RegisterCondoContract.Model.OnRegisterCondoListener {
 
-    private RegisterCondoMVPContract.RegisterCondoView view;
-    private RegisterCondoMVPContract.RegisterCondoModel model;
+    private RegisterCondoContract.View view;
+    private RegisterCondoContract.Model model;
 
-    public RegisterCondoPresenterImpl(SyndicService service, RegisterCondoMVPContract.RegisterCondoView view) {
+    public RegisterCondoPresenterImpl(SyndicService service, RegisterCondoContract.View view) {
         this.model = new RegisterCondoModelImpl(service);
         this.view = view;
     }
@@ -54,11 +54,8 @@ public class RegisterCondoPresenterImpl implements RegisterCondoMVPContract.Regi
     }
 
     @Override
-    public void onStreetError() {
-        if (view != null) {
-            view.hideProgress();
-            view.setStreetError();
-        }
+    public void onAddressError() {
+
     }
 
     @Override
@@ -66,14 +63,6 @@ public class RegisterCondoPresenterImpl implements RegisterCondoMVPContract.Regi
         if (view != null) {
             view.hideProgress();
             view.setNumberError();
-        }
-    }
-
-    @Override
-    public void onNeighborhoodError() {
-        if (view != null) {
-            view.hideProgress();
-            view.setNeighborhoodError();
         }
     }
 
@@ -98,14 +87,6 @@ public class RegisterCondoPresenterImpl implements RegisterCondoMVPContract.Regi
         if (view != null) {
             view.hideProgress();
             view.setStateError();
-        }
-    }
-
-    @Override
-    public void onCountryError() {
-        if (view != null) {
-            view.hideProgress();
-            view.setCountryError();
         }
     }
 

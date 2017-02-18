@@ -11,4 +11,5 @@
     <string name="msg_country_error">Insira um pais valido</string>
     <string name="msg_server_error">Erro na requisição.</string>
     <string name="label_register">Cadastrar</string>
+    <string name="label_next">Proximo</string>
 </resources>

@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterCondoModelImpl implements RegisterCondoMVPContract.RegisterCondoModel {
+public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 
     SyndicService mSyndicService;
 
@@ -19,7 +19,7 @@ public class RegisterCondoModelImpl implements RegisterCondoMVPContract.Register
 
     @Override
     public void register(SyndicDetails syndicDetails, CondoDetails condoModel,
-                         final OnRegisterCondoFinishedListener listener) {
+                         final OnRegisterCondoListener listener) {
         SyndicServerRequest request = new SyndicServerRequest();
         request.setCondoDetails(condoModel);
         request.setSyndicDetails(syndicDetails);
@@ -40,7 +40,7 @@ public class RegisterCondoModelImpl implements RegisterCondoMVPContract.Register
     }
 
     @Override
-    public void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoFinishedListener listener) {
+    public void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoListener listener) {
         if(condoModel.getName().isEmpty()){
             listener.onNameError();
         } else if(condoModel.getAddress().getAddress().isEmpty()) {

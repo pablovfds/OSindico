@@ -3,16 +3,16 @@ package br.com.edu.ufcg.osindico.registerCondo.mvp;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 
-public interface RegisterCondoMVPContract {
+public interface RegisterCondoContract {
 
-    interface RegisterCondoModel {
-        interface OnRegisterCondoFinishedListener {
+    interface Model {
+        interface OnRegisterCondoListener {
             void onServerError();
 
             void onSuccess();
         }
 
-        interface OnValidateCondoFinishedListener {
+        interface OnValidateCondoListener {
             void onNameError();
 
             void onPhoneError();
@@ -30,19 +30,19 @@ public interface RegisterCondoMVPContract {
             void onSuccessValidation(CondoDetails condoDetails);
         }
 
-        void register(SyndicDetails syndicDetails, CondoDetails condoModel, OnRegisterCondoFinishedListener listener);
+        void register(SyndicDetails syndicDetails, CondoDetails condoModel, OnRegisterCondoListener listener);
 
-        void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoFinishedListener listener);
+        void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoListener listener);
     }
 
-    interface RegisterCondoPresenter {
+    interface Presenter {
         void validateCondoCredentials(String name, String phone, String address, int number,
                                       String city, String zipCode, String state);
 
         void onDestroy();
     }
 
-    interface RegisterCondoView {
+    interface View {
         void showProgress();
 
         void hideProgress();
