@@ -1,12 +1,9 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
-import br.com.edu.ufcg.osindico.data.models.CondoServerRequest;
 import br.com.edu.ufcg.osindico.data.models.CondoServerResponse;
-import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
-import br.com.edu.ufcg.osindico.data.models.SyndicServerRequest;
-import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,34 +17,16 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
     }
 
     @Override
-    public void register(SyndicDetails syndicDetails, CondoDetails condoModel,
+    public void register(String name, String phone, String address, int number,
+                         String city, String zipCode, String state, String syndicId,
                          final OnRegisterCondoListener listener) {
-        CondoServerRequest request = new CondoServerRequest();
-        request.setCondoDetails(condoModel);
-        Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(request);
+        Address addressItem = new Address(address, number, city, zipCode, state);
+        CondoDetails condoModel = new CondoDetails(name, addressItem, syndicId);
 
-        mService.enqueue(new Callback<CondoServerResponse>() {
-            @Override
-            public void onResponse(Call<CondoServerResponse> call, Response<CondoServerResponse> response) {
-                listener.onSuccess();
-            }
-
-            @Override
-            public void onFailure(Call<CondoServerResponse> call, Throwable t) {
-                call.cancel();
-                listener.onServerError();
-            }
-        });
-    }
-
-    @Override
-    public void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoListener listener) {
         if(condoModel.getName().isEmpty()){
             listener.onNameError();
         } else if(condoModel.getAddress().getAddress().isEmpty()) {
             listener.onAddressError();
-        } else if(condoModel.getPhone().getPhoneNumber().isEmpty()) {
-            listener.onPhoneError();
         } else if (condoModel.getAddress().getNumber() <= 0){
             listener.onNumberError();
         } else if (condoModel.getAddress().getCity().isEmpty()){
@@ -57,7 +36,22 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
         } else if (condoModel.getAddress().getZipCode().isEmpty()){
             listener.onZipCodeError();
         } else {
-            listener.onSuccessValidation(condoModel);
+            Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(condoModel);
+
+            mService.enqueue(new Callback<CondoServerResponse>() {
+                @Override
+                public void onResponse(Call<CondoServerResponse> call, Response<CondoServerResponse> response) {
+                    listener.onSuccess();
+                }
+
+                @Override
+                public void onFailure(Call<CondoServerResponse> call, Throwable t) {
+                    call.cancel();
+                    listener.onServerError();
+                }
+            });
         }
+
+
     }
 }

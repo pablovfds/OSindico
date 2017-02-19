@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import br.com.edu.ufcg.osindico.registerCondo.ui.RegisterCondoActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicContract;
 import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicPresenterImpl;
@@ -112,11 +112,12 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     @Override
     public void setConfirmPasswordError() {
         editTextConfirmPassword.setError(getString(R.string.msg_syndic_confirm_password_error));
+        editTextPassword.setError(getString(R.string.msg_syndic_confirm_password_error));
     }
 
     @Override
     public void setPhoneError() {
-        editTextPassword.setError(getString(R.string.msg_syndic_phone_error));
+        editTextPhone.setError(getString(R.string.msg_syndic_phone_error));
     }
 
     @Override

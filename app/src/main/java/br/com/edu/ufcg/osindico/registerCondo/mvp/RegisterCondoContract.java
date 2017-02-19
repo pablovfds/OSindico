@@ -7,15 +7,8 @@ public interface RegisterCondoContract {
 
     interface Model {
         interface OnRegisterCondoListener {
-            void onServerError();
 
-            void onSuccess();
-        }
-
-        interface OnValidateCondoListener {
             void onNameError();
-
-            void onPhoneError();
 
             void onAddressError();
 
@@ -26,18 +19,18 @@ public interface RegisterCondoContract {
             void onZipCodeError();
 
             void onStateError();
+            void onServerError();
 
-            void onSuccessValidation(CondoDetails condoDetails);
+            void onSuccess();
         }
 
-        void register(SyndicDetails syndicDetails, CondoDetails condoModel, OnRegisterCondoListener listener);
-
-        void validateCredentialsCondo(CondoDetails condoModel, OnValidateCondoListener listener);
+        void register(String name, String phone, String address, int number,
+                      String city, String zipCode, String state, String syndicId, OnRegisterCondoListener listener);
     }
 
     interface Presenter {
         void validateCondoCredentials(String name, String phone, String address, int number,
-                                      String city, String zipCode, String state);
+                                      String city, String zipCode, String state, String syndicId);
 
         void onDestroy();
     }

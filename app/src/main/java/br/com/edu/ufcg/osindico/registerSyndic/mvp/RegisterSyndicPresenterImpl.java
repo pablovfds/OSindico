@@ -1,7 +1,6 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 
 public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Presenter,
         RegisterSyndicContract.Model.OnRegisterSyndicListener {
@@ -18,8 +17,6 @@ public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Prese
                                     String confirmPassword, String phone) {
         if (registerSyndicView != null){
             this.registerSyndicView.showProgress();
-
-
 
             this.registerSyndicModel.registerSyndic(name, email, password, confirmPassword,
                     phone, this);

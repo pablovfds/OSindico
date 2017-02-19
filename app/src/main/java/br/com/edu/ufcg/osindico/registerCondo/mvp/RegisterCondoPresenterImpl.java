@@ -1,12 +1,9 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.Address;
-import br.com.edu.ufcg.osindico.data.models.CondoDetails;
-import br.com.edu.ufcg.osindico.data.models.Contact;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 
 public class RegisterCondoPresenterImpl implements RegisterCondoContract.Presenter,
-        RegisterCondoContract.Model.OnValidateCondoListener, RegisterCondoContract.Model.OnRegisterCondoListener {
+        RegisterCondoContract.Model.OnRegisterCondoListener {
 
     private RegisterCondoContract.View view;
     private RegisterCondoContract.Model model;
@@ -18,16 +15,12 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
 
     @Override
     public void validateCondoCredentials(String name, String phone, String address, int number,
-                                         String city, String zipCode, String state) {
+                                         String city, String zipCode, String state, String syndicId) {
 
         if (view != null) {
             this.view.showProgress();
 
-            Address addressItem = new Address(address, number, city, zipCode, state);
-            Contact contact = new Contact(phone);
-            CondoDetails condoDetails = new CondoDetails(name, contact, addressItem);
-
-            this.model.validateCredentialsCondo(condoDetails, this);
+            this.model.register(name, phone, address, number, city, zipCode, state, syndicId, this);
         }
 
     }
@@ -42,14 +35,6 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
         if (view != null) {
             view.hideProgress();
             view.setNameError();
-        }
-    }
-
-    @Override
-    public void onPhoneError() {
-        if (view != null) {
-            view.hideProgress();
-            view.setPhoneError();
         }
     }
 
@@ -87,13 +72,6 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
         if (view != null) {
             view.hideProgress();
             view.setStateError();
-        }
-    }
-
-    @Override
-    public void onSuccessValidation(CondoDetails condoDetails) {
-        if (view != null) {
-            view.navigateToRegisterSyndic(condoDetails);
         }
     }
 

@@ -2,47 +2,47 @@ package br.com.edu.ufcg.osindico.data.models;
 
 public class SyndicDetails {
 
-    private String nome;
+    private String name;
     private String email;
-    private String senha;
-    private String telefone;
+    private String password;
+    private Contact contact;
 
-    public SyndicDetails(String nome, String email, String senha, String telefone) {
-        this.nome = nome;
+    public SyndicDetails(String name, String email, String password, Contact contact) {
+        this.name = name;
         this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
+        this.password = password;
+        this.contact = contact;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getName() {
+        return name;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setName(String newName) {
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String newEmail) {
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
+    public String getPassword() {
+        return password;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPassword(String newPassword) {
+        this.password = password;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

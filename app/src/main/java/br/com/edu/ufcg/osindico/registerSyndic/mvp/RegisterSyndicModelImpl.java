@@ -1,14 +1,10 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
-import android.text.TextUtils;
-import android.util.Log;
-
-import org.json.JSONObject;
-
+import br.com.edu.ufcg.osindico.Utils.FormValidate;
+import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
-import br.com.edu.ufcg.osindico.data.models.SyndicServerRequest;
 import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,42 +22,42 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
     public void registerSyndic(String name, String email, String password,
                                String confirmPassword, String phone, final OnRegisterSyndicListener listener) {
         boolean error = false;
-        if (TextUtils.isEmpty(name)){
+
+        if (!FormValidate.isValidName(name)){
             listener.onNameError();
             error = true;
         }
 
-        if (TextUtils.isEmpty(email)){
+        if (!FormValidate.isValidEmail(email)){
             listener.onEmailError();
             error = true;
         }
 
-        if (TextUtils.isEmpty(password)){
+        if (!FormValidate.isValidPassword(password)){
             listener.onPasswordError();
             error = true;
         }
 
-        if (TextUtils.isEmpty(confirmPassword)){
+        if (!FormValidate.isValidConfirmPassword(password, confirmPassword)){
             listener.onConfirmPasswordError();
             error = true;
         }
 
-        if (TextUtils.isEmpty(phone)){
+        if (!FormValidate.isValidPhone(phone)){
             listener.onPhoneError();
             error = true;
         }
 
         if (!error){
+            Contact contact = new Contact(phone);
+            SyndicDetails syndicDetails = new SyndicDetails(name, email, password, contact);
 
-            SyndicDetails syndicDetails = new SyndicDetails(name, email, password, phone);
-
-            SyndicServerRequest request = new SyndicServerRequest();
-            request.setSyndicDetails(syndicDetails);
-            Call<SyndicServerResponse> mService = mSyndicService.getSyndicApi().registerSyndic(request);
+            Call<SyndicServerResponse> mService = mSyndicService.getSyndicApi().registerSyndic(syndicDetails);
 
             mService.enqueue(new Callback<SyndicServerResponse>() {
                 @Override
                 public void onResponse(Call<SyndicServerResponse> call, Response<SyndicServerResponse> response) {
+
                     listener.onSuccess();
                 }
 
@@ -72,7 +68,6 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
                 }
             });
 
-            listener.onSuccess();
         }
     }
 }
