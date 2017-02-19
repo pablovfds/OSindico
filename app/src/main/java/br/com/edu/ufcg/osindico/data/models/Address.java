@@ -2,53 +2,61 @@ package br.com.edu.ufcg.osindico.data.models;
 
 public class Address {
 
-    private final String address;
-    private int number;
-    private String city;
-    private String zipCode;
-    private String state;
+    public static final int REQUEST_ZIP_CODE_CODE = 566;
+    public static final String ZIP_CODE_KEY = "zip_code_key";
 
-    public Address(String address, int number, String city, String zipCode, String state) {
-        this.address = address;
-        this.number = number;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.state = state;
+    private String cep;
+    private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
+
+    public String getCep() {
+        return cep;
     }
 
-    public int getNumber() {
-        return number;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public String getCity() {
-        return city;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public String getBairro() {
+        return bairro;
     }
 
-    public String getState() {
-        return state;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public String getLocalidade() {
+        return localidade;
     }
 
-    public String getAddress() {
-        return address;
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 }

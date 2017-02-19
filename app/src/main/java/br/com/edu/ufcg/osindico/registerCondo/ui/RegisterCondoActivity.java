@@ -7,11 +7,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.data.domain.Util;
+import br.com.edu.ufcg.osindico.data.domain.ZipCodeListener;
+import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
@@ -30,9 +35,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @BindView(R.id.editTextZipCode) EditText editTextZipCode;
 
-    @BindView(R.id.editTextAddress) EditText editTextAddress;
-
-    @BindView(R.id.editTextState) EditText editTextState;
+    @BindView(R.id.sp_state) Spinner spStates;
 
     @BindView(R.id.editTextCity) EditText editTextCity;
 
@@ -40,14 +43,34 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     private RegisterCondoContract.Presenter presenter;
 
+    private Long syndicId;
+    private Util util;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_condo);
 
-
+        //syndicId = getIntent().getExtras().getLong("syndicId");
 
         ButterKnife.bind(this);
+
+        editTextZipCode.addTextChangedListener( new ZipCodeListener( this ) );
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter
+                .createFromResource(this,
+                        R.array.states,
+                        android.R.layout.simple_spinner_item);
+        spStates.setAdapter(adapter);
+
+        util = new Util(this,
+                R.id.editTextZipCode,
+                R.id.editTextStreet,
+                R.id.editTextComplement,
+                R.id.editTextNeighbor,
+                R.id.editTextCity,
+                R.id.sp_state,
+                R.id.editTextNumber);
 
         SyndicService service = new SyndicService();
 
@@ -69,7 +92,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_register){
-            presenter.validateCondoCredentials("","","",0,"","","", (long) 0.000);
+            presenter.validateCondoCredentials("","","",0,"","","", syndicId);
         }
 
         return super.onOptionsItemSelected(item);
@@ -92,7 +115,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @Override
     public void setAddressError() {
-        editTextAddress.setError(getString(R.string.msg_address_error));
+        //editTextAddress.setError(getString(R.string.msg_address_error));
     }
 
     @Override
@@ -112,17 +135,51 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @Override
     public void setStateError() {
-        editTextState.setError(getString(R.string.msg_state_error));
+        //editTextState.setError(getString(R.string.msg_state_error));
     }
 
     @Override
     public void navigateToLogin() {
         //startActivity(new Intent(this, Login.class));
-        Toast.makeText(this, "Cadastrado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.msg_registration_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setServerError() {
         Toast.makeText(this, getString(R.string.msg_server_error), Toast.LENGTH_SHORT).show();
+    }
+
+    public String getUriZipCode(){
+        return "https://viacep.com.br/ws/"+editTextZipCode.getText()+"/json/";
+    }
+
+
+    public void lockFields( boolean isToLock ){
+        util.lockFields( isToLock );
+    }
+
+    public void setDataViews(Address address){
+        setField( R.id.editTextStreet, address.getLogradouro() );
+        setField( R.id.editTextComplement, address.getComplemento() );
+        setField( R.id.editTextNeighbor, address.getBairro() );
+        setField( R.id.editTextCity, address.getLocalidade() );
+        setSpinner( R.id.sp_state, R.array.states, address.getUf() );
+    }
+
+    private void setField( int id, String data ){
+        ((EditText) findViewById(id)).setText( data );
+    }
+
+    private void setSpinner( int id, int arrayId, String data ){
+        String[] itens = getResources().getStringArray(arrayId);
+
+        for( int i = 0; i < itens.length; i++ ){
+
+            if( itens[i].endsWith( "("+data+")" ) ){
+                ((Spinner) findViewById(id)).setSelection( i );
+                return;
+            }
+        }
+        ((Spinner) findViewById(id)).setSelection( 0 );
     }
 }
