@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.registerCondo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -44,6 +45,8 @@ public class RegisterCondoActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_condo);
 
+
+
         ButterKnife.bind(this);
 
         SyndicService service = new SyndicService();
@@ -66,7 +69,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_register){
-
+            presenter.validateCondoCredentials("","","",0,"","","", (long) 0.000);
         }
 
         return super.onOptionsItemSelected(item);
@@ -88,13 +91,8 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setPhoneError() {
-        editTextPhone.setError(getString(R.string.msg_phone_error));
-    }
-
-    @Override
     public void setAddressError() {
-        editTextAddress.setError(getString(R.string.msg_street_error));
+        editTextAddress.setError(getString(R.string.msg_address_error));
     }
 
     @Override
@@ -119,12 +117,8 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @Override
     public void navigateToLogin() {
-
-    }
-
-    @Override
-    public void navigateToRegisterSyndic(CondoDetails condoDetails) {
-
+        //startActivity(new Intent(this, Login.class));
+        Toast.makeText(this, "Cadastrado", Toast.LENGTH_SHORT).show();
     }
 
     @Override

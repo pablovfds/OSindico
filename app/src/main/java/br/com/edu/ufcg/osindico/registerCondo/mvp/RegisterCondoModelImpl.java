@@ -18,7 +18,7 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 
     @Override
     public void register(String name, String phone, String address, int number,
-                         String city, String zipCode, String state, String syndicId,
+                         String city, String zipCode, String state, Long syndicId,
                          final OnRegisterCondoListener listener) {
         Address addressItem = new Address(address, number, city, zipCode, state);
         CondoDetails condoModel = new CondoDetails(name, addressItem, syndicId);

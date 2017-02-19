@@ -17,9 +17,9 @@ public interface RegisterSyndicContract {
 
             void onConfirmPasswordError();
 
-            void onSuccess();
+            void onSuccess(Long syndicId);
 
-            void onServerError();
+            void onServerError(String message);
         }
 
         void registerSyndic(String name, String email, String password, String confirmPassword,
@@ -50,9 +50,9 @@ public interface RegisterSyndicContract {
 
         void setPhoneError();
 
-        void setServerError();
+        void setServerError(String errorMessage);
 
-        void navigateToRegisterCondo();
+        void navigateToRegisterCondo(Long syndicId);
     }
 
 }

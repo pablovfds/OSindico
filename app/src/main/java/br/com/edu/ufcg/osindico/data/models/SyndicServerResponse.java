@@ -1,36 +1,35 @@
 package br.com.edu.ufcg.osindico.data.models;
 
-public class SyndicServerResponse {
-    private String id;
-    private String message;
-    private int status;
+import com.google.gson.annotations.SerializedName;
 
-    public String getId() {
+public class SyndicServerResponse {
+    @SerializedName("sindicoId")
+    private Long id;
+
+    @SerializedName("springException")
+    private SpringException springException;
+
+    public SyndicServerResponse() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public SpringException getSpringException() {
+        return springException;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
+    public void setSpringException(SpringException springException) {
+        this.springException = springException;
     }
 
     @Override
     public String toString() {
-        return "Status: " + status + " Message: " + message + "id:" + id;
+        return "sindico: " + id + " Spring: " + springException.toString();
     }
 }

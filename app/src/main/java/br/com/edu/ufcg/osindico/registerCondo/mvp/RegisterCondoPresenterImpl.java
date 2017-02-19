@@ -15,8 +15,7 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
 
     @Override
     public void validateCondoCredentials(String name, String phone, String address, int number,
-                                         String city, String zipCode, String state, String syndicId) {
-
+                                         String city, String zipCode, String state, Long syndicId) {
         if (view != null) {
             this.view.showProgress();
 
@@ -40,7 +39,10 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
 
     @Override
     public void onAddressError() {
-
+        if (view != null) {
+            view.hideProgress();
+            view.setAddressError();
+        }
     }
 
     @Override

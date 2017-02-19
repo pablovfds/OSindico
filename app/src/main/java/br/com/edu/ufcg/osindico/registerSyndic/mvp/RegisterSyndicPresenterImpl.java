@@ -74,15 +74,18 @@ public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Prese
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(Long syndicId) {
         if (registerSyndicView != null){
             this.registerSyndicView.hideProgress();
-            this.registerSyndicView.navigateToRegisterCondo();
+            this.registerSyndicView.navigateToRegisterCondo(syndicId);
         }
     }
 
     @Override
-    public void onServerError() {
-
+    public void onServerError(String errorMessage) {
+        if (registerSyndicView != null){
+            this.registerSyndicView.hideProgress();
+            this.registerSyndicView.setServerError(errorMessage);
+        }
     }
 }

@@ -19,18 +19,20 @@ public interface RegisterCondoContract {
             void onZipCodeError();
 
             void onStateError();
+
             void onServerError();
 
             void onSuccess();
         }
 
         void register(String name, String phone, String address, int number,
-                      String city, String zipCode, String state, String syndicId, OnRegisterCondoListener listener);
+                      String city, String zipCode, String state, Long syndicId,
+                      OnRegisterCondoListener listener);
     }
 
     interface Presenter {
         void validateCondoCredentials(String name, String phone, String address, int number,
-                                      String city, String zipCode, String state, String syndicId);
+                                      String city, String zipCode, String state, Long syndicId);
 
         void onDestroy();
     }
@@ -41,8 +43,6 @@ public interface RegisterCondoContract {
         void hideProgress();
 
         void setNameError();
-
-        void setPhoneError();
 
         void setAddressError();
 
@@ -55,8 +55,6 @@ public interface RegisterCondoContract {
         void setStateError();
 
         void navigateToLogin();
-
-        void navigateToRegisterSyndic(CondoDetails condoDetails);
 
         void setServerError();
     }

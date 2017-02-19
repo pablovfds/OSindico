@@ -4,9 +4,9 @@ public class CondoDetails {
 
     private String name;
     private Address address;
-    private String syndicId;
+    private Long syndicId;
 
-    public CondoDetails(String name, Address address, String syndicId) {
+    public CondoDetails(String name, Address address, Long syndicId) {
         this.name = name;
         this.address = address;
         this.syndicId = syndicId;
@@ -28,11 +28,11 @@ public class CondoDetails {
         this.address = address;
     }
 
-    public String getSyndicId() {
+    public Long getSyndicId() {
         return syndicId;
     }
 
-    public void setSyndicId(String syndicId) {
+    public void setSyndicId(Long syndicId) {
         this.syndicId = syndicId;
     }
 }

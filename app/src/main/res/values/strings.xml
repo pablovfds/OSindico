@@ -17,4 +17,6 @@
     <string name="msg_syndic_password_error">Insira uma senha valida</string>
     <string name="msg_syndic_confirm_password_error">A senha e a confirmação de senha são diferentes</string>
     <string name="msg_syndic_phone_error">Insira um telefone valido</string>
+    <string name="msg_address_error">Insira um endereço valido.</string>
+    <string name="msg_registration_success">Cadastrado com sucesso</string>
 </resources>

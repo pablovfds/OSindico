@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.Services.SyndicService;
@@ -19,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RegisterSyndicActivity extends AppCompatActivity implements RegisterSyndicContract.View {
+
     @BindView(R.id.editTextSyndicName) EditText editTextName;
 
     @BindView(R.id.editTextEmail) EditText editTextEmail;
@@ -121,13 +123,18 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     }
 
     @Override
-    public void setServerError() {
-
+    public void setServerError(String serverError) {
+        Toast.makeText(this, serverError, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void navigateToRegisterCondo() {
-        startActivity(new Intent(this, RegisterCondoActivity.class));
+    public void navigateToRegisterCondo(Long syndicId) {
+        Toast.makeText(this, getString(R.string.msg_registration_success), Toast.LENGTH_SHORT)
+                .show();
+
+        Intent intent = new Intent(this, RegisterCondoActivity.class);
+        intent.putExtra("syndicId", syndicId);
+        startActivity(intent);
     }
 
 

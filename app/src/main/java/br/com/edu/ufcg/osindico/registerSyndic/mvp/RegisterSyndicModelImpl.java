@@ -1,10 +1,14 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
+
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
+import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,17 +61,27 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
             mService.enqueue(new Callback<SyndicServerResponse>() {
                 @Override
                 public void onResponse(Call<SyndicServerResponse> call, Response<SyndicServerResponse> response) {
+                    SyndicServerResponse serverResponse = response.body();
 
-                    listener.onSuccess();
+
+                    if (response.isSuccessful()){
+                        listener.onSuccess(serverResponse.getId());
+                    } else {
+                        Gson gson = new Gson();
+
+                        SyndicServerResponse message = gson.fromJson(response.errorBody().
+                                charStream(),SyndicServerResponse.class);
+
+                        listener.onServerError(message.getSpringException().getMessage());
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<SyndicServerResponse> call, Throwable t) {
                     call.cancel();
-                    listener.onServerError();
+                    listener.onServerError("Erro ao tentar se conectar com servidor");
                 }
             });
-
         }
     }
 }
