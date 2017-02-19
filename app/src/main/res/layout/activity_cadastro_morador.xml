@@ -31,13 +31,22 @@
         android:layout_below="@id/nome_condominio"/>
 
     <EditText
+        android:id="@+id/telefone_morador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Telefone"
+        android:layout_marginTop="25dp"
+        android:inputType="text|phone"
+        android:layout_below="@id/nome_morador"/>
+
+    <EditText
         android:id="@+id/email_morador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="E-mail"
         android:layout_marginTop="25dp"
         android:inputType="textEmailAddress"
-        android:layout_below="@id/nome_morador"/>
+        android:layout_below="@id/telefone_morador"/>
 
     <EditText
         android:id="@+id/senha_morador"

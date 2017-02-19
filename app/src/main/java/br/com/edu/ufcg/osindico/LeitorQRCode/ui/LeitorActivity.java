@@ -22,6 +22,7 @@ public class LeitorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leitor);
+
         leitor_btn = (Button) findViewById(R.id.ler_qrcode_btn);
         final Activity activity = this;
         leitor_btn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +46,7 @@ public class LeitorActivity extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Erro", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, CadastroMoradorActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("condominio", result.getContents());

@@ -5,4 +5,5 @@ package br.com.edu.ufcg.osindico.cadastroMorador.mvp;
  */
 
 public class CadastroMoradorModelImpl {
+
 }
