@@ -9,8 +9,8 @@ import br.com.edu.ufcg.osindico.data.services.MoradorService;
 
 public class CadastroMoradorPresenterImpl implements ICadastroMoradorMVP.Presenter, ICadastroMoradorMVP.Model.OnCadastroMoradorListener {
 
-    ICadastroMoradorMVP.View view;
-    ICadastroMoradorMVP.Model model;
+    private ICadastroMoradorMVP.View view;
+    private ICadastroMoradorMVP.Model model;
 
     public CadastroMoradorPresenterImpl(MoradorService service) {
         this.model = new CadastroMoradorModelImpl(service);

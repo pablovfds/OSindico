@@ -10,7 +10,8 @@ public class MoradorServerResponse {
     @SerializedName("message")
     private String mensagem;
 
-    public MoradorServerResponse() {}
+    public MoradorServerResponse() {
+    }
 
     public String getMensagem() {
         return mensagem;

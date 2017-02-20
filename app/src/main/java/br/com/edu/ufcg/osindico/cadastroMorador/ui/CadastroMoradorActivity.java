@@ -22,13 +22,20 @@ import butterknife.ButterKnife;
 
 public class CadastroMoradorActivity extends AppCompatActivity implements ICadastroMoradorMVP.View {
 
-    @BindView(R.id.nome_morador) EditText editTextMome;
-    @BindView(R.id.telefone_morador) EditText editTextTelefone;
-    @BindView(R.id.email_morador) EditText editTextEmail;
-    @BindView(R.id.senha_morador) EditText editTextSenha;
-    @BindView(R.id.confirmar_senha_morador) EditText editTextConfirmarSenha;
-    @BindView(R.id.btn_limpar_dados) Button btn_limpar_dados;
-    @BindView(R.id.btn_cadastrar) Button btn_cadastrar;
+    @BindView(R.id.nome_morador)
+    EditText editTextMome;
+    @BindView(R.id.telefone_morador)
+    EditText editTextTelefone;
+    @BindView(R.id.email_morador)
+    EditText editTextEmail;
+    @BindView(R.id.senha_morador)
+    EditText editTextSenha;
+    @BindView(R.id.confirmar_senha_morador)
+    EditText editTextConfirmarSenha;
+    @BindView(R.id.btn_limpar_dados)
+    Button btn_limpar_dados;
+    @BindView(R.id.btn_cadastrar)
+    Button btn_cadastrar;
 
     ICadastroMoradorMVP.Presenter presenter;
 
@@ -54,12 +61,12 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
         btn_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editTextMome.setError(null);
+                /*editTextMome.setError(null);
                 editTextTelefone.setError(null);
                 editTextEmail.setError(null);
                 editTextSenha.setError(null);
                 editTextConfirmarSenha.setError(null);
-
+                */
                 String nome = editTextMome.getText().toString();
                 String telefone = editTextTelefone.getText().toString();
                 Contato contato = new Contato(telefone);
