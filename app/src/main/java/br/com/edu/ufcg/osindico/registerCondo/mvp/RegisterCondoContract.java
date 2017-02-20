@@ -1,6 +1,7 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
 import br.com.edu.ufcg.osindico.data.models.Address;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 
 public interface RegisterCondoContract {
 
@@ -29,10 +30,10 @@ public interface RegisterCondoContract {
         }
 
         interface OnLoadAddressFinishedListener {
-            void onSuccessGetAddress(Address address);
+            void onSuccessGetAddress(AddressResponse address);
         }
 
-        void register(String name, String phone, String street, int number,
+        void register(String name, String street, int number,
                       String complement,String neighbor,String city, String zipCode,
                       String state, Long syndicId, OnRegisterCondoListener listener);
 
@@ -40,7 +41,7 @@ public interface RegisterCondoContract {
     }
 
     interface Presenter {
-        void validateCondoCredentials(String name, String phone, String street, int number,
+        void validateCondoCredentials(String name, String street, int number,
                                       String complement,String neighbor,String city, String zipCode,
                                       String state, Long syndicId);
 
@@ -74,7 +75,7 @@ public interface RegisterCondoContract {
 
         void setServerError();
 
-        void setAddressDataViews(Address address);
+        void setAddressDataViews(AddressResponse address);
     }
 }
 

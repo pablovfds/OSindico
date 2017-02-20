@@ -1,39 +1,28 @@
-package br.com.edu.ufcg.osindico.data.models;
+package br.com.edu.ufcg.osindico.data.models.ServerResponse;
+
 
 import com.google.gson.annotations.SerializedName;
 
-public class Address {
-
-    @SerializedName("zipCode")
+public class AddressResponse {
+    @SerializedName("cep")
     private String zipCode;
 
-    @SerializedName("street")
+    @SerializedName("logradouro")
     private String street;
 
-    @SerializedName("complement")
+    @SerializedName("complemento")
     private String complement;
 
-    @SerializedName("neighbor")
+    @SerializedName("bairro")
     private String neighbor;
 
-    @SerializedName("city")
+    @SerializedName("localidade")
     private String city;
 
-    @SerializedName("state")
+    @SerializedName("uf")
     private String state;
 
-    @SerializedName("number")
-    private int number;
-
-    public Address(String zipCode, String street, String complement, String neighbor, String city,
-                   String state, int number) {
-        this.zipCode = zipCode;
-        this.street = street;
-        this.complement = complement;
-        this.neighbor = neighbor;
-        this.city = city;
-        this.state = state;
-        this.number = number;
+    public AddressResponse() {
     }
 
     public String getZipCode() {
@@ -82,13 +71,5 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 }
