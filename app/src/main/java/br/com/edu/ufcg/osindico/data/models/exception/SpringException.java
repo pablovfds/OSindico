@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.data.models;
+package br.com.edu.ufcg.osindico.data.models.exception;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,6 +6,7 @@ public class SpringException {
 
     @SerializedName("message")
     private String message;
+
     @SerializedName("status")
     private int status;
 

@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.registerCondo.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,10 +13,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.data.domain.Util;
-import br.com.edu.ufcg.osindico.data.domain.ZipCodeListener;
+import br.com.edu.ufcg.osindico.Utils.Util;
+import br.com.edu.ufcg.osindico.Utils.ZipCodeListener;
 import br.com.edu.ufcg.osindico.data.models.Address;
-import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
@@ -35,6 +33,12 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @BindView(R.id.editTextZipCode) EditText editTextZipCode;
 
+    @BindView(R.id.editTextComplement) EditText editTextComplement;
+
+    @BindView(R.id.editTextNeighbor) EditText editTextNeighbor;
+
+    @BindView(R.id.editTextStreet) EditText editTextStreet;
+
     @BindView(R.id.sp_state) Spinner spStates;
 
     @BindView(R.id.editTextCity) EditText editTextCity;
@@ -43,7 +47,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     private RegisterCondoContract.Presenter presenter;
 
-    private Long syndicId;
+    private Long syndicId = Long.valueOf(11);
     private Util util;
 
     @Override
@@ -92,7 +96,18 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_register){
-            presenter.validateCondoCredentials("","","",0,"","","", syndicId);
+            String name = editTextName.getText().toString();
+            String phoneNumber = editTextPhone.getText().toString();
+            String street = editTextStreet.getText().toString();
+            String state = spStates.getSelectedItem().toString();
+            Integer number = Integer.getInteger(editTextNumber.getText().toString());
+            String neighbor = editTextNeighbor.getText().toString();
+            String complement = editTextComplement.getText().toString();
+            String zipCode = editTextZipCode.getText().toString();
+            String city = editTextCity.getText().toString();
+
+            presenter.validateCondoCredentials(name, phoneNumber, street, number, complement,
+                    neighbor, city, zipCode, state, syndicId);
         }
 
         return super.onOptionsItemSelected(item);
@@ -114,11 +129,6 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setAddressError() {
-        //editTextAddress.setError(getString(R.string.msg_address_error));
-    }
-
-    @Override
     public void setNumberError() {
         editTextNumber.setError(getString(R.string.msg_condo_number_error));
     }
@@ -135,7 +145,23 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @Override
     public void setStateError() {
-        //editTextState.setError(getString(R.string.msg_state_error));
+        Toast.makeText(this, getString(R.string.msg_state_error), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setStreetError() {
+        editTextStreet.setError(getString(R.string.msg_street_error));
+
+    }
+
+    @Override
+    public void setNeighborError() {
+        editTextNeighbor.setError(getString(R.string.msg_neighborhood_error));
+    }
+
+    @Override
+    public void setComplementError() {
+
     }
 
     @Override
@@ -159,11 +185,11 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     }
 
     public void setDataViews(Address address){
-        setField( R.id.editTextStreet, address.getLogradouro() );
-        setField( R.id.editTextComplement, address.getComplemento() );
-        setField( R.id.editTextNeighbor, address.getBairro() );
-        setField( R.id.editTextCity, address.getLocalidade() );
-        setSpinner( R.id.sp_state, R.array.states, address.getUf() );
+        setField( R.id.editTextStreet, address.getStreet() );
+        setField( R.id.editTextComplement, address.getComplement() );
+        setField( R.id.editTextNeighbor, address.getNeighbor() );
+        setField( R.id.editTextCity, address.getCity() );
+        setSpinner( R.id.sp_state, R.array.states, address.getState() );
     }
 
     private void setField( int id, String data ){

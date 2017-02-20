@@ -1,9 +1,9 @@
 package br.com.edu.ufcg.osindico.data.Services;
 
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
-import br.com.edu.ufcg.osindico.data.models.CondoServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
-import br.com.edu.ufcg.osindico.data.models.SyndicServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

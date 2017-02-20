@@ -1,62 +1,72 @@
 package br.com.edu.ufcg.osindico.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Address {
 
-    public static final int REQUEST_ZIP_CODE_CODE = 566;
-    public static final String ZIP_CODE_KEY = "zip_code_key";
+    @SerializedName("cep")
+    private String zipCode;
 
-    private String cep;
-    private String logradouro;
-    private String complemento;
-    private String bairro;
-    private String localidade;
-    private String uf;
+    @SerializedName("logradouro")
+    private String street;
 
-    public String getCep() {
-        return cep;
+    @SerializedName("complemento")
+    private String complement;
+
+    @SerializedName("bairro")
+    private String getNeighbor;
+
+    @SerializedName("localidade")
+    private String city;
+
+    @SerializedName("uf")
+    private String state;
+
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getStreet() {
+        return street;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getComplement() {
+        return complement;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setComplement(String complement) {
+        this.complement = complement;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getNeighbor() {
+        return getNeighbor;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setNeighbor(String neighbor) {
+        this.getNeighbor = neighbor;
     }
 
-    public String getLocalidade() {
-        return localidade;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getUf() {
-        return uf;
+    public String getState() {
+        return state;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setState(String state) {
+        this.state = state;
     }
 }

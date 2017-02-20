@@ -2,11 +2,6 @@ package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
 import br.com.edu.ufcg.osindico.data.Services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Address;
-import br.com.edu.ufcg.osindico.data.models.CondoDetails;
-import br.com.edu.ufcg.osindico.data.models.CondoServerResponse;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 
@@ -17,9 +12,16 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
     }
 
     @Override
-    public void register(String name, String phone, String address, int number,
-                         String city, String zipCode, String state, Long syndicId,
-                         final OnRegisterCondoListener listener) {
+    public void register(String name, String phone, String street, int number, String complement,
+                         String neighbor, String city, String zipCode, String state, Long syndicId,
+                         OnRegisterCondoListener listener) {
+        Address addressItem = new Address();
+    }
+
+//    @Override
+//    public void register(String name, String phone, String address, int number,
+//                         String city, String zipCode, String state, Long syndicId,
+//                         final OnRegisterCondoListener listener) {
 //        Address addressItem = new Address(address, number, city, zipCode, state);
 //        CondoDetails condoModel = new CondoDetails(name, addressItem, syndicId);
 //
@@ -53,5 +55,5 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 //        }
 //
 //
-    }
+    //}
 }

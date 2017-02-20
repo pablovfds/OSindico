@@ -1,8 +1,11 @@
-package br.com.edu.ufcg.osindico.data.models;
+package br.com.edu.ufcg.osindico.data.models.ServerResponse;
 
 import com.google.gson.annotations.SerializedName;
 
+import br.com.edu.ufcg.osindico.data.models.exception.SpringException;
+
 public class SyndicServerResponse {
+
     @SerializedName("sindicoId")
     private Long id;
 

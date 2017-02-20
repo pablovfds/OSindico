@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.data.domain;
+package br.com.edu.ufcg.osindico.Utils;
 
 import android.content.Context;
 import android.text.Editable;
@@ -12,7 +12,6 @@ public class ZipCodeListener implements TextWatcher {
     public ZipCodeListener( Context context ){
         this.context = context;
     }
-
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}

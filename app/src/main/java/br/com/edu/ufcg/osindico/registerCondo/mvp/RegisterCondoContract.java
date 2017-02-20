@@ -10,7 +10,7 @@ public interface RegisterCondoContract {
 
             void onNameError();
 
-            void onAddressError();
+            void onStreetError();
 
             void onNumberError();
 
@@ -20,19 +20,24 @@ public interface RegisterCondoContract {
 
             void onStateError();
 
+            void onNeighborError();
+
+            void onComplementError();
+
             void onServerError();
 
             void onSuccess();
         }
 
-        void register(String name, String phone, String address, int number,
-                      String city, String zipCode, String state, Long syndicId,
-                      OnRegisterCondoListener listener);
+        void register(String name, String phone, String street, int number,
+                      String complement,String neighbor,String city, String zipCode,
+                      String state, Long syndicId, OnRegisterCondoListener listener);
     }
 
     interface Presenter {
-        void validateCondoCredentials(String name, String phone, String address, int number,
-                                      String city, String zipCode, String state, Long syndicId);
+        void validateCondoCredentials(String name, String phone, String street, int number,
+                                      String complement,String neighbor,String city, String zipCode,
+                                      String state, Long syndicId);
 
         void onDestroy();
     }
@@ -44,8 +49,6 @@ public interface RegisterCondoContract {
 
         void setNameError();
 
-        void setAddressError();
-
         void setNumberError();
 
         void setCityError();
@@ -53,6 +56,12 @@ public interface RegisterCondoContract {
         void setZipCodeError();
 
         void setStateError();
+
+        void setStreetError();
+
+        void setNeighborError();
+
+        void setComplementError();
 
         void navigateToLogin();
 

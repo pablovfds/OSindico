@@ -14,14 +14,15 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
     }
 
     @Override
-    public void validateCondoCredentials(String name, String phone, String address, int number,
-                                         String city, String zipCode, String state, Long syndicId) {
+    public void validateCondoCredentials(String name, String phone, String street, int number,
+                                         String complement, String neighbor, String city,
+                                         String zipCode, String state, Long syndicId) {
         if (view != null) {
             this.view.showProgress();
 
-            this.model.register(name, phone, address, number, city, zipCode, state, syndicId, this);
+            this.model.register(name, phone, street, number, complement, neighbor, city, zipCode,
+                    state, syndicId, this);
         }
-
     }
 
     @Override
@@ -38,10 +39,10 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
     }
 
     @Override
-    public void onAddressError() {
+    public void onStreetError() {
         if (view != null) {
             view.hideProgress();
-            view.setAddressError();
+            view.setStreetError();
         }
     }
 
@@ -75,6 +76,19 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
             view.hideProgress();
             view.setStateError();
         }
+    }
+
+    @Override
+    public void onNeighborError() {
+        if (view != null) {
+            view.hideProgress();
+            view.setNeighborError();
+        }
+    }
+
+    @Override
+    public void onComplementError() {
+
     }
 
     @Override

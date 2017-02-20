@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.data.domain;
+package br.com.edu.ufcg.osindico.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
