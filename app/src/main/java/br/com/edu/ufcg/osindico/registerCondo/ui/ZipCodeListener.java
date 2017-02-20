@@ -1,16 +1,15 @@
-package br.com.edu.ufcg.osindico.Utils;
+package br.com.edu.ufcg.osindico.registerCondo.ui;
 
-import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import br.com.edu.ufcg.osindico.registerCondo.ui.RegisterCondoActivity;
+import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
 
 public class ZipCodeListener implements TextWatcher {
-    private Context context;
+    private RegisterCondoContract.Presenter presenter;
 
-    public ZipCodeListener( Context context ){
-        this.context = context;
+    public ZipCodeListener(RegisterCondoContract.Presenter presenter ){
+        this.presenter = presenter;
     }
 
     @Override
@@ -24,7 +23,7 @@ public class ZipCodeListener implements TextWatcher {
         String zipCode = editable.toString();
 
         if( editable.length() == 8 ){
-            new AddressRequest( (RegisterCondoActivity) context ).execute();
+            presenter.getAddressByZipCode(zipCode);
         }
     }
 }

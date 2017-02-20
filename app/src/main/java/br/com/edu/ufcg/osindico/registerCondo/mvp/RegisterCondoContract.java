@@ -1,7 +1,6 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.CondoDetails;
-import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
+import br.com.edu.ufcg.osindico.data.models.Address;
 
 public interface RegisterCondoContract {
 
@@ -29,15 +28,23 @@ public interface RegisterCondoContract {
             void onSuccess();
         }
 
+        interface OnLoadAddressFinishedListener {
+            void onSuccessGetAddress(Address address);
+        }
+
         void register(String name, String phone, String street, int number,
                       String complement,String neighbor,String city, String zipCode,
                       String state, Long syndicId, OnRegisterCondoListener listener);
+
+        void loadAddressByZipCode(String zipcode, OnLoadAddressFinishedListener listener);
     }
 
     interface Presenter {
         void validateCondoCredentials(String name, String phone, String street, int number,
                                       String complement,String neighbor,String city, String zipCode,
                                       String state, Long syndicId);
+
+        void getAddressByZipCode(String zipcode);
 
         void onDestroy();
     }
@@ -66,6 +73,8 @@ public interface RegisterCondoContract {
         void navigateToLogin();
 
         void setServerError();
+
+        void setAddressDataViews(Address address);
     }
 }
 

@@ -14,13 +14,15 @@ public class Address {
     private String complement;
 
     @SerializedName("bairro")
-    private String getNeighbor;
+    private String neighbor;
 
     @SerializedName("localidade")
     private String city;
 
     @SerializedName("uf")
     private String state;
+
+    private String number;
 
     public String getZipCode() {
         return zipCode;
@@ -47,11 +49,11 @@ public class Address {
     }
 
     public String getNeighbor() {
-        return getNeighbor;
+        return neighbor;
     }
 
     public void setNeighbor(String neighbor) {
-        this.getNeighbor = neighbor;
+        this.neighbor = neighbor;
     }
 
     public String getCity() {
@@ -68,5 +70,13 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

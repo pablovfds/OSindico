@@ -1,6 +1,6 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
 public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Presenter,
         RegisterSyndicContract.Model.OnRegisterSyndicListener {

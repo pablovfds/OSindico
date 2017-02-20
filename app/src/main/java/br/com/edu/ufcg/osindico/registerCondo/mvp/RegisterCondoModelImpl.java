@@ -1,14 +1,20 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Address;
+import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 
-    SyndicService mSyndicService;
+    private SyndicService mSyndicService;
+    private ZipCodeService mZipCodeService;
 
-    public RegisterCondoModelImpl(SyndicService mSyndicService) {
+    public RegisterCondoModelImpl(SyndicService mSyndicService, ZipCodeService zipCodeService) {
         this.mSyndicService = mSyndicService;
+        this.mZipCodeService = zipCodeService;
     }
 
     @Override
@@ -16,6 +22,23 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
                          String neighbor, String city, String zipCode, String state, Long syndicId,
                          OnRegisterCondoListener listener) {
         Address addressItem = new Address();
+    }
+
+    @Override
+    public void loadAddressByZipCode(String zipcode, final OnLoadAddressFinishedListener listener) {
+        Call<Address> mService = mZipCodeService.getZipCodeApi().getAddressByZipCode(zipcode);
+        mService.enqueue(new Callback<Address>() {
+                @Override
+                public void onResponse(Call<Address> call, Response<Address> response) {
+                    Address address = response.body();
+                    listener.onSuccessGetAddress(address);
+                }
+
+                @Override
+                public void onFailure(Call<Address> call, Throwable t) {
+                    call.cancel();
+                }
+            });
     }
 
 //    @Override

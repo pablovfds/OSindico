@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.Util;
-import br.com.edu.ufcg.osindico.Utils.ZipCodeListener;
 import br.com.edu.ufcg.osindico.data.models.Address;
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
 import butterknife.BindView;
@@ -59,14 +59,6 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
         ButterKnife.bind(this);
 
-        editTextZipCode.addTextChangedListener( new ZipCodeListener( this ) );
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter
-                .createFromResource(this,
-                        R.array.states,
-                        android.R.layout.simple_spinner_item);
-        spStates.setAdapter(adapter);
-
         util = new Util(this,
                 R.id.editTextZipCode,
                 R.id.editTextStreet,
@@ -77,8 +69,18 @@ public class RegisterCondoActivity extends AppCompatActivity implements
                 R.id.editTextNumber);
 
         SyndicService service = new SyndicService();
+        ZipCodeService zipCodeService = new ZipCodeService();
 
-        this.presenter = new RegisterCondoPresenterImpl(service, this);
+        this.presenter = new RegisterCondoPresenterImpl(service, zipCodeService, this);
+
+        editTextZipCode.addTextChangedListener( new ZipCodeListener( this, this.presenter ) );
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter
+                .createFromResource(this,
+                        R.array.states,
+                        android.R.layout.simple_spinner_item);
+        spStates.setAdapter(adapter);
+
     }
 
     @Override protected void onDestroy() {
@@ -175,10 +177,18 @@ public class RegisterCondoActivity extends AppCompatActivity implements
         Toast.makeText(this, getString(R.string.msg_server_error), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void setAddressDataViews(Address address) {
+        setField( R.id.editTextStreet, address.getStreet() );
+        setField( R.id.editTextComplement, address.getComplement() );
+        setField( R.id.editTextNeighbor, address.getNeighbor() );
+        setField( R.id.editTextCity, address.getCity() );
+        setSpinner( R.id.sp_state, R.array.states, address.getState() );
+    }
+
     public String getUriZipCode(){
         return "https://viacep.com.br/ws/"+editTextZipCode.getText()+"/json/";
     }
-
 
     public void lockFields( boolean isToLock ){
         util.lockFields( isToLock );

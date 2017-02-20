@@ -3,7 +3,7 @@ package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 import com.google.gson.Gson;
 
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;

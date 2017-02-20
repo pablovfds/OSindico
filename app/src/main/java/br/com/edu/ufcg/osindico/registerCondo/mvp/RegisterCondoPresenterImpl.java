@@ -1,15 +1,18 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.models.Address;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
 
 public class RegisterCondoPresenterImpl implements RegisterCondoContract.Presenter,
-        RegisterCondoContract.Model.OnRegisterCondoListener {
+        RegisterCondoContract.Model.OnRegisterCondoListener, RegisterCondoContract.Model.OnLoadAddressFinishedListener {
 
     private RegisterCondoContract.View view;
     private RegisterCondoContract.Model model;
 
-    public RegisterCondoPresenterImpl(SyndicService service, RegisterCondoContract.View view) {
-        this.model = new RegisterCondoModelImpl(service);
+    public RegisterCondoPresenterImpl(SyndicService service,ZipCodeService zipCodeService,
+                                      RegisterCondoContract.View view) {
+        this.model = new RegisterCondoModelImpl(service, zipCodeService);
         this.view = view;
     }
 
@@ -23,6 +26,11 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
             this.model.register(name, phone, street, number, complement, neighbor, city, zipCode,
                     state, syndicId, this);
         }
+    }
+
+    @Override
+    public void getAddressByZipCode(String zipcode) {
+        this.model.loadAddressByZipCode(zipcode, this);
     }
 
     @Override
@@ -104,6 +112,14 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
         if (view != null) {
             view.hideProgress();
             view.navigateToLogin();
+        }
+    }
+
+    @Override
+    public void onSuccessGetAddress(Address address) {
+        if (view != null) {
+            view.hideProgress();
+            view.setAddressDataViews(address);
         }
     }
 }

@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.data.Services.SyndicService;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.registerCondo.ui.RegisterCondoActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicContract;
 import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicPresenterImpl;
