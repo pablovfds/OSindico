@@ -11,6 +11,6 @@ import retrofit2.http.POST;
  */
 
 public interface MoradorApi {
-    @POST("/api/register/morador")
+    @POST("/api/register/dweller")
     Call<MoradorServerResponse> cadastraMorador(@Body DadosMorador request);
 }

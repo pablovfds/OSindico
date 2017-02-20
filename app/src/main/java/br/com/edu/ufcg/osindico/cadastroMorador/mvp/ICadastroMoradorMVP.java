@@ -2,13 +2,15 @@ package br.com.edu.ufcg.osindico.cadastroMorador.mvp;
 
 import android.view.View;
 
+import br.com.edu.ufcg.osindico.data.models.Contato;
+
 /**
  * Created by emanoel on 17/02/17.
  */
 
 public interface ICadastroMoradorMVP {
 
-    interface CadastroMoradorModel {
+    interface Model {
 
         interface OnCadastroMoradorListener {
             void onNomeError();
@@ -20,21 +22,25 @@ public interface ICadastroMoradorMVP {
             void onConfirmarSenhaError();
 
             void onTelefoneError();
+
+            void onSuccess(String mensagem);
+
+            void onServerError(String serverError);
         }
 
-        void cadastrarMorador(String nome, String telefone, String email, String senha, String confirmarSenha);
+        void cadastrarMorador(String nome, Contato contato, String email, String senha, String confirmarSenha, Long idCondominio, OnCadastroMoradorListener listener);
     }
 
-    interface CadastroMoradorPresenter {
+    interface Presenter {
 
-        void validarMorador(String nome, String telefone, String email, String senha, String confirmarSenha);
+        void validarMorador(String nome, Contato contato, String email, String senha, String confirmarSenha, Long idCondominio);
 
-        void setView(View view);
+        void setView(ICadastroMoradorMVP.View view);
 
         void onDestroy();
     }
 
-    interface CadastroMoradorView {
+    interface View {
 
         void setNomeError();
 
@@ -46,7 +52,9 @@ public interface ICadastroMoradorMVP {
 
         void setConfirmarSenhaError();
 
-        void setServerError();
+        void onSuccess(String mensagem);
+
+        void setServerError(String serverError);
 
     }
 }

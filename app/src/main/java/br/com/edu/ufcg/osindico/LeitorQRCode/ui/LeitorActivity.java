@@ -49,7 +49,7 @@ public class LeitorActivity extends AppCompatActivity {
                 //Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, CadastroMoradorActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("condominio", result.getContents());
+                bundle.putString("dadosQRCode", result.getContents());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
