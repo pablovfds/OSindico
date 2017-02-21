@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName;
 public class MoradorServerResponse {
 
     @SerializedName("message")
-    private String mensagem;
+    private String message;
 
     public MoradorServerResponse() {
     }
 
-    public String getMensagem() {
-        return mensagem;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

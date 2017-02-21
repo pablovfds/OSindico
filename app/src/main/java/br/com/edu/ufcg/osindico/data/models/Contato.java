@@ -1,22 +1,25 @@
 package br.com.edu.ufcg.osindico.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by emanoel on 20/02/17.
  */
 
 public class Contato {
 
-    private String phoneNumber;
+    @SerializedName("phoneNumber")
+    private String telefone;
 
-    public Contato(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Contato(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

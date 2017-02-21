@@ -84,7 +84,7 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
 
     @Override
     public void setTelefoneError() {
-        editTextTelefone.setError("Insira um numero válido");
+        editTextTelefone.setError("Insira um número válido");
     }
 
     @Override

@@ -1,5 +1,9 @@
 package br.com.edu.ufcg.osindico.cadastroMorador.mvp;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.Contato;
 import br.com.edu.ufcg.osindico.data.models.DadosMorador;
@@ -30,7 +34,7 @@ public class CadastroMoradorModelImpl implements ICadastroMoradorMVP.Model {
             error = true;
         }
 
-        if (!FormValidate.isTelefoneValido(contato.getPhoneNumber())) {
+        if (!FormValidate.isTelefoneValido(contato.getTelefone())) {
             listener.onTelefoneError();
             error = true;
         }
@@ -61,9 +65,17 @@ public class CadastroMoradorModelImpl implements ICadastroMoradorMVP.Model {
                 public void onResponse(Call<MoradorServerResponse> call, Response<MoradorServerResponse> response) {
 
                     if (response.isSuccessful()) {
-                        listener.onSuccess(response.body().getMensagem());
+                        listener.onSuccess(response.body().getMessage());
                     } else {
-                        listener.onServerError(Integer.toString(response.code()));
+                        Gson gson = new Gson();
+                        MoradorServerResponse serverResponse = null;
+                        try {
+                            serverResponse = gson.fromJson(response.errorBody().string(), MoradorServerResponse.class);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if (serverResponse != null)
+                            listener.onServerError(serverResponse.getMessage());
                     }
                 }
 

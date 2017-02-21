@@ -18,6 +18,10 @@ public class DadosMorador {
     @SerializedName("condominiumId")
     private Long idCondominio;
 
+    public DadosMorador() {
+
+    }
+
     public DadosMorador(String nome, String email, String senha, Contato contato, Long idCondominio) {
         this.nome = nome;
         this.email = email;
