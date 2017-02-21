@@ -5,17 +5,18 @@ package br.com.edu.ufcg.osindico.data.models;
  */
 
 public class Contato {
-    private String telefone;
 
-    public Contato(String telefone) {
-        this.telefone = telefone;
+    private String phoneNumber;
+
+    public Contato(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

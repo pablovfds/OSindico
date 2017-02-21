@@ -30,7 +30,7 @@ public class CadastroMoradorModelImpl implements ICadastroMoradorMVP.Model {
             error = true;
         }
 
-        if (!FormValidate.isTelefoneValido(contato.getTelefone())) {
+        if (!FormValidate.isTelefoneValido(contato.getPhoneNumber())) {
             listener.onTelefoneError();
             error = true;
         }
@@ -52,19 +52,18 @@ public class CadastroMoradorModelImpl implements ICadastroMoradorMVP.Model {
 
         if (!error) {
 
-            DadosMorador dadosMorador = new DadosMorador(nome, contato, email, senha, idCondominio);
+            DadosMorador dadosMorador = new DadosMorador(nome, email, senha, contato, idCondominio);
 
             Call<MoradorServerResponse> mService = service.getMoradorApi().cadastraMorador(dadosMorador);
 
             mService.enqueue(new Callback<MoradorServerResponse>() {
                 @Override
                 public void onResponse(Call<MoradorServerResponse> call, Response<MoradorServerResponse> response) {
-                    MoradorServerResponse serverResponse = response.body();
 
                     if (response.isSuccessful()) {
-                        listener.onSuccess(serverResponse.getMensagem());
+                        listener.onSuccess(response.body().getMensagem());
                     } else {
-                        listener.onServerError(serverResponse.getMensagem());
+                        listener.onServerError(Integer.toString(response.code()));
                     }
                 }
 

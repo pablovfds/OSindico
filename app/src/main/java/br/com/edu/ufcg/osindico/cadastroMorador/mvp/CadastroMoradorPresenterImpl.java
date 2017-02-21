@@ -12,8 +12,9 @@ public class CadastroMoradorPresenterImpl implements ICadastroMoradorMVP.Present
     private ICadastroMoradorMVP.View view;
     private ICadastroMoradorMVP.Model model;
 
-    public CadastroMoradorPresenterImpl(MoradorService service) {
+    public CadastroMoradorPresenterImpl(MoradorService service, ICadastroMoradorMVP.View view) {
         this.model = new CadastroMoradorModelImpl(service);
+        this.view = view;
     }
 
     @Override

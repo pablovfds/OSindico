@@ -1,28 +1,28 @@
 package br.com.edu.ufcg.osindico.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by emanoel on 19/02/17.
  */
 public class DadosMorador {
+
+    @SerializedName("name")
     private String nome;
-    private Contato contato;
+    @SerializedName("email")
     private String email;
+    @SerializedName("password")
     private String senha;
+    @SerializedName("contact")
+    private Contato contato;
+    @SerializedName("condominiumId")
     private Long idCondominio;
 
-    public DadosMorador(String nome, Contato contato, String email, String senha, Long idCondominio) {
+    public DadosMorador(String nome, String email, String senha, Contato contato, Long idCondominio) {
         this.nome = nome;
-        this.contato = contato;
         this.email = email;
         this.senha = senha;
-        this.idCondominio = idCondominio;
-    }
-
-    public Long getIdCondominio() {
-        return idCondominio;
-    }
-
-    public void setIdCondominio(Long idCondominio) {
+        this.contato = contato;
         this.idCondominio = idCondominio;
     }
 
@@ -34,12 +34,16 @@ public class DadosMorador {
         this.nome = nome;
     }
 
-    public void setContato(Contato contato) {
-        this.contato = contato;
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
     public void setSenha(String senha) {
@@ -50,11 +54,15 @@ public class DadosMorador {
         return contato;
     }
 
-    public String getEmail() {
-        return email;
+    public void setContato(Contato contato) {
+        this.contato = contato;
     }
 
-    public String getSenha() {
-        return senha;
+    public Long getIdCondominio() {
+        return idCondominio;
+    }
+
+    public void setIdCondominio(Long idCondominio) {
+        this.idCondominio = idCondominio;
     }
 }

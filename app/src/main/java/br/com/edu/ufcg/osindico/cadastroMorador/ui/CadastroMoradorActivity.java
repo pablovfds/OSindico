@@ -37,13 +37,17 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
     @BindView(R.id.btn_cadastrar)
     Button btn_cadastrar;
 
-    ICadastroMoradorMVP.Presenter presenter;
+    private ICadastroMoradorMVP.Presenter presenter;
+    private Long idCondominio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_morador);
         ButterKnife.bind(this);
+
+        MoradorService service = new MoradorService();
+        presenter = new CadastroMoradorPresenterImpl(service, this);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -56,17 +60,11 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
 
         Toast.makeText(this, dadosQRCode.getId().toString(), Toast.LENGTH_LONG).show();
 
-        final Long idCondominio = dadosQRCode.getId();
+        idCondominio = dadosQRCode.getId();
 
         btn_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*editTextMome.setError(null);
-                editTextTelefone.setError(null);
-                editTextEmail.setError(null);
-                editTextSenha.setError(null);
-                editTextConfirmarSenha.setError(null);
-                */
                 String nome = editTextMome.getText().toString();
                 String telefone = editTextTelefone.getText().toString();
                 Contato contato = new Contato(telefone);
@@ -77,13 +75,6 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
                 presenter.validarMorador(nome, contato, email, senha, confirmarSenha, idCondominio);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        MoradorService service = new MoradorService();
-        presenter = new CadastroMoradorPresenterImpl(service);
     }
 
     @Override
