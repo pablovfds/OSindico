@@ -1,10 +1,19 @@
 package br.com.edu.ufcg.osindico.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class SyndicDetails {
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("password")
     private String password;
+
+    @SerializedName("contact")
     private Contact contact;
 
     public SyndicDetails(String name, String email, String password, Contact contact) {

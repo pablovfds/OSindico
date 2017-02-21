@@ -62,13 +62,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:id="@+id/editTextCondoPhone"
-                    android:hint="Phone"
-                    android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
@@ -94,7 +87,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:ems="10"
-                        android:hint="*CEP"
+                        android:hint="CEP"
                         android:inputType="number"
                         android:maxLength="8" />
                 </android.support.design.widget.TextInputLayout>

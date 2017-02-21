@@ -35,12 +35,6 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
             error = true;
         }
 
-//        if(condoModel.getPhone().isEmpty()){
-//            listener.onNameError();
-//            error = true;
-//        }
-
-
         if (condoModel.getAddress().getStreet().isEmpty()){
             listener.onStreetError();
             error = true;
@@ -69,7 +63,7 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
             error = true;
         }
 
-        if (error){
+        if (!error){
             Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(condoModel);
 
             mService.enqueue(new Callback<CondoServerResponse>() {

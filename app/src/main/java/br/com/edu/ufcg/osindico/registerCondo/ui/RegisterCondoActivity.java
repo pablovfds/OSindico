@@ -90,7 +90,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
             String name = editTextName.getText().toString();
             String street = editTextStreet.getText().toString();
-            int number = Integer.parseInt(editTextNumber.getText().toString());
+            int number = editTextNumber.getText() == null ? null : Integer.parseInt(editTextNumber.getText().toString());
             String neighbor = editTextNeighbor.getText().toString();
             String complement = editTextComplement.getText().toString();
             String zipCode = editTextZipCode.getText().toString();
