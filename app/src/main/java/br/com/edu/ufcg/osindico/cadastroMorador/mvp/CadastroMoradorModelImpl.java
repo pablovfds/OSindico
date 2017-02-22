@@ -29,27 +29,27 @@ public class CadastroMoradorModelImpl implements ICadastroMoradorMVP.Model {
     public void cadastrarMorador(String nome, Contato contato, String email, String senha, String confirmarSenha, Long idCondominio, final OnCadastroMoradorListener listener) {
         boolean error = false;
 
-        if (!FormValidate.isNomeValido(nome)) {
+        if (!FormValidate.isValidName(nome)) {
             listener.onNomeError();
             error = true;
         }
 
-        if (!FormValidate.isTelefoneValido(contato.getTelefone())) {
+        if (!FormValidate.isValidPhone(contato.getTelefone())) {
             listener.onTelefoneError();
             error = true;
         }
 
-        if (!FormValidate.isEmailValido(email)) {
+        if (!FormValidate.isValidEmail(email)) {
             listener.onEmailError();
             error = true;
         }
 
-        if (!FormValidate.isSenhaValida(senha)) {
+        if (!FormValidate.isValidPassword(senha)) {
             listener.onSenhaError();
             error = true;
         }
 
-        if (!FormValidate.isConfirmarSenhaValida(senha, confirmarSenha)) {
+        if (!FormValidate.isValidConfirmPassword(senha, confirmarSenha)) {
             listener.onConfirmarSenhaError();
             error = true;
         }
