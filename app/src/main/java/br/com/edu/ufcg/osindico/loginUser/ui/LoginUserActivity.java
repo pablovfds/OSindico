@@ -1,6 +1,7 @@
 package br.com.edu.ufcg.osindico.loginUser.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,12 +19,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginUserActivity extends AppCompatActivity implements LoginUserContract.View{
-    @BindView(R.id.editTextEmail) EditText editTextEmail;
-    @BindView(R.id.editTextSenha) EditText editTextPassword;
-    @BindView(R.id.btnLogin) Button btnLogin;;
+public class LoginUserActivity extends AppCompatActivity implements LoginUserContract.View {
+    @BindView(R.id.editTextEmail)
+    EditText editTextEmail;
+    @BindView(R.id.editTextSenha)
+    EditText editTextPassword;
+    @BindView(R.id.btnLogin)
+    Button btnLogin;
 
-    LoginUserContract.Presenter presenter;
+    private final String MORADOR = "MORADOR";
+    private final String SINDICO = "SINDICO";
+
+    private LoginUserContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +63,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         String email = editTextEmail.getText().toString();
         String senha = editTextPassword.getText().toString();
 
-        presenter.validateCredentials(email,senha);
+        presenter.validateCredentials(email, senha);
     }
 
 
@@ -72,7 +79,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
 
     @Override
     public void setSuccessLogin(LoginResponse loginResponse) {
-        SharedPreferences sharedpreferences = getSharedPreferences("preferencesOSindico", Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
         editor.putString("token", loginResponse.getToken());
@@ -81,10 +88,10 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         editor.putString("tipo", loginResponse.getUsuario().getTipo());
         editor.commit();
 
-        if(loginResponse.getUsuario().getTipo().equals("MORADOR")) {
-            Toast.makeText(this, loginResponse.getUsuario().getTipo(), Toast.LENGTH_LONG).show();
-        }else if(loginResponse.getUsuario().getTipo().equals("SINDICO")){
-            Toast.makeText(this, loginResponse.getUsuario().getTipo(), Toast.LENGTH_LONG).show();
+        if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
+            startActivity(new Intent(this, DwellerHomeActivity.class));
+        } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
+            startActivity(new Intent(this, SyndicHomeActivity.class));
         }
     }
 
