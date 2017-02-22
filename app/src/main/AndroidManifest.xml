@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
-        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity"></activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
+        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity" />
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
     </application>
 
 </manifest>
