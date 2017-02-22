@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LeitorQRCode.ui.LeitorActivity"></activity>
+        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity"></activity>
+        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"></activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
         <activity android:name=".loginUser.ui.DwellerHomeActivity" />
         <activity android:name=".loginUser.ui.SyndicHomeActivity"></activity>
     </application>
