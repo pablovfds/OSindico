@@ -1,5 +1,12 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
@@ -45,7 +52,7 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
             error = true;
         }
 
-        if (condoModel.getAddress().getNumber() <= 0){
+        if (condoModel.getAddress().getNumber() < 0){
             listener.onNumberError();
             error = true;
         }
@@ -72,6 +79,15 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
                     if (response.isSuccessful()) {
                         listener.onSuccess();
                     } else {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                            Log.d("resp", jsonObject.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                         listener.onServerError();
                     }
                 }

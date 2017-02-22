@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
@@ -90,7 +92,15 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
             String name = editTextName.getText().toString();
             String street = editTextStreet.getText().toString();
-            int number = editTextNumber.getText() == null ? null : Integer.parseInt(editTextNumber.getText().toString());
+            int number = 0;
+            
+            if (editTextNumber.getText() == null ||
+                    editTextNumber.getText().toString().isEmpty()){
+                number = 0;
+            } else {
+                Integer.parseInt(editTextNumber.getText().toString());
+            }
+            Log.d("numver", ""+number);
             String neighbor = editTextNeighbor.getText().toString();
             String complement = editTextComplement.getText().toString();
             String zipCode = editTextZipCode.getText().toString();

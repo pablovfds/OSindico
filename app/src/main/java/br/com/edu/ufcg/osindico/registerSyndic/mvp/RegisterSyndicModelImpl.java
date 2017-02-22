@@ -1,12 +1,17 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
+import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Contact;
@@ -69,46 +74,26 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
                 public void onResponse(Call<SyndicServerResponse> call, Response<SyndicServerResponse> response) {
                     SyndicServerResponse serverResponse = response.body();
 
-
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful() && response.body() != null){
                         listener.onSuccess(serverResponse.getId());
                     } else {
+                        Converter<ResponseBody, SyndicServerResponse> converter
+                                = mSyndicService.getRetrofit().responseBodyConverter(
+                                SyndicServerResponse.class, new Annotation[0]);
+                        SyndicServerResponse errorResponse = null;
                         try {
-                            Log.d("error", response.errorBody().string());
+                            errorResponse = converter.convert(response.errorBody());
+                            listener.onServerError(errorResponse.getSpringException().getMessage());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-//                        Gson gson = new Gson();
-//
-//                        SyndicServerResponse message = null;
-//                        try {
-//                            message = gson.fromJson(response.errorBody().
-//                                    string(),SyndicServerResponse.class);
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-
-
-                        listener.onServerError("Já existe um usuario utilizando esse email");
-
-//                        Converter<ResponseBody, SyndicServerResponse> converter
-//                                = mSyndicService.getRetrofit().responseBodyConverter(
-//                                SyndicServerResponse.class, new Annotation[0]);
-//                        SyndicServerResponse errorResponse = null;
-//                        try {
-//                            errorResponse = converter.convert(response.errorBody());
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        listener.onServerError(errorResponse.getSpringException().getMessage());
                     }
                 }
 
                 @Override
                 public void onFailure(Call<SyndicServerResponse> call, Throwable t) {
                     call.cancel();
-                    listener.onServerError("Erro ao tentar se conectar com servidor");
+                    listener.onServerError(t.getMessage());
                 }
             });
         }
