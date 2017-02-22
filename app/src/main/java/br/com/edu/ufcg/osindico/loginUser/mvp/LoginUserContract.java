@@ -1,11 +1,14 @@
 package br.com.edu.ufcg.osindico.loginUser.mvp;
 
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
+
 public interface LoginUserContract {
     interface Model {
+
         interface OnLoginUserListener{
             void onEmailError();
             void onPasswordError();
-            void onSuccess();
+            void onSuccess(LoginResponse loginResponse);
             void onServerError(String message);
         }
 
@@ -14,16 +17,15 @@ public interface LoginUserContract {
 
     interface Presenter {
         void validateCredentials(String email, String senha);
-
         void setView(View view);
         void onDestroy();
     }
 
     interface View {
-        void showProgress();
-        void hideProgress();
         void setEmailError();
         void setPasswordError();
+        void setSuccessLogin(LoginResponse loginResponse);
         void setServerError(String errorMessage);
+
     }
 }

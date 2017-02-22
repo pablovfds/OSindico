@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OSindico</string>
+    <string name="msg_syndic_email_error">Insira um email valido</string>
+    <string name="msg_syndic_password_error">Insira uma senha valida</string>
 </resources>
