@@ -1,7 +1,7 @@
 package br.com.edu.ufcg.osindico.loginUser.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import br.com.edu.ufcg.osindico.R;
 

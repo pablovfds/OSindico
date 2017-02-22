@@ -1,9 +1,8 @@
 package br.com.edu.ufcg.osindico.LeitorQRCode.ui;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,30 +12,31 @@ import com.google.zxing.integration.android.IntentResult;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.cadastroMorador.ui.CadastroMoradorActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LeitorActivity extends AppCompatActivity {
 
-    private Button leitor_btn;
+    @BindView(R.id.ler_qrcode_btn)
+    Button leitor_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leitor);
+        ButterKnife.bind(this);
+    }
 
-        leitor_btn = (Button) findViewById(R.id.ler_qrcode_btn);
-        final Activity activity = this;
-        leitor_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentIntegrator integrator = new IntentIntegrator(activity);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Posicione o QRCode para leitura.");
-                integrator.setCameraId(0);
-                integrator.setBeepEnabled(false);
-                integrator.setBarcodeImageEnabled(false);
-                integrator.initiateScan();
-            }
-        });
+    @OnClick(R.id.ler_qrcode_btn)
+    public void ler_qrcode(View view){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Posicione o QRCode para leitura.");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.initiateScan();
     }
 
     @Override

@@ -1,11 +1,7 @@
 package br.com.edu.ufcg.osindico.data.services;
 
-import br.com.edu.ufcg.osindico.data.models.DadosMorador;
-import br.com.edu.ufcg.osindico.data.models.MoradorServerResponse;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
 
 /**
  * Created by emanoel on 19/02/17.

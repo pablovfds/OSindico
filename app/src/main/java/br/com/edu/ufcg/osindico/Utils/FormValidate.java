@@ -1,7 +1,6 @@
 package br.com.edu.ufcg.osindico.Utils;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 
 public class FormValidate {

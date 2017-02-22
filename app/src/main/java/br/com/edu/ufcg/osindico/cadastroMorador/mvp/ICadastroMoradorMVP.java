@@ -1,7 +1,5 @@
 package br.com.edu.ufcg.osindico.cadastroMorador.mvp;
 
-import android.view.View;
-
 import br.com.edu.ufcg.osindico.data.models.Contato;
 
 /**

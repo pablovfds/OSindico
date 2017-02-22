@@ -2,8 +2,8 @@ package br.com.edu.ufcg.osindico.loginUser.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import br.com.edu.ufcg.osindico.R;

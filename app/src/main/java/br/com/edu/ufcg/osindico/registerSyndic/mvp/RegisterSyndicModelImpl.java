@@ -1,22 +1,13 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.models.Contact;
-import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
+import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;

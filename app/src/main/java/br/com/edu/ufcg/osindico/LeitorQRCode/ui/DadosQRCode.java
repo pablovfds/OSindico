@@ -1,9 +1,5 @@
 package br.com.edu.ufcg.osindico.LeitorQRCode.ui;
 
-/**
- * Created by emanoel on 20/02/17.
- */
-
 public class DadosQRCode {
 
     private Long id;

@@ -1,10 +1,5 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
@@ -12,7 +7,6 @@ import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
 import okhttp3.ResponseBody;
