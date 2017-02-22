@@ -6,15 +6,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 
 import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Converter;
 import retrofit2.Response;
 
 public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
@@ -48,7 +52,7 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
         }
 
         if (condoModel.getAddress().getNeighbor().isEmpty()){
-            listener.onNumberError();
+            listener.onNeighborError();
             error = true;
         }
 
@@ -79,23 +83,23 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
                     if (response.isSuccessful()) {
                         listener.onSuccess();
                     } else {
+                        Converter<ResponseBody, CondoServerResponse> converter
+                                = mSyndicService.getRetrofit().responseBodyConverter(
+                                CondoServerResponse.class, new Annotation[0]);
+                        CondoServerResponse errorResponse = null;
                         try {
-                            JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                            Log.d("resp", jsonObject.toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            errorResponse = converter.convert(response.errorBody());
+                            listener.onServerError(errorResponse.getMessage());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
-                        listener.onServerError();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<CondoServerResponse> call, Throwable t) {
                     call.cancel();
-                    listener.onServerError();
+                    listener.onServerError(t.getMessage());
                 }
             });
         }

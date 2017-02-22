@@ -13,8 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
@@ -172,8 +170,8 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setServerError() {
-        Toast.makeText(this, getString(R.string.msg_server_error), Toast.LENGTH_SHORT).show();
+    public void setServerError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -103,10 +103,10 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
     }
 
     @Override
-    public void onServerError() {
+    public void onServerError(String message) {
         if (view != null) {
             view.hideProgress();
-            view.setServerError();
+            view.setServerError(message);
         }
     }
 

@@ -24,7 +24,7 @@ public interface RegisterCondoContract {
 
             void onComplementError();
 
-            void onServerError();
+            void onServerError(String message);
 
             void onSuccess();
         }
@@ -73,7 +73,7 @@ public interface RegisterCondoContract {
 
         void navigateToLogin();
 
-        void setServerError();
+        void setServerError(String message);
 
         void setAddressDataViews(AddressResponse address);
     }
