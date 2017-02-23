@@ -16,6 +16,7 @@ import br.com.edu.ufcg.osindico.LeitorQRCode.ui.LeitorActivity;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
+import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;

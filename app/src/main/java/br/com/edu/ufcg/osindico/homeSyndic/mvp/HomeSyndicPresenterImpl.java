@@ -16,6 +16,7 @@ public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, Ho
     private HomeSyndicContract.Model homeSyndicModel;
 
     public HomeSyndicPresenterImpl(){
+
         this.homeSyndicModel = new HomeSyndicModelImpl();
     }
 
@@ -28,6 +29,7 @@ public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, Ho
 
     @Override
     public void setView(HomeSyndicContract.View view) {
+
         this.homeSyndicView = view;
     }
 
