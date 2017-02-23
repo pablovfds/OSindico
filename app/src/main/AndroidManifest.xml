@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".loginUser.ui.LoginUserActivity">
         <activity android:name=".LeitorQRCode.ui.LeitorActivity">
 
             <!-- <intent-filter> -->
@@ -28,7 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
+        <activity android:name=".LeitorQRCode.ui.LeitorActivity"></activity>
+        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity"></activity>
+        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"></activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
+        <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
+        <activity android:name=".homeSyndic.ui.SyndicHomeActivity"></activity>
     </application>
 
 </manifest>

@@ -1,8 +1,5 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import android.util.Log;
-
-import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;

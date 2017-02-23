@@ -1,8 +1,8 @@
 package br.com.edu.ufcg.osindico.cadastroMorador.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,9 +33,9 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
     @BindView(R.id.confirmar_senha_morador)
     EditText editTextConfirmarSenha;
     @BindView(R.id.btn_limpar_dados)
-    Button btn_limpar_dados;
-    @BindView(R.id.btn_cadastrar)
-    Button btn_cadastrar;
+    Button btnLimparDados;
+    @BindView(R.id.btn_cadastrar_morador)
+    Button btnCadastrar;
 
     private ICadastroMoradorMVP.Presenter presenter;
     private Long idCondominio;
@@ -62,7 +62,7 @@ public class CadastroMoradorActivity extends AppCompatActivity implements ICadas
 
         idCondominio = dadosQRCode.getId();
 
-        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String nome = editTextMome.getText().toString();

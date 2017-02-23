@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.registerCondo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +18,7 @@ import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
+import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
 import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
 import butterknife.BindView;
@@ -165,7 +167,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     @Override
     public void navigateToLogin() {
-        //startActivity(new Intent(this, Login.class));
+        startActivity(new Intent(this, LoginUserActivity.class));
         Toast.makeText(this, getString(R.string.msg_registration_success), Toast.LENGTH_SHORT).show();
     }
 
