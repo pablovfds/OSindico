@@ -7,22 +7,61 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/background"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="LeitorQRCode.ui.LeitorActivity">
-
-    <TextView
-        android:text="QRCode"
-        android:textSize="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true"/>
+    tools:context=".QRCodeReader.ReaderActivity">
 
     <Button
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/app_logo"
+        android:layout_centerVertical="true"
+        android:id="@+id/ler_qrcode_btn"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_qrcode_white"
+        android:id="@+id/imageView"
+        android:layout_marginStart="34dp"
+        android:layout_alignTop="@+id/ler_qrcode_btn"
+        android:layout_alignStart="@+id/ler_qrcode_btn"
+        android:layout_marginTop="62dp" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Ler QRCode"
-        android:id="@+id/ler_qrcode_btn"/>
+        android:orientation="vertical"
+        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/ler_qrcode_btn"
+        android:layout_marginTop="58dp">
+
+        <TextView
+            android:text="Clique no ícone e leia o QR Code"
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/ler_qrcode_btn"
+            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+        <TextView
+            android:text="para coletar os dados de seu condomínio!"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_marginStart="15dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignStart="@+id/ler_qrcode_btn" />
+    </LinearLayout>
+
+
 </RelativeLayout>

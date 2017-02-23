@@ -49,6 +49,11 @@ public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicC
     }
 
     @Override
+    public void onBackPressed() {
+        return;
+    }
+
+    @Override
     public void setSuccessLogout(String logoutResponse) {
         Log.e("Success", logoutResponse);
         startActivity(new Intent(SyndicHomeActivity.this, LoginUserActivity.class));

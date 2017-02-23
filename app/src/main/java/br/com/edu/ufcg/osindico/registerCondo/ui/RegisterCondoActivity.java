@@ -27,23 +27,32 @@ import butterknife.ButterKnife;
 public class RegisterCondoActivity extends AppCompatActivity implements
         RegisterCondoContract.View {
 
-    @BindView(R.id.editTextCondoName) EditText editTextName;
+    @BindView(R.id.editTextCondoName)
+    EditText editTextName;
 
-    @BindView(R.id.editTextNumber) EditText editTextNumber;
+    @BindView(R.id.editTextNumber)
+    EditText editTextNumber;
 
-    @BindView(R.id.editTextZipCode) EditText editTextZipCode;
+    @BindView(R.id.editTextZipCode)
+    EditText editTextZipCode;
 
-    @BindView(R.id.editTextComplement) EditText editTextComplement;
+    @BindView(R.id.editTextComplement)
+    EditText editTextComplement;
 
-    @BindView(R.id.editTextNeighbor) EditText editTextNeighbor;
+    @BindView(R.id.editTextNeighbor)
+    EditText editTextNeighbor;
 
-    @BindView(R.id.editTextStreet) EditText editTextStreet;
+    @BindView(R.id.editTextStreet)
+    EditText editTextStreet;
 
-    @BindView(R.id.sp_state) Spinner spStates;
+    @BindView(R.id.sp_state)
+    Spinner spStates;
 
-    @BindView(R.id.editTextCity) EditText editTextCity;
+    @BindView(R.id.editTextCity)
+    EditText editTextCity;
 
-    @BindView(R.id.register_condo_progress) ProgressBar progressBar;
+    @BindView(R.id.register_condo_progress)
+    ProgressBar progressBar;
 
     private RegisterCondoContract.Presenter presenter;
 
@@ -64,7 +73,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
         this.presenter = new RegisterCondoPresenterImpl(service, zipCodeService, this);
 
-        editTextZipCode.addTextChangedListener( new ZipCodeListener( this.presenter ) );
+        editTextZipCode.addTextChangedListener(new ZipCodeListener(this.presenter));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter
                 .createFromResource(this,
@@ -74,7 +83,8 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     }
 
-    @Override protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
     }
@@ -87,20 +97,25 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onBackPressed() {
+        return;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.button_register){
+        if (item.getItemId() == R.id.button_register) {
 
             String name = editTextName.getText().toString();
             String street = editTextStreet.getText().toString();
             int number = 0;
-            
+
             if (editTextNumber.getText() == null ||
-                    editTextNumber.getText().toString().isEmpty()){
+                    editTextNumber.getText().toString().isEmpty()) {
                 number = 0;
             } else {
                 Integer.parseInt(editTextNumber.getText().toString());
             }
-            Log.d("numver", ""+number);
+            Log.d("numver", "" + number);
             String neighbor = editTextNeighbor.getText().toString();
             String complement = editTextComplement.getText().toString();
             String zipCode = editTextZipCode.getText().toString();
@@ -169,6 +184,7 @@ public class RegisterCondoActivity extends AppCompatActivity implements
     public void navigateToLogin() {
         startActivity(new Intent(this, LoginUserActivity.class));
         Toast.makeText(this, getString(R.string.msg_registration_success), Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
@@ -185,20 +201,20 @@ public class RegisterCondoActivity extends AppCompatActivity implements
         setSpinner(R.array.states, address.getState());
     }
 
-    private void setField( int id, String data ){
-        ((EditText) findViewById(id)).setText( data );
+    private void setField(int id, String data) {
+        ((EditText) findViewById(id)).setText(data);
     }
 
-    private void setSpinner(int arrayId, String data ){
+    private void setSpinner(int arrayId, String data) {
         String[] itens = getResources().getStringArray(arrayId);
 
-        for( int i = 0; i < itens.length; i++ ){
+        for (int i = 0; i < itens.length; i++) {
 
-            if( itens[i].endsWith( "("+data+")" ) ){
-                spStates.setSelection( i );
+            if (itens[i].endsWith("(" + data + ")")) {
+                spStates.setSelection(i);
                 return;
             }
         }
-        spStates.setSelection( 0 );
+        spStates.setSelection(0);
     }
 }

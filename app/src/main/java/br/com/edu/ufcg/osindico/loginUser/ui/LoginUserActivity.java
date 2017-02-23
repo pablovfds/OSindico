@@ -10,9 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.edu.ufcg.osindico.LeitorQRCode.ui.LeitorActivity;
+import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
@@ -33,7 +34,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.btn_cadastrar)
-    Button btnCadastrar;
+    TextView btnCadastrar;
 
     private final String MORADOR = "MORADOR";
     private final String SINDICO = "SINDICO";
@@ -69,11 +70,11 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
 
     @OnClick(R.id.btn_cadastrar)
     public void cadastrar() {
-        new AlertDialog.Builder(this).setTitle("Selecione o tipo de cadastro:").setItems(R.array.user_types, new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setIcon(R.drawable.app_icon).setTitle("Selecione o tipo de conta:").setItems(R.array.user_types, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
-                    startActivity(new Intent(LoginUserActivity.this, LeitorActivity.class));
+                    startActivity(new Intent(LoginUserActivity.this, ReaderActivity.class));
                 } else if (i == 1) { // sindico
                     startActivity(new Intent(LoginUserActivity.this, RegisterSyndicActivity.class));
                 }
@@ -96,17 +97,20 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
-
-        editor.putString("token", loginResponse.getToken());
-        editor.putString("email", loginResponse.getUsuario().getEmail());
-        editor.putString("name", loginResponse.getUsuario().getName());
-        editor.putString("tipo", loginResponse.getUsuario().getTipo());
+        editor.putString(getString(R.string.user_token), loginResponse.getToken());
+        editor.putString(getString(R.string.user_email), loginResponse.getUsuario().getEmail());
+        editor.putString(getString(R.string.user_name), loginResponse.getUsuario().getName());
+        editor.putString(getString(R.string.user_type), loginResponse.getUsuario().getTipo());
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
-            startActivity(new Intent(this, DwellerHomeActivity.class));
+            Intent dwellerIntent = new Intent(this, DwellerHomeActivity.class);
+            dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            startActivity(new Intent(this, SyndicHomeActivity.class));
+            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
+            syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(syndicIntent);
         }
     }
 
