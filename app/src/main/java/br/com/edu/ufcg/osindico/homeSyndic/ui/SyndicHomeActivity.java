@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.zip.Inflater;
 
@@ -17,6 +19,7 @@ import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
+import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
 
 public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicContract.View {
 
@@ -29,6 +32,14 @@ public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicC
 
         presenter = new HomeSyndicPresenterImpl();
         presenter.setView(this);
+
+        Button btn = (Button) findViewById(R.id.btn_openRequests);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SyndicHomeActivity.this, RequestsResidentsActivity.class));
+            }
+        });
     }
 
     @Override

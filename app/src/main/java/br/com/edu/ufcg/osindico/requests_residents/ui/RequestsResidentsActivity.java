@@ -1,6 +1,8 @@
 package br.com.edu.ufcg.osindico.requests_residents.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,8 +61,12 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
     }
 
     private void loadList(){
+
+        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+        String token = sharedpreferences.getString(getString(R.string.user_token), "");
+
         presenter.setView(this);
-        presenter.loadRequestsResidents("TEydrMm8BkxSQi95FOYoL+p254w0kDtZAIsbS5KzDkktppVFLFIGywBRx++uZHvvjzr8rbLzQ01yhrgBwZcCWQ==");
+        presenter.loadRequestsResidents(token);
     }
 
     @Override
@@ -96,6 +102,7 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
         Intent i = new Intent(this, ResidentDetailsActivity.class);
         i.putExtra("resident", residentResponse);
         startActivity(i);
+        finish();
     }
 
     private  void updateAdapter(List<ResidentResponse> residentResponses){

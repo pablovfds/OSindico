@@ -1,6 +1,8 @@
 package br.com.edu.ufcg.osindico.residentDetails.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,8 +50,9 @@ public class ResidentDetailsActivity extends AppCompatActivity implements Reside
 
         getSupportActionBar().setTitle("Perfil do morador");
 
-        //pegar token do sharedpreferences
-        token = "TEydrMm8BkxSQi95FOYoL+p254w0kDtZAIsbS5KzDkktppVFLFIGywBRx++uZHvvjzr8rbLzQ01yhrgBwZcCWQ==";
+        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+        token = sharedpreferences.getString(getString(R.string.user_token), "");
+
     }
 
     @Override
@@ -85,7 +88,6 @@ public class ResidentDetailsActivity extends AppCompatActivity implements Reside
     public void navigateToRequestsResidents() {
         Toast.makeText(this, getString(R.string.msg_success_request), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, RequestsResidentsActivity.class));
+        finish();
     }
-
-
 }

@@ -2,7 +2,7 @@ package br.com.edu.ufcg.osindico.residentDetails.mvp;
 
 import com.google.gson.Gson;
 import java.io.IOException;
-import br.com.edu.ufcg.osindico.data.models.MoradorServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,18 +18,18 @@ public class ResidentDetailsModelImpl implements ResidentDetailsContract.Model {
 
     @Override
     public void sendResponseRequest(String token, Long id, boolean status, final OnResidentDetailsListener listener) {
-        Call<MoradorServerResponse> call = syndicService.getSyndicApi().updateResidentStatus(token, id, status);
+        Call<DwellerServerResponse> call = syndicService.getSyndicApi().updateResidentStatus(token, id, status);
 
-        call.enqueue(new Callback<MoradorServerResponse>() {
+        call.enqueue(new Callback<DwellerServerResponse>() {
             @Override
-            public void onResponse(Call<MoradorServerResponse> call, Response<MoradorServerResponse> response) {
+            public void onResponse(Call<DwellerServerResponse> call, Response<DwellerServerResponse> response) {
                 if (response.isSuccessful()){
                     listener.onSuccess();
                 } else {
                     Gson gson = new Gson();
-                    MoradorServerResponse serverResponse = null;
+                    DwellerServerResponse serverResponse = null;
                     try {
-                        serverResponse = gson.fromJson(response.errorBody().string(), MoradorServerResponse.class);
+                        serverResponse = gson.fromJson(response.errorBody().string(), DwellerServerResponse.class);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -39,7 +39,7 @@ public class ResidentDetailsModelImpl implements ResidentDetailsContract.Model {
             }
 
             @Override
-            public void onFailure(Call<MoradorServerResponse> call, Throwable t) {
+            public void onFailure(Call<DwellerServerResponse> call, Throwable t) {
                 call.cancel();
                 listener.onServerError("Erro ao tentar se conectar ao servidor.");
             }
