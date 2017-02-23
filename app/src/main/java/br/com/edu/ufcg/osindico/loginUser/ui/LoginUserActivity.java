@@ -17,6 +17,7 @@ import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
+import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
@@ -103,7 +104,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
-            Intent dwellerIntent = new Intent(this, ReaderActivity.class);
+            Intent dwellerIntent = new Intent(this, DwellerHomeActivity.class);
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
