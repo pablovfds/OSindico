@@ -69,7 +69,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
 
     @OnClick(R.id.btn_cadastrar)
     public void cadastrar() {
-        new AlertDialog.Builder(this).setTitle("Selecione o tipo de cadastro:").setItems(R.array.user_types, new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setIcon(R.drawable.app_icon).setTitle("Selecione o tipo de conta:").setItems(R.array.user_types, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
@@ -96,10 +96,10 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
-        editor.putString("token", loginResponse.getToken());
-        editor.putString("email", loginResponse.getUsuario().getEmail());
-        editor.putString("name", loginResponse.getUsuario().getName());
-        editor.putString("tipo", loginResponse.getUsuario().getTipo());
+        editor.putString(getString(R.string.user_token), loginResponse.getToken());
+        editor.putString(getString(R.string.user_email), loginResponse.getUsuario().getEmail());
+        editor.putString(getString(R.string.user_name), loginResponse.getUsuario().getName());
+        editor.putString(getString(R.string.user_type), loginResponse.getUsuario().getTipo());
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {

@@ -30,6 +30,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:padding="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="50dp"
         android:layout_above="@+id/btn_cadastrar"
         android:weightSum="1">
