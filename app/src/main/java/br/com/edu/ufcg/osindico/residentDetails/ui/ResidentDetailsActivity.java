@@ -59,10 +59,7 @@ public class ResidentDetailsActivity extends AppCompatActivity implements Reside
     }
 
     @OnClick(R.id.btn_accept)
-    public void acceptRequest(){
-        Log.d("token", token);
-        presenter.sendResponseRequest(token, resident.getId(), true);
-    }
+    public void acceptRequest(){ presenter.sendResponseRequest(token, resident.getId(), true);}
 
     @OnClick(R.id.btn_refuse)
     public void refuseRequest(){
