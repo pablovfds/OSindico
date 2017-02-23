@@ -1,8 +1,8 @@
 package br.com.edu.ufcg.osindico.requests_residents.mvp;
 
-
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
@@ -10,7 +10,6 @@ import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class RequestsResidentsModelImpl implements RequestsResidentsContract.Model {
     private SyndicService syndicService;
@@ -28,7 +27,14 @@ public class RequestsResidentsModelImpl implements RequestsResidentsContract.Mod
             @Override
             public void onResponse(Call<List<ResidentResponse>> call,
                                    Response<List<ResidentResponse>> response) {
-                listener.onSuccess(response.body());
+
+                List<ResidentResponse> residentResponses = response.body();
+
+                if (response.isSuccessful() && residentResponses != null){
+                    listener.onSuccess(residentResponses);
+                } else {
+                    listener.onSuccess(new ArrayList<ResidentResponse>());
+                }
             }
 
             @Override

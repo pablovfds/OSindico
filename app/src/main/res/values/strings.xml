@@ -19,6 +19,8 @@
     <string name="msg_syndic_phone_error">Insira um telefone valido</string>
     <string name="msg_address_error">Insira um endereço valido.</string>
     <string name="msg_registration_success">Cadastrado com sucesso</string>
+    <string name="msg_success_request">Morador atualizado</string>
+    <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
 
     <string-array name="states">
         <item>"*Estado"</item>

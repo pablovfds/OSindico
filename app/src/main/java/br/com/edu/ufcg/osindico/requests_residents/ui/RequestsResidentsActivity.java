@@ -1,26 +1,30 @@
 package br.com.edu.ufcg.osindico.requests_residents.ui;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsContract;
 import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsPresenterImpl;
+import br.com.edu.ufcg.osindico.residentDetails.ui.ResidentDetailsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RequestsResidentsActivity extends AppCompatActivity implements
-        RequestsResidentsContract.View {
+        RequestsResidentsContract.View, ItemClickListener {
 
     @BindView(R.id.card_recycler_view) RecyclerView recyclerView;
 
@@ -38,6 +42,8 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
 
         SyndicService service = new SyndicService();
         presenter = new RequestsResidentsPresenterImpl(service);
+
+        getSupportActionBar().setTitle("Lista de solicitações de moradores");
     }
 
     @Override
@@ -59,6 +65,12 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.presenter.onDestroy();
+    }
+
+    @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -75,7 +87,21 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
 
     @Override
     public void setRequestsResidentsList(List<ResidentResponse> residents) {
-        adapter = new RequestsResidentsAdapter(residents);
+       updateAdapter(residents);
+       Toast.makeText(this, "Existem " + residents.size() + " solicitações de moradores no momento",
+               Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(ResidentResponse residentResponse) {
+        Intent i = new Intent(this, ResidentDetailsActivity.class);
+        i.putExtra("resident", residentResponse);
+        startActivity(i);
+    }
+
+    private  void updateAdapter(List<ResidentResponse> residentResponses){
+        adapter = new RequestsResidentsAdapter(residentResponses);
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 }

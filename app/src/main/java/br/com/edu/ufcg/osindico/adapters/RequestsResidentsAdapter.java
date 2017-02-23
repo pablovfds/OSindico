@@ -9,10 +9,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 
 public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResidentsAdapter.ViewHolder> {
     private List<ResidentResponse> android;
+    private ItemClickListener clickListener;
 
     public RequestsResidentsAdapter(List<ResidentResponse> android) {
         this.android = android;
@@ -22,6 +24,10 @@ public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResid
     public RequestsResidentsAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.resident_card_row, viewGroup, false);
         return new ViewHolder(view);
+    }
+
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
     }
 
     @Override
@@ -37,7 +43,7 @@ public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResid
         return android.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tv_name, tv_email;
 
         public ViewHolder(View view) {
@@ -45,7 +51,12 @@ public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResid
 
             tv_name = (TextView) view.findViewById(R.id.tv_name);
             tv_email = (TextView) view.findViewById(R.id.tv_email);
+            view.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
+            if (clickListener != null) clickListener.onClick(android.get(getAdapterPosition()));
         }
     }
 }

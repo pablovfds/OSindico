@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.requests_residents.mvp;
 
-
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;

@@ -1,10 +1,11 @@
 package br.com.edu.ufcg.osindico.data.models.ServerResponse;
 
 
+import java.io.Serializable;
+
 import br.com.edu.ufcg.osindico.data.models.Contact;
 
-public class ResidentResponse {
-    // TODO: 22/02/17 Campos: ativo, contato, email id, nome
+public class ResidentResponse implements Serializable {
 
     private Long id;
     private String name;
