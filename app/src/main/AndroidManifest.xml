@@ -11,15 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LeitorQRCode.ui.LeitorActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
+        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity" />
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
-        <activity android:name=".cadastroMorador.ui.CadastroMoradorActivity" />
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
     </application>
 
 </manifest>

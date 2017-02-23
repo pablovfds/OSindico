@@ -3,12 +3,14 @@ package br.com.edu.ufcg.osindico.requests_residents.mvp;
 
 import java.util.List;
 
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+
 public interface RequestsResidentsContract {
     interface Model {
 
         interface OnRequestsResidentsListener {
 
-            void onSuccess(List<String> residents);
+            void onSuccess(List<ResidentResponse> residents);
 
             void onServerError(String message);
         }
@@ -31,7 +33,7 @@ public interface RequestsResidentsContract {
 
         void setServerError(String errorMessage);
 
-        void setRequestsResidentsList(List<String> residents);
+        void setRequestsResidentsList(List<ResidentResponse> residents);
     }
 
 }

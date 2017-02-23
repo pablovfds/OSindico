@@ -3,6 +3,7 @@ package br.com.edu.ufcg.osindico.requests_residents.mvp;
 
 import java.util.List;
 
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
 public class RequestsResidentsPresenterImpl implements RequestsResidentsContract.Presenter,
@@ -36,7 +37,7 @@ public class RequestsResidentsPresenterImpl implements RequestsResidentsContract
     }
 
     @Override
-    public void onSuccess(List<String> residents) {
+    public void onSuccess(List<ResidentResponse> residents) {
         if (view != null){
             this.view.hideProgress();
             this.view.setRequestsResidentsList(residents);
