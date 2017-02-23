@@ -37,14 +37,11 @@ public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwell
         ButterKnife.bind(this);
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
 
+        textViewName.setText(sharedPreferences.getString(getString(R.string.user_name), null));
+        textViewEmail.setText(sharedPreferences.getString(getString(R.string.user_email), null));
 
         presenter = new HomeDwellerPresenterImpl();
         presenter.setView(this);
-
-
-        textViewName.setText(sharedPreferences.getString(getString(R.string.user_name), null));
-        textViewEmail.setText(sharedPreferences.getString(getString(R.string.user_email), null));
-        //Log.d("Nome: ", sharedPreferences.getString("name", null));
     }
 
     @Override
@@ -69,6 +66,11 @@ public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwell
         Log.e("Success", logoutResponse);
         startActivity(new Intent(DwellerHomeActivity.this, LoginUserActivity.class));
         this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
     @Override

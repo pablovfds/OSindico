@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.LeitorQRCode.ui;
+package br.com.edu.ufcg.osindico.QRCodeReader;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,15 +11,15 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.cadastroMorador.ui.CadastroMoradorActivity;
+import br.com.edu.ufcg.osindico.registerDweller.ui.RegisterDwellerActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LeitorActivity extends AppCompatActivity {
+public class ReaderActivity extends AppCompatActivity {
 
-    @BindView(R.id.ler_qrcode_btn)
-    Button leitor_btn;
+    private final String qrCodePrompt = "Posicione o QRCode para leitura.";
+    private final String qrCodeFailMessage = "Não foi possível ler QRCode.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,10 @@ public class LeitorActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.ler_qrcode_btn)
-    public void ler_qrcode(View view){
+    public void readQRCode(View view){
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Posicione o QRCode para leitura.");
+        integrator.setPrompt(qrCodePrompt);
         integrator.setCameraId(0);
         integrator.setBeepEnabled(false);
         integrator.setBarcodeImageEnabled(false);
@@ -44,14 +44,13 @@ public class LeitorActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "Erro", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, qrCodeFailMessage, Toast.LENGTH_LONG).show();
             } else {
-                //Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, CadastroMoradorActivity.class);
+                Intent readerIntent = new Intent(this, RegisterDwellerActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("dadosQRCode", result.getContents());
-                intent.putExtras(bundle);
-                startActivity(intent);
+                bundle.putString("qrCodeData", result.getContents());
+                readerIntent.putExtras(bundle);
+                startActivity(readerIntent);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
