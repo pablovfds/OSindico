@@ -10,7 +10,6 @@ public class SyndicService {
     private Retrofit retrofit;
 
     public SyndicService() {
-
         retrofit = new Retrofit.Builder()
                 .baseUrl(SERVER_URL)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -1,16 +1,13 @@
-package br.com.edu.ufcg.osindico.data.models;
+package br.com.edu.ufcg.osindico.data.models.ServerResponse;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by emanoel on 19/02/17.
- */
-public class MoradorServerResponse {
+public class DwellerServerResponse {
 
     @SerializedName("message")
     private String message;
 
-    public MoradorServerResponse() {
+    public DwellerServerResponse() {
     }
 
     public String getMessage() {

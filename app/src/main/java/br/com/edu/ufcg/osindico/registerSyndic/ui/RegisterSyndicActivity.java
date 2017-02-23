@@ -131,10 +131,10 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     public void navigateToRegisterCondo(Long syndicId) {
         Toast.makeText(this, getString(R.string.msg_registration_success), Toast.LENGTH_SHORT)
                 .show();
-
         Intent intent = new Intent(this, RegisterCondoActivity.class);
         intent.putExtra("syndicId", syndicId);
         startActivity(intent);
+        finish();
     }
 
 

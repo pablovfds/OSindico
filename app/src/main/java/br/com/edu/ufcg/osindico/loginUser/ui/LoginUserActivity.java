@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.edu.ufcg.osindico.LeitorQRCode.ui.LeitorActivity;
+import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
@@ -73,7 +73,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
-                    startActivity(new Intent(LoginUserActivity.this, LeitorActivity.class));
+                    startActivity(new Intent(LoginUserActivity.this, ReaderActivity.class));
                 } else if (i == 1) { // sindico
                     startActivity(new Intent(LoginUserActivity.this, RegisterSyndicActivity.class));
                 }
@@ -96,7 +96,6 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
-
         editor.putString("token", loginResponse.getToken());
         editor.putString("email", loginResponse.getUsuario().getEmail());
         editor.putString("name", loginResponse.getUsuario().getName());
@@ -104,9 +103,13 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
-            startActivity(new Intent(this, DwellerHomeActivity.class));
+            Intent dwellerIntent = new Intent(this, ReaderActivity.class);
+            dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            startActivity(new Intent(this, SyndicHomeActivity.class));
+            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
+            syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(syndicIntent);
         }
     }
 

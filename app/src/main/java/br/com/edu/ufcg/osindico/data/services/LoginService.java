@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.data.services;
 
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

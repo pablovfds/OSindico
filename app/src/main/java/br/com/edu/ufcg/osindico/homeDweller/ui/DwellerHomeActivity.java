@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.homeSyndic.ui;
+package br.com.edu.ufcg.osindico.homeDweller.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,32 +9,45 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import java.util.zip.Inflater;
+import android.widget.TextView;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.homeDweller.mvp.HomeDwellerContract;
+import br.com.edu.ufcg.osindico.homeDweller.mvp.HomeDwellerPresenterImpl;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
-import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
-import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
+import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicContract.View {
+public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwellerContract.View{
 
-    private HomeSyndicContract.Presenter presenter;
+    private HomeDwellerContract.Presenter presenter;
+
+    @BindView(R.id.dweller_name)
+    TextView textViewName;
+    @BindView(R.id.dweller_email)
+    TextView textViewEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_syndic_home);
+        setContentView(R.layout.activity_dweller_home);
 
-        presenter = new HomeSyndicPresenterImpl();
+        ButterKnife.bind(this);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+
+        textViewName.setText(sharedPreferences.getString(getString(R.string.user_name), null));
+        textViewEmail.setText(sharedPreferences.getString(getString(R.string.user_email), null));
+
+        presenter = new HomeDwellerPresenterImpl();
         presenter.setView(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_actions, menu);
+        inflater.inflate(R.menu.menu_actions_dewller, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -49,15 +62,15 @@ public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicC
     }
 
     @Override
-    public void onBackPressed() {
-        return;
+    public void setSuccessLogout(String logoutResponse) {
+        Log.e("Success", logoutResponse);
+        startActivity(new Intent(DwellerHomeActivity.this, LoginUserActivity.class));
+        this.finish();
     }
 
     @Override
-    public void setSuccessLogout(String logoutResponse) {
-        Log.e("Success", logoutResponse);
-        startActivity(new Intent(SyndicHomeActivity.this, LoginUserActivity.class));
-        this.finish();
+    public void onBackPressed() {
+        return;
     }
 
     @Override

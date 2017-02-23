@@ -1,11 +1,11 @@
-package br.com.edu.ufcg.osindico.LeitorQRCode.ui;
+package br.com.edu.ufcg.osindico.QRCodeReader;
 
-public class DadosQRCode {
+public class QRCodeData {
 
     private Long id;
     private String nome;
 
-    public DadosQRCode(Long id, String nome) {
+    public QRCodeData(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
