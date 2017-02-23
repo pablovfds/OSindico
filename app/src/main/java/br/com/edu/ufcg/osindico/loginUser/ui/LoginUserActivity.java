@@ -16,6 +16,7 @@ import br.com.edu.ufcg.osindico.LeitorQRCode.ui.LeitorActivity;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
+import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.registerSyndic.ui.RegisterSyndicActivity;
@@ -93,6 +94,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
     public void setSuccessLogin(LoginResponse loginResponse) {
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
+
 
         editor.putString("token", loginResponse.getToken());
         editor.putString("email", loginResponse.getUsuario().getEmail());
