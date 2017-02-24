@@ -1,10 +1,5 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
@@ -12,7 +7,6 @@ import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
 import okhttp3.ResponseBody;
@@ -41,40 +35,40 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
 
         boolean error = false;
 
-        if(condoModel.getName().isEmpty()){
+        if (condoModel.getName().isEmpty()) {
             listener.onNameError();
             error = true;
         }
 
-        if (condoModel.getAddress().getStreet().isEmpty()){
+        if (condoModel.getAddress().getStreet().isEmpty()) {
             listener.onStreetError();
             error = true;
         }
 
-        if (condoModel.getAddress().getNeighbor().isEmpty()){
+        if (condoModel.getAddress().getNeighbor().isEmpty()) {
             listener.onNeighborError();
             error = true;
         }
 
-        if (condoModel.getAddress().getNumber() < 0){
+        if (condoModel.getAddress().getNumber() < 0) {
             listener.onNumberError();
             error = true;
         }
 
-        if (condoModel.getAddress().getCity().isEmpty()){
+        if (condoModel.getAddress().getCity().isEmpty()) {
             listener.onCityError();
             error = true;
         }
-        if (condoModel.getAddress().getState().isEmpty()){
+        if (condoModel.getAddress().getState().isEmpty()) {
             listener.onStateError();
             error = true;
         }
-        if (condoModel.getAddress().getZipCode().isEmpty()){
+        if (condoModel.getAddress().getZipCode().isEmpty()) {
             listener.onZipCodeError();
             error = true;
         }
 
-        if (!error){
+        if (!error) {
             Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(condoModel);
 
             mService.enqueue(new Callback<CondoServerResponse>() {
@@ -110,16 +104,16 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
     public void loadAddressByZipCode(String zipcode, final OnLoadAddressFinishedListener listener) {
         Call<AddressResponse> mService = mZipCodeService.getZipCodeApi().getAddressByZipCode(zipcode);
         mService.enqueue(new Callback<AddressResponse>() {
-                @Override
-                public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
-                    AddressResponse address = response.body();
-                    listener.onSuccessGetAddress(address);
-                }
+            @Override
+            public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
+                AddressResponse address = response.body();
+                listener.onSuccessGetAddress(address);
+            }
 
-                @Override
-                public void onFailure(Call<AddressResponse> call, Throwable t) {
-                    call.cancel();
-                }
-            });
+            @Override
+            public void onFailure(Call<AddressResponse> call, Throwable t) {
+                call.cancel();
+            }
+        });
     }
 }

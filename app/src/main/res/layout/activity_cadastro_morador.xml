@@ -8,13 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.edu.ufcg.osindico.cadastroMorador.ui.CadastroMoradorActivity"
+    tools:context="br.com.edu.ufcg.osindico.registerDweller.ui.RegisterDwellerActivity"
     android:weightSum="1">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Condomínio"
+        android:text="Nome_Condomínio"
         android:id="@+id/nome_condominio"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
@@ -73,15 +73,15 @@
         android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_limpar_dados"
-            android:text="Limpar Dados"
+            android:id="@+id/btn_cadastrar_morador"
+            android:text="Cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_weight="0.5"/>
         <Button
-            android:id="@+id/btn_cadastrar"
-            android:text="Cadastrar"
+            android:id="@+id/btn_limpar_dados"
+            android:text="Limpar Dados"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"

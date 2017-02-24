@@ -1,7 +1,5 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
-
 public interface RegisterSyndicContract {
 
     interface Model {

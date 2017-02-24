@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 
 public interface RegisterCondoContract {

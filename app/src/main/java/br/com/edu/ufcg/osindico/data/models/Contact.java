@@ -2,7 +2,9 @@ package br.com.edu.ufcg.osindico.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable{
 
     @SerializedName("phoneNumber")
     private String phoneNumber;

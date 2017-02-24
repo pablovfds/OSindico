@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">OSindico</string>
+    <string name="app_name">O Sindico</string>
+    <string name="preferencesOSindico">preferencesOSindico</string>
+    <string name="user_token">token</string>
+    <string name="user_name">name</string>
+    <string name="user_email">email</string>
+    <string name="user_type">tipo</string>
     <string name="msg_name_error">Insira um nome valido.</string>
     <string name="msg_phone_error">Insira um telefone valido.</string>
     <string name="msg_street_error">Insira uma rua valida.</string>
@@ -19,6 +24,8 @@
     <string name="msg_syndic_phone_error">Insira um telefone valido</string>
     <string name="msg_address_error">Insira um endereço valido.</string>
     <string name="msg_registration_success">Cadastrado com sucesso</string>
+    <string name="msg_success_request">Morador atualizado</string>
+    <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
 
     <string-array name="states">
         <item>"*Estado"</item>
@@ -49,6 +56,11 @@
         <item>"São Paulo (SP)"</item>
         <item>"Sergipe (SE)"</item>
         <item>"Tocantins (TO)"</item>
+    </string-array>
+
+    <string-array name="user_types">
+        <item>"Morador"</item>
+        <item>"Síndico"</item>
     </string-array>
 
 </resources>
