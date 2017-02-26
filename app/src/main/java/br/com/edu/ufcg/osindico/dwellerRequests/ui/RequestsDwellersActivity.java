@@ -24,7 +24,7 @@ import br.com.edu.ufcg.osindico.dwellerDetails.ui.DwellerDetailsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RequestsResidentsActivity extends AppCompatActivity implements
+public class RequestsDwellersActivity extends AppCompatActivity implements
         RequestsResidentsContract.View, ItemClickListener {
 
     @BindView(R.id.card_recycler_view) RecyclerView recyclerView;

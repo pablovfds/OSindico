@@ -7,14 +7,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
-import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsResidentsActivity;
+import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
+import br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicContract.View {
 
@@ -25,16 +26,20 @@ public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_syndic_home);
 
+        ButterKnife.bind(this);
+
         presenter = new HomeSyndicPresenterImpl();
         presenter.setView(this);
+    }
 
-        Button btn = (Button) findViewById(R.id.btn_openRequests);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SyndicHomeActivity.this, RequestsResidentsActivity.class));
-            }
-        });
+    @OnClick(R.id.btn_openRequests)
+    public void openRequestsDweller(){
+        startActivity(new Intent(this, RequestsDwellersActivity.class));
+    }
+
+    @OnClick(R.id.btn_openRequests)
+    public void openSyndicMessage(){
+        startActivity(new Intent(this, SyndicMessageActivity.class));
     }
 
     @Override

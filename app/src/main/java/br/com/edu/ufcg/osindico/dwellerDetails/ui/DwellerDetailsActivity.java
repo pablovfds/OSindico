@@ -11,7 +11,7 @@ import android.widget.Toast;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsResidentsActivity;
+import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
 import br.com.edu.ufcg.osindico.dwellerDetails.mvp.DwellerDetailsContract;
 import br.com.edu.ufcg.osindico.dwellerDetails.mvp.DwellerDetailsPresenterImpl;
 import butterknife.BindView;
@@ -85,7 +85,7 @@ public class DwellerDetailsActivity extends AppCompatActivity implements Dweller
     @Override
     public void navigateToRequestsDweller() {
         Toast.makeText(this, getString(R.string.msg_success_request), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, RequestsResidentsActivity.class));
+        startActivity(new Intent(this, RequestsDwellersActivity.class));
         finish();
     }
 }
