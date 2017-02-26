@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.residentDetails.mvp;
+package br.com.edu.ufcg.osindico.dwellerDetails.mvp;
 
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -8,16 +8,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ResidentDetailsModelImpl implements ResidentDetailsContract.Model {
+public class DwellerDetailsModelImpl implements DwellerDetailsContract.Model {
 
     private SyndicService syndicService;
 
-    public ResidentDetailsModelImpl(SyndicService service) {
+    public DwellerDetailsModelImpl(SyndicService service) {
         this.syndicService = service;
     }
 
     @Override
-    public void sendResponseRequest(String token, Long id, boolean status, final OnResidentDetailsListener listener) {
+    public void sendResponseRequest(String token, Long id, boolean status, final OnDwellerDetailsListener listener) {
         Call<DwellerServerResponse> call = syndicService.getSyndicApi().updateResidentStatus(token, id, status);
 
         call.enqueue(new Callback<DwellerServerResponse>() {

@@ -24,8 +24,8 @@
         <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
         <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
         <activity android:name=".homeSyndic.ui.SyndicHomeActivity"></activity>
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
+        <activity android:name=".dwellerRequests.ui.RequestsResidentsActivity"></activity>
+        <activity android:name=".dwellerDetails.ui.DwellerDetailsActivity"></activity>
 
     </application>
 

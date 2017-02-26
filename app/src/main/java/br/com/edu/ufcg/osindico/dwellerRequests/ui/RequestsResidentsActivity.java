@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.requests_residents.ui;
+package br.com.edu.ufcg.osindico.dwellerRequests.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,12 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
-import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+import br.com.edu.ufcg.osindico.adapters.RequestDwellerAdapter;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsContract;
-import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsPresenterImpl;
-import br.com.edu.ufcg.osindico.residentDetails.ui.ResidentDetailsActivity;
+import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsContract;
+import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsPresenterImpl;
+import br.com.edu.ufcg.osindico.dwellerDetails.ui.DwellerDetailsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -32,7 +32,7 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
     @BindView(R.id.progressBar) ProgressBar progressBar;
 
     private RequestsResidentsContract.Presenter presenter;
-    private RequestsResidentsAdapter adapter;
+    private RequestDwellerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,22 +91,22 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setRequestsResidentsList(List<ResidentResponse> residents) {
+    public void setRequestsResidentsList(List<DwellerResponse> residents) {
        updateAdapter(residents);
        Toast.makeText(this, "Existem " + residents.size() + " solicitações de moradores no momento",
                Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onClick(ResidentResponse residentResponse) {
-        Intent i = new Intent(this, ResidentDetailsActivity.class);
-        i.putExtra("resident", residentResponse);
+    public void onClick(DwellerResponse dwellerResponse) {
+        Intent i = new Intent(this, DwellerDetailsActivity.class);
+        i.putExtra("resident", dwellerResponse);
         startActivity(i);
         finish();
     }
 
-    private  void updateAdapter(List<ResidentResponse> residentResponses){
-        adapter = new RequestsResidentsAdapter(residentResponses);
+    private  void updateAdapter(List<DwellerResponse> dwellerResponses){
+        adapter = new RequestDwellerAdapter(dwellerResponses);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }

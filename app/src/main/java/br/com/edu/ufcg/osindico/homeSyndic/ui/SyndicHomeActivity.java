@@ -1,8 +1,6 @@
 package br.com.edu.ufcg.osindico.homeSyndic.ui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,14 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.zip.Inflater;
-
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
-import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
-import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
+import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsResidentsActivity;
 
 public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicContract.View {
 

@@ -1,11 +1,11 @@
-package br.com.edu.ufcg.osindico.requests_residents.mvp;
+package br.com.edu.ufcg.osindico.dwellerRequests.mvp;
 
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,25 +20,25 @@ public class RequestsResidentsModelImpl implements RequestsResidentsContract.Mod
 
     @Override
     public void getRequestsResidents(String token, final OnRequestsResidentsListener listener) {
-        Call<List<ResidentResponse>> call = syndicService.getSyndicApi()
+        Call<List<DwellerResponse>> call = syndicService.getSyndicApi()
                 .loadRequestsResidents(token);
 
-        call.enqueue(new Callback<List<ResidentResponse>>() {
+        call.enqueue(new Callback<List<DwellerResponse>>() {
             @Override
-            public void onResponse(Call<List<ResidentResponse>> call,
-                                   Response<List<ResidentResponse>> response) {
+            public void onResponse(Call<List<DwellerResponse>> call,
+                                   Response<List<DwellerResponse>> response) {
 
-                List<ResidentResponse> residentResponses = response.body();
+                List<DwellerResponse> dwellerResponses = response.body();
 
-                if (response.isSuccessful() && residentResponses != null){
-                    listener.onSuccess(residentResponses);
+                if (response.isSuccessful() && dwellerResponses != null){
+                    listener.onSuccess(dwellerResponses);
                 } else {
-                    listener.onSuccess(new ArrayList<ResidentResponse>());
+                    listener.onSuccess(new ArrayList<DwellerResponse>());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ResidentResponse>> call, Throwable t) {
+            public void onFailure(Call<List<DwellerResponse>> call, Throwable t) {
                 Log.d("onFailure", t.toString());
                 listener.onServerError(t.getMessage());
             }
