@@ -1,28 +1,57 @@
 package br.com.edu.ufcg.osindico.syndicMessages.mvp;
 
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
+
 public class SyndicMessagePresenterImpl implements SyndicMessageContract.Presenter, SyndicMessageContract.Model.OnSendMessageListener {
-    @Override
-    public void onSuccess() {
 
+    private SyndicMessageContract.Model model;
+    private SyndicMessageContract.View view;
+
+    public SyndicMessagePresenterImpl() {
+        this.model = new SyndicMessageModelImpl();
     }
 
     @Override
-    public void onServerError() {
-
+    public void validateMessage(String message, SyndicService service) {
+        if (view != null){
+            this.view.showProgress();
+            this.model.sendMessage(message, service, this);
+        }
     }
 
     @Override
-    public void validateMessage() {
-
-    }
-
-    @Override
-    public void setView() {
-
+    public void setView(SyndicMessageContract.View newView) {
+        if (newView != null){
+            this.view = newView;
+        }
     }
 
     @Override
     public void onDestroy() {
+        this.view = null;
+    }
 
+    @Override
+    public void onMessageError() {
+        if (view != null){
+            this.view.hideProgress();
+            this.view.setMessageError();
+        }
+    }
+
+    @Override
+    public void onSuccess() {
+        if (view != null){
+            this.view.hideProgress();
+            this.view.navigateToHomeSyndic();
+        }
+    }
+
+    @Override
+    public void onServerError(String errorMessage) {
+        if (view != null){
+            this.view.hideProgress();
+            this.view.setServerFailed(errorMessage);
+        }
     }
 }

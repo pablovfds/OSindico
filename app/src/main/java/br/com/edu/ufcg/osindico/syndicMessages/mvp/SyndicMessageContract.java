@@ -1,21 +1,26 @@
 package br.com.edu.ufcg.osindico.syndicMessages.mvp;
 
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
+
 public interface SyndicMessageContract {
 
     interface Model {
         interface OnSendMessageListener {
+
+            void onMessageError();
+
             void onSuccess();
 
-            void onServerError();
+            void onServerError(String errorMessage);
         }
 
-        void sendMessage();
+        void sendMessage(String message, SyndicService service, OnSendMessageListener listener);
     }
 
     interface Presenter {
-        void validateMessage();
+        void validateMessage(String message, SyndicService service);
 
-        void setView();
+        void setView(View view);
 
         void onDestroy();
     }
@@ -25,7 +30,9 @@ public interface SyndicMessageContract {
 
         void hideProgress();
 
-        void setServerFailed();
+        void setMessageError();
+
+        void setServerFailed(String errorMessage);
 
         void navigateToHomeSyndic();
     }
