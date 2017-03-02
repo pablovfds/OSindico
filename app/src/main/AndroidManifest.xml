@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loginUser.ui.LoginUserActivity"
+        <activity
+            android:name=".loginUser.ui.LoginUserActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,15 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QRCodeReader.ReaderActivity"></activity>
-        <activity android:name=".registerDweller.ui.RegisterDwellerActivity"></activity>
-        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"></activity>
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
+        <activity android:name=".QRCodeReader.ReaderActivity" />
+        <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
+        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
         <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
-        <activity android:name=".homeSyndic.ui.SyndicHomeActivity"></activity>
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
-
+        <activity android:name=".homeSyndic.ui.SyndicHomeActivity" />
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
+        <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
+        <activity
+            android:name=".navigationDweller.NavigationDwellerActivity"
+            android:label="@string/title_activity_navigation_dweller"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
