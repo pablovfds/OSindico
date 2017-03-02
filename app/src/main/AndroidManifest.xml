@@ -2,20 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.edu.ufcg.osindico">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <service
-        android:name=".MyFirebaseMessagingService">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-        </intent-filter>
-    </service>
-    <service
-        android:name=".MyFirebaseInstanceIDService">
-        <intent-filter>
-            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-        </intent-filter>
-    </service>
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
@@ -40,5 +26,19 @@
         <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <service
+        android:name=".MyFirebaseMessagingService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </intent-filter>
+    </service>
+    <service
+        android:name=".MyFirebaseInstanceIDService">
+        <intent-filter>
+            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+        </intent-filter>
+    </service>
 
 </manifest>

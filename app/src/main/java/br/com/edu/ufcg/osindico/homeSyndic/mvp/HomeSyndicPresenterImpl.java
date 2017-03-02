@@ -6,9 +6,6 @@ import android.util.Log;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 
-/**
- * Created by Lucio on 22/02/2017.
- */
 
 public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, HomeSyndicContract.Model.HomeSyndicListener {
 
