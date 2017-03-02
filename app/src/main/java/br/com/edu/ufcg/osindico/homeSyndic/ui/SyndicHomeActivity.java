@@ -15,18 +15,19 @@ import android.widget.Button;
 import java.util.zip.Inflater;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
 
-public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicContract.View {
+public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContract.View {
 
     private HomeSyndicContract.Presenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_syndic_home);
 

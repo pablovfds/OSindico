@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 
 import br.com.edu.ufcg.osindico.QRCodeReader.QRCodeData;
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.registerDweller.mvp.RegisterDwellerPresenterImpl;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegisterDwellerActivity extends AppCompatActivity implements RegisterDwellerContract.View {
+public class RegisterDwellerActivity extends BaseActivity implements RegisterDwellerContract.View {
 
     @BindView(R.id.nome_morador)
     EditText editTextName;
@@ -39,7 +40,7 @@ public class RegisterDwellerActivity extends AppCompatActivity implements Regist
     private Long condominiumId;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_morador);
         ButterKnife.bind(this);

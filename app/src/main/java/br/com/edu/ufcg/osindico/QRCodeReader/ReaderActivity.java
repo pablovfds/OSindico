@@ -11,18 +11,19 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.registerDweller.ui.RegisterDwellerActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ReaderActivity extends AppCompatActivity {
+public class ReaderActivity extends BaseActivity {
 
     private final String qrCodePrompt = "Posicione o QRCode para leitura.";
     private final String qrCodeFailMessage = "Não foi possível ler QRCode.";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leitor);
         ButterKnife.bind(this);

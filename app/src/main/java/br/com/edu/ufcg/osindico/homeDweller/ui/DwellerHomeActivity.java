@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.homeDweller.mvp.HomeDwellerContract;
 import br.com.edu.ufcg.osindico.homeDweller.mvp.HomeDwellerPresenterImpl;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
@@ -20,7 +21,7 @@ import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwellerContract.View{
+public class DwellerHomeActivity extends BaseActivity implements HomeDwellerContract.View{
 
     private HomeDwellerContract.Presenter presenter;
 
@@ -30,7 +31,7 @@ public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwell
     TextView textViewEmail;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dweller_home);
 

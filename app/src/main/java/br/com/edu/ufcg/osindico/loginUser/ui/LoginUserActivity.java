@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
@@ -26,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginUserActivity extends AppCompatActivity implements LoginUserContract.View {
+public class LoginUserActivity extends BaseActivity implements LoginUserContract.View {
     @BindView(R.id.editTextEmail)
     EditText editTextEmail;
     @BindView(R.id.editTextSenha)
@@ -42,11 +44,14 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
     private LoginUserContract.Presenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//        getActionBar().hide();
 
         LoginService loginService = new LoginService();
         presenter = new LoginUserPresenterImpl(loginService);
@@ -74,8 +79,11 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
+                    UpdateTheme.setTheme(getApplicationContext(), 2);
                     startActivity(new Intent(LoginUserActivity.this, ReaderActivity.class));
+
                 } else if (i == 1) { // sindico
+                    UpdateTheme.setTheme(getApplicationContext(), 1);
                     startActivity(new Intent(LoginUserActivity.this, RegisterSyndicActivity.class));
                 }
             }
@@ -106,10 +114,12 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
             Intent dwellerIntent = new Intent(this, DwellerHomeActivity.class);
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
             Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            UpdateTheme.setTheme(getApplicationContext(), 1);
             startActivity(syndicIntent);
         }
     }
