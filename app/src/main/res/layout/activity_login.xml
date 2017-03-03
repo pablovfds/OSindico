@@ -2,61 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context="br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/dark_fade"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+    <RelativeLayout
+        android:id="@+id/register"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/imageV" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_cadastrar"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:text="Clique aqui para cadastrar-se!"
-        android:layout_marginBottom="25dp"
-        android:layout_alignBottom="@+id/imageV"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="60dp">
 
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:background="@drawable/ic_logo"
-            android:id="@+id/imageView3"
-            android:adjustViewBounds="false"
-            android:layout_marginBottom="-50dp"
-            android:elevation="10dp"
-            android:baselineAlignBottom="true"
-            android:gravity="center_vertical" />
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/dark_fade"
+            android:id="@+id/imageV" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_cadastrar"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="Clique aqui para cadastrar-se!"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingBottom="120dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:background="@drawable/transparent_bg"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
             android:padding="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="-100dp"
+            android:layout_below="@+id/imageView3"
             android:layout_centerHorizontal="true"
-            android:id="@+id/linearLayout">
+            android:id="@+id/linearLayout"
+            tools:ignore="NotSibling">
 
 
             <EditText
@@ -64,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:layout_marginTop="80dp"
+                android:theme="@style/Theme.App.Base"
+                android:layout_marginTop="70dp"
                 android:textSize="18sp"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
@@ -76,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:ems="10"
+                android:theme="@style/Theme.App.Base"
                 android:textSize="18sp"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
@@ -90,15 +89,27 @@
                 android:layout_height="60dp"
                 android:background="#3b4c56"
                 android:id="@+id/btnLogin"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="#ffffff"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/activity_horizontal_margin" />
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:background="@drawable/ic_logo"
+            android:id="@+id/imageView3"
+            tools:ignore="NotSibling"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

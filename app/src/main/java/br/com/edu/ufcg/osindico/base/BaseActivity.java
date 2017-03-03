@@ -8,13 +8,11 @@ import android.view.WindowManager;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 
-/**
- * Created by Cathy on 01/03/2017.
- */
-
 public class BaseActivity extends AppCompatActivity {
+
     private final static int THEME_BLUE = 1;
     private final static int THEME_ORANGE = 2;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
