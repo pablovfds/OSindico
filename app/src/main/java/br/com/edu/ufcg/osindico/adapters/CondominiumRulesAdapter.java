@@ -1,8 +1,15 @@
 package br.com.edu.ufcg.osindico.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 
 /**
  * Created by emanoel on 02/03/17.
@@ -10,29 +17,36 @@ import android.view.ViewGroup;
 
 public class CondominiumRulesAdapter extends RecyclerView.Adapter<CondominiumRulesAdapter.ViewHolder> {
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    private List<RuleResponse> rules;
+
+    public CondominiumRulesAdapter(List<RuleResponse> rules) {
+        this.rules = rules;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public CondominiumRulesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rule_card, parent, false);
+        return new ViewHolder(view);
+    }
 
+    @Override
+    public void onBindViewHolder(CondominiumRulesAdapter.ViewHolder holder, int position) {
+        RuleResponse ruleResponse = rules.get(position);
+        holder.tv_rule.setText(ruleResponse.getRule());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return rules.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView tv_rule;
+
         public ViewHolder(View itemView) {
             super(itemView);
-        }
-
-        @Override
-        public void onClick(View view) {
-
+            tv_rule = (TextView) itemView.findViewById(R.id.tv_rule);
         }
     }
 }
