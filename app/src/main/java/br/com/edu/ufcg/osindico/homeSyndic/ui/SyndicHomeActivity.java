@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.zip.Inflater;
 
@@ -39,6 +44,24 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SyndicHomeActivity.this, RequestsResidentsActivity.class));
+            }
+        });
+
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId){
+                    case  R.id.tab_new_dweller:
+                        Toast.makeText(getApplicationContext(), "Novo morador", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.tab_dwellers:
+                        Toast.makeText(getApplicationContext(), "Lista de moradores", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.tab_rules:
+                        Toast.makeText(getApplicationContext(), "Regras do condominio", Toast.LENGTH_LONG).show();
+                        break;
+                }
             }
         });
     }

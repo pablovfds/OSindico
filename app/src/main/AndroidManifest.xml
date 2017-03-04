@@ -13,11 +13,7 @@
         <activity android:name=".loginUser.ui.LoginUserActivity"
             android:theme="@style/NoActionBarTheme"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".QRCodeReader.ReaderActivity"
             android:theme="@style/NoActionBarTheme"
@@ -27,7 +23,14 @@
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"></activity>
         <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
         <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
-        <activity android:name=".homeSyndic.ui.SyndicHomeActivity"></activity>
+        <activity android:name=".homeSyndic.ui.SyndicHomeActivity"
+            android:theme="@style/AppTheme.TransNav">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
         <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
 
