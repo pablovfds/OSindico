@@ -33,6 +33,13 @@
         </activity>
         <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
         <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
+        <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity"
+            android:theme="@style/AppTheme.TransNav">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>></activity>
 
     </application>
 

@@ -25,6 +25,7 @@ import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
+import br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity;
 import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
 
 public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContract.View {
@@ -60,6 +61,7 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
                         break;
                     case R.id.tab_rules:
                         Toast.makeText(getApplicationContext(), "Regras do condominio", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(SyndicHomeActivity.this, RegisterRegraActivity.class));
                         break;
                 }
             }
