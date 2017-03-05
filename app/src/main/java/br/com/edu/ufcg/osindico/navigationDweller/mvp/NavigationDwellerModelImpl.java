@@ -2,7 +2,7 @@ package br.com.edu.ufcg.osindico.navigationDweller.mvp;
 
 import android.content.SharedPreferences;
 
-public class NaviagationDwellerModelImpl implements NaviagationDwellerContract.Model {
+public class NavigationDwellerModelImpl implements NavigationDwellerContract.Model {
 
     @Override
     public void logout(SharedPreferences preferences, OnLogoutFinishedListener listener) {

@@ -13,11 +13,13 @@
         <activity
             android:name=".loginUser.ui.LoginUserActivity"
             android:theme="@style/NoActionBarTheme">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".QRCodeReader.ReaderActivity" />
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
@@ -37,6 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".navigationSyndic.ui.NavigationSyndicActivity"
+            android:label="@string/title_activity_navigation_syndic"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -4,20 +4,20 @@ import android.content.SharedPreferences;
 
 import br.com.edu.ufcg.osindico.R;
 
-public class NaviagationDwellerPresenterImpl implements NaviagationDwellerContract.Presenter,
-        NaviagationDwellerContract.Model.OnLogoutFinishedListener {
+public class NavigationDwellerPresenterImpl implements NavigationDwellerContract.Presenter,
+        NavigationDwellerContract.Model.OnLogoutFinishedListener {
 
-    NaviagationDwellerContract.View view;
-    NaviagationDwellerContract.Model model;
-    SharedPreferences preferences;
+    private NavigationDwellerContract.View view;
+    private NavigationDwellerContract.Model model;
+    private SharedPreferences preferences;
 
-    public NaviagationDwellerPresenterImpl(SharedPreferences preferencesRef) {
+    public NavigationDwellerPresenterImpl(SharedPreferences preferencesRef) {
         this.preferences = preferencesRef;
-        this.model = new NaviagationDwellerModelImpl();
+        this.model = new NavigationDwellerModelImpl();
     }
 
     @Override
-    public void setView(NaviagationDwellerContract.View newView) {
+    public void setView(NavigationDwellerContract.View newView) {
         if (newView != null){
             this.view = newView;
         }
@@ -39,22 +39,22 @@ public class NaviagationDwellerPresenterImpl implements NaviagationDwellerContra
     public void onItemClicked(int id) {
         switch (id) {
             case R.id.nav_home:
-
+                this.view.navigateToHomeDweller();
                 break;
             case R.id.nav_calendar_dweller:
-
+                this.view.navigateToCalendarDweller();
                 break;
             case R.id.nav_messages_dweller:
-
+                this.view.navigateToMessageDweller();
                 break;
             case R.id.nav_my_condo_dweller:
-
+                this.view.navigateToCondoDetails();
                 break;
             case R.id.nav_settings_dweller:
-
+                this.view.navigateToSettingsDweller();
                 break;
             case R.id.nav_about_dweller:
-
+                this.view.navigateToAboutDweller();
                 break;
             case R.id.nav_logout:
                 model.logout(this.preferences, this);

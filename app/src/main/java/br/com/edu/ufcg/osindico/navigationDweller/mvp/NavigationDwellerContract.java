@@ -2,7 +2,7 @@ package br.com.edu.ufcg.osindico.navigationDweller.mvp;
 
 import android.content.SharedPreferences;
 
-public interface NaviagationDwellerContract {
+public interface NavigationDwellerContract {
 
     interface Model {
 
@@ -17,6 +17,7 @@ public interface NaviagationDwellerContract {
         void onItemClicked(int id);
 
         void setView(View view);
+
         void onDestroy();
     }
 

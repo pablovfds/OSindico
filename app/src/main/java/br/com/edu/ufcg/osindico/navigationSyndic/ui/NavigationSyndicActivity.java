@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.navigationDweller.ui;
+package br.com.edu.ufcg.osindico.navigationSyndic.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,39 +15,41 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
-import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
-import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerPresenterImpl;
+import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
+import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NavigationDwellerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, NavigationDwellerContract.View {
+public class NavigationSyndicActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, NavigationSyndicContract.View{
 
-    @BindView(R.id.toolbarDweller) Toolbar toolbar;
-    @BindView(R.id.drawer_layout_dweller) DrawerLayout drawer;
-    @BindView(R.id.nav_view_dweller) NavigationView navigationView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout drawer;
+    @BindView(R.id.nav_view) NavigationView navigationView;
 
-    private NavigationDwellerContract.Presenter presenter;
+    private NavigationSyndicContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_dweller);
+        setContentView(R.layout.activity_navigation_syndic);
 
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
 
-        this.presenter = new NavigationDwellerPresenterImpl(sharedPreferences);
+        this.presenter = new NavigationSyndicPresenterImpl(sharedPreferences);
         this.presenter.setView(this);
     }
 
@@ -69,6 +71,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         this.presenter.onItemClicked(id);
@@ -78,33 +81,28 @@ public class NavigationDwellerActivity extends AppCompatActivity
     }
 
     @Override
-    public void navigateToHomeDweller() {
-        Toast.makeText(this, getString(R.string.nav_home), Toast.LENGTH_SHORT).show();
+    public void navigateToCondoDetails() {
+        Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void navigateToMessageDweller() {
+    public void navigateToSyndicMessages() {
         Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void navigateToSettingsDweller() {
-        Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void navigateToAboutDweller() {
-        Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void navigateToCalendarDweller() {
+    public void navigateToSyndicCalendar() {
         Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void navigateToCondoDetails() {
-        Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
+    public void navigateToSettings() {
+        Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void navigateToAbout() {
+        Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
     }
 
     @Override
