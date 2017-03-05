@@ -14,14 +14,17 @@ public interface RegisterRegraContract {
             void onRegraError();
 
             void onServerError(String message);
+
+            void onSuccess();
+
         }
 
-        void registerRegraSyndic(String regra, RegisterRegraContract.Model.OnRegisterRegraSyndicListener listener);
+        void registerRegraSyndic(String regra, String token, RegisterRegraContract.Model.OnRegisterRegraSyndicListener listener);
     }
 
     interface Presenter {
 
-        void validateRegra(String regra);
+        void validateRegra(String regra, String token);
 
         void setView(RegisterRegraContract.View view);
 

@@ -1,9 +1,7 @@
 package br.com.edu.ufcg.osindico.registerRegraSyndic.mvp;
 
+
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
-import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoContract;
-import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoModelImpl;
 
 /**
  * Created by Lucio on 04/03/2017.
@@ -14,8 +12,8 @@ public class RegisterRegraPresenterImpl implements  RegisterRegraContract.Presen
     private RegisterRegraContract.View view;
     private RegisterRegraContract.Model model;
 
-    public RegisterRegraPresenterImpl(RegisterRegraContract.View view) {
-        this.model = new RegisterRegraModelImpl();
+    public RegisterRegraPresenterImpl(RegisterRegraContract.View view, SyndicService mSyndicService) {
+        this.model = new RegisterRegraModelImpl(mSyndicService);
         this.view = view;
     }
 
@@ -33,10 +31,15 @@ public class RegisterRegraPresenterImpl implements  RegisterRegraContract.Presen
     }
 
     @Override
-    public void validateRegra(String regra) {
+    public void onSuccess() {
+
+    }
+
+    @Override
+    public void validateRegra(String regra, String token) {
 
         if(view != null){
-            this.model.registerRegraSyndic(regra, this);
+            this.model.registerRegraSyndic(regra, token, this);
         }
 
 
