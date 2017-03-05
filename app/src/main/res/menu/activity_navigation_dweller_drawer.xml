@@ -4,35 +4,35 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_grey600_36dp"
+            android:icon="@drawable/ic_home_dweller"
             android:title="@string/nav_home" />
         <item
-            android:id="@+id/nav_messages"
-            android:icon="@drawable/ic_email_outline_grey600_36dp"
+            android:id="@+id/nav_messages_dweller"
+            android:icon="@drawable/ic_message"
             android:title="@string/nav_messages" />
         <item
-            android:id="@+id/nav_calendar"
-            android:icon="@drawable/ic_calendar_grey600_36dp"
+            android:id="@+id/nav_calendar_dweller"
+            android:icon="@drawable/ic_calendar"
             android:title="@string/nav_calendar" />
         <item
-            android:id="@+id/nav_my_condo"
-            android:icon="@drawable/ic_menu_manage"
+            android:id="@+id/nav_my_condo_dweller"
+            android:icon="@drawable/ic_home_syndic"
             android:title="@string/nav_my_condo" />
         <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
+            android:id="@+id/nav_settings_dweller"
+            android:icon="@drawable/ic_settings"
             android:title="@string/nav_settings" />
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_information_grey600_36dp"
+            android:id="@+id/nav_about_dweller"
+            android:icon="@drawable/ic_about"
             android:title="@string/nav_about" />
     </group>
 
-    <item android:title="Other">
+    <item android:title="Opções">
         <menu>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_logout_grey600_36dp"
+                android:icon="@drawable/ic_logout"
                 android:title="@string/nav_logout" />
         </menu>
     </item>
