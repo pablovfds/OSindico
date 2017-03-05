@@ -25,10 +25,8 @@ public class DwellerHomeActivity extends BaseActivity implements HomeDwellerCont
 
     private HomeDwellerContract.Presenter presenter;
 
-    @BindView(R.id.dweller_name)
-    TextView textViewName;
-    @BindView(R.id.dweller_email)
-    TextView textViewEmail;
+    @BindView(R.id.dweller_name) TextView textViewName;
+    @BindView(R.id.dweller_email) TextView textViewEmail;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

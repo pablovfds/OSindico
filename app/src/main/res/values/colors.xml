@@ -7,4 +7,6 @@
 <color name="primaryColorDweller">#FF5722</color>
 <color name="primaryDarkColorDweller">#E64A19</color>
 <color name="colorAccent">#FFC107</color>
+<color name="colorBarDweller">#ff5522</color>
+<color name="colorBarSyndic">#66D7E5</color>
 </resources>
