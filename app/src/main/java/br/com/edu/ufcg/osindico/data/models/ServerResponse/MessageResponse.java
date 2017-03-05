@@ -2,12 +2,12 @@ package br.com.edu.ufcg.osindico.data.models.ServerResponse;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CondoServerResponse {
+public class MessageResponse {
 
     @SerializedName("message")
     private String message;
 
-    public CondoServerResponse() {
+    public MessageResponse() {
     }
 
     public String getMessage() {
