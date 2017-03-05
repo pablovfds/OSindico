@@ -28,7 +28,7 @@
         <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
         <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
         <activity
-            android:name=".navigationDweller.NavigationDwellerActivity"
+            android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

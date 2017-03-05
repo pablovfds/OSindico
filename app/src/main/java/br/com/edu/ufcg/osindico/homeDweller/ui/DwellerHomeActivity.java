@@ -24,10 +24,8 @@ public class DwellerHomeActivity extends AppCompatActivity  implements HomeDwell
 
     private HomeDwellerContract.Presenter presenter;
 
-    @BindView(R.id.dweller_name)
-    TextView textViewName;
-    @BindView(R.id.dweller_email)
-    TextView textViewEmail;
+    @BindView(R.id.dweller_name) TextView textViewName;
+    @BindView(R.id.dweller_email) TextView textViewEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
