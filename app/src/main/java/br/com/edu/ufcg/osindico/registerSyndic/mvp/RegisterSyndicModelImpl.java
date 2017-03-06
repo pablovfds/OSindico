@@ -1,5 +1,7 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
@@ -54,8 +56,10 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
         }
 
         if (!error){
+            String fcmTokn = FirebaseInstanceId.getInstance().getToken();
+
             Contact contact = new Contact(phone);
-            SyndicDetails syndicDetails = new SyndicDetails(name, email, password, contact);
+            SyndicDetails syndicDetails = new SyndicDetails(name, email, password, contact, fcmTokn);
 
             final Call<SyndicServerResponse> mService = mSyndicService.getSyndicApi().registerSyndic(syndicDetails);
 

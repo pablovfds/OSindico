@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.registerDweller.mvp;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -52,7 +53,9 @@ public class RegisterDwellerModelImpl implements RegisterDwellerContract.Model {
 
         if (!error) {
 
-            DwellerDetails dwellerDetails = new DwellerDetails(name, email, password, contact, condominiumId);
+            String fcmTokn = FirebaseInstanceId.getInstance().getToken();
+
+            DwellerDetails dwellerDetails = new DwellerDetails(name, email, password, contact, condominiumId,fcmTokn);
 
             Call<DwellerServerResponse> mService = service.getDwellerApi().registerDweller(dwellerDetails);
 
