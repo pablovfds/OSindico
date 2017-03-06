@@ -24,6 +24,21 @@
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
         <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
+        <activity android:name=".homeSyndic.ui.SyndicHomeActivity"></activity>
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
+        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
+
+
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+            </intent-filter>
+        </service>
         <activity android:name=".homeSyndic.ui.SyndicHomeActivity" />
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
         <activity android:name=".dwellerDetails.ui.DwellerDetailsActivity" />

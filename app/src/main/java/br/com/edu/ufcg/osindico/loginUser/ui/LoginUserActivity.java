@@ -7,11 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
@@ -51,6 +54,8 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         LoginService loginService = new LoginService();
         presenter = new LoginUserPresenterImpl(loginService);
         presenter.setView(this);
+
+        Log.d("FCMToken", String.valueOf(FirebaseInstanceId.getInstance().getToken()));
 
     }
 
