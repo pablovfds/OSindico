@@ -14,13 +14,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NavigationSyndicActivity extends AppCompatActivity
+public class NavigationSyndicActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NavigationSyndicContract.View{
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -30,8 +32,9 @@ public class NavigationSyndicActivity extends AppCompatActivity
     private NavigationSyndicContract.Presenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UpdateTheme.setTheme(getApplicationContext(), 1);
         setContentView(R.layout.activity_navigation_syndic);
 
         ButterKnife.bind(this);

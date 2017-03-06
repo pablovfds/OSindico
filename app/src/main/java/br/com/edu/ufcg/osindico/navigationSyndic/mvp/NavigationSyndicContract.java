@@ -7,7 +7,6 @@ public interface NavigationSyndicContract {
         interface OnNavigationSyndicListener {
             void onSuccessLogout();
         }
-
         void logout(SharedPreferences preferences, OnNavigationSyndicListener listener);
     }
 

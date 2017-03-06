@@ -22,8 +22,8 @@ public class BaseActivity extends AppCompatActivity {
         if (UpdateTheme.getTheme(getApplicationContext()) <= THEME_BLUE) {
             setTheme(R.style.AppThemeSyndic);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkSyndic));
+                //getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                //getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkSyndic));
             }
         } else if (UpdateTheme.getTheme(getApplicationContext()) == THEME_ORANGE) {
             setTheme(R.style.AppTheme);
