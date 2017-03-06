@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
@@ -32,4 +33,7 @@ public interface SyndicApi {
     @POST("/api/syndicate/requests/{id}/{accept}")
     Call<DwellerServerResponse> updateResidentStatus(@Header("Authorization") String authorization,
                                                      @Path("id") Long id, @Path("accept") boolean accept);
+
+    @GET("/api/syndicate/requests")
+    Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
 }

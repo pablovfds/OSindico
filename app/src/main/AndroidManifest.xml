@@ -34,25 +34,33 @@
             android:theme="@style/AppTheme.TransNav">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
+        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/NoActionBarTheme">
         </activity>
         <activity
             android:name=".navigationSyndic.ui.NavigationSyndicActivity"
             android:label="@string/title_activity_navigation_syndic"
             android:theme="@style/NoActionBarThemeSyndic">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
-    </application>
 
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+            </intent-filter>
+        </service>
+
+    </application>
 </manifest>

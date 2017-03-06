@@ -17,6 +17,7 @@ import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsContract;
@@ -104,6 +105,11 @@ public class RequestsResidentsActivity extends BaseActivity implements
         i.putExtra("resident", residentResponse);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    public void onClick(MessageResponse messageResponse) {
+        //TODO expandir mensagem da tela principal em uma nova tela?
     }
 
     private  void updateAdapter(List<ResidentResponse> residentResponses){
