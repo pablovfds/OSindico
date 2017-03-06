@@ -1,4 +1,4 @@
-package br.com.edu.ufcg.osindico.data.models.ServerResponse;
+package br.com.edu.ufcg.osindico.data.models.ServerResponse;2
 
 
 import com.google.gson.annotations.SerializedName;

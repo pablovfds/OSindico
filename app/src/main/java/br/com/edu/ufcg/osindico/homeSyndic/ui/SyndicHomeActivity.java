@@ -37,7 +37,7 @@ public class SyndicHomeActivity extends AppCompatActivity implements HomeSyndicC
         startActivity(new Intent(this, RequestsDwellersActivity.class));
     }
 
-    @OnClick(R.id.btn_openRequests)
+    @OnClick(R.id.btn_message)
     public void openSyndicMessage(){
         startActivity(new Intent(this, SyndicMessageActivity.class));
     }

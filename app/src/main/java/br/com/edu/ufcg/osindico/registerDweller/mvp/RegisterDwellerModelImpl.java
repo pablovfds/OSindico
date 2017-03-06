@@ -23,7 +23,9 @@ public class RegisterDwellerModelImpl implements RegisterDwellerContract.Model {
     }
 
     @Override
-    public void registerDweller(String name, Contact contact, String email, String password, String confirmPassword, Long condominiumId, final OnRegisterDwellerListener listener) {
+    public void registerDweller(String name, Contact contact, String email, String password,
+                                String confirmPassword, Long condominiumId,
+                                final OnRegisterDwellerListener listener) {
         boolean error = false;
 
         if (!FormValidate.isValidName(name)) {

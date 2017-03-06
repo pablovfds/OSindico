@@ -1,12 +1,14 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.Contact;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
@@ -76,12 +78,22 @@ public class RegisterSyndicModelImpl implements RegisterSyndicContract.Model{
                                 = mSyndicService.getRetrofit().responseBodyConverter(
                                 SyndicServerResponse.class, new Annotation[0]);
                         SyndicServerResponse errorResponse = null;
+//                        try {
+//                            errorResponse = converter.convert(response.errorBody());
+//                            listener.onServerError(errorResponse.getSpringException().getMessage());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+
+                        Gson gson = new Gson();
+                        //MessageResponse serverResponse = null;
                         try {
-                            errorResponse = converter.convert(response.errorBody());
-                            listener.onServerError(errorResponse.getSpringException().getMessage());
+                            errorResponse = gson.fromJson(response.errorBody().string(), SyndicServerResponse.class);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        if (serverResponse != null)
+                            listener.onServerError(errorResponse.getSpringException().getMessage());
                     }
                 }
 
