@@ -7,8 +7,7 @@ public class CondoServerResponse {
     @SerializedName("message")
     private String message;
 
-    public CondoServerResponse() {
-    }
+    public CondoServerResponse() {}
 
     public String getMessage() {
         return message;

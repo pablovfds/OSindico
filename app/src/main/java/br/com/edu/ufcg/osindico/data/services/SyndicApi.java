@@ -3,6 +3,7 @@ package br.com.edu.ufcg.osindico.data.services;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
+import br.com.edu.ufcg.osindico.data.models.MessageDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
@@ -34,6 +35,7 @@ public interface SyndicApi {
     Call<DwellerServerResponse> updateResidentStatus(@Header("Authorization") String authorization,
                                                      @Path("id") Long id, @Path("accept") boolean accept);
 
-    @GET("/api/syndicate/requests")
-    Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
+    @Headers({"Content-Type: application/json"})
+    @POST("/api/syndicate/message")
+    Call<List<MessageResponse>> loadMessageRequests(@Body MessageDetails request);
 }
