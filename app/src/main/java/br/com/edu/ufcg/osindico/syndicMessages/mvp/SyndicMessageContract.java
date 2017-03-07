@@ -14,11 +14,12 @@ public interface SyndicMessageContract {
             void onServerError(String errorMessage);
         }
 
-        void sendMessage(String message, SyndicService service, OnSendMessageListener listener);
+        void sendMessage(String message, String token ,SyndicService service,
+                         OnSendMessageListener listener);
     }
 
     interface Presenter {
-        void validateMessage(String message, SyndicService service);
+        void validateMessage(String message, String token ,SyndicService service);
 
         void setView(View view);
 

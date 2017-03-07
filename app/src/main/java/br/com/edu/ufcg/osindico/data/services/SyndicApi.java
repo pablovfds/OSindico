@@ -28,5 +28,10 @@ public interface SyndicApi {
     @Headers({"Content-Type: application/json"})
     @POST("/api/syndicate/requests/{id}/{accept}")
     Call<MessageResponse> updateResidentStatus(@Header("Authorization") String authorization,
-                                                     @Path("id") Long id, @Path("accept") boolean accept);
+                                               @Path("id") Long id, @Path("accept") boolean accept);
+
+    @Headers({"Content-Type: application/json"})
+    @POST("/api/syndicate/message")
+    Call<MessageResponse> sendMessage(@Header("Authorization") String authorization,
+                                      @Body String request);
 }

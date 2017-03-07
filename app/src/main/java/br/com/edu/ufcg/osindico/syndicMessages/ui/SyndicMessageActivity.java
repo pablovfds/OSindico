@@ -1,6 +1,8 @@
 package br.com.edu.ufcg.osindico.syndicMessages.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -46,7 +48,7 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
         SyndicService service = new SyndicService();
         String message = editTextMessage.getText().toString();
         editTextMessage.setError(null);
-        presenter.validateMessage(message, service);
+        presenter.validateMessage(message, getToken(), service);
     }
 
     @Override
@@ -74,5 +76,11 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
         Toast.makeText(this, getString(R.string.msg_success_send_message), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, SyndicHomeActivity.class));
         finish();
+    }
+
+    private String getToken(){
+        SharedPreferences sharedpreferences = getSharedPreferences(
+                getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+        return sharedpreferences.getString(getString(R.string.user_token), "");
     }
 }

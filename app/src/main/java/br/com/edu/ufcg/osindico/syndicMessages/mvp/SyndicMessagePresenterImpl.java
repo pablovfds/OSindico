@@ -2,7 +2,8 @@ package br.com.edu.ufcg.osindico.syndicMessages.mvp;
 
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
-public class SyndicMessagePresenterImpl implements SyndicMessageContract.Presenter, SyndicMessageContract.Model.OnSendMessageListener {
+public class SyndicMessagePresenterImpl implements SyndicMessageContract.Presenter,
+        SyndicMessageContract.Model.OnSendMessageListener {
 
     private SyndicMessageContract.Model model;
     private SyndicMessageContract.View view;
@@ -12,10 +13,10 @@ public class SyndicMessagePresenterImpl implements SyndicMessageContract.Present
     }
 
     @Override
-    public void validateMessage(String message, SyndicService service) {
+    public void validateMessage(String message,String token, SyndicService service) {
         if (view != null){
             this.view.showProgress();
-            this.model.sendMessage(message, service, this);
+            this.model.sendMessage(message,token, service, this);
         }
     }
 

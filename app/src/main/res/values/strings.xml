@@ -5,8 +5,8 @@
     <string name="user_name">name</string>
     <string name="user_email">email</string>
     <string name="user_type">tipo</string>
-    <string name="msg_name_error">Insira um nome valido.</string>
-    <string name="msg_phone_error">Insira um telefone valido.</string>
+    <string name="msg_name_error">Nome inválido. Tente um nome com pelo menos 6 caracteres.</string>
+    <string name="msg_phone_error">Este formato de número de telefone não é válido.</string>
     <string name="msg_street_error">Insira uma rua valida.</string>
     <string name="msg_condo_number_error">Insira um número valido.</string>
     <string name="msg_neighborhood_error">Insira um bairro valido</string>
@@ -17,17 +17,15 @@
     <string name="msg_server_error">Erro na requisição.</string>
     <string name="label_register">Cadastrar</string>
     <string name="label_next">Proximo</string>
-    <string name="msg_syndic_name_error">Insira um nome valido.</string>
-    <string name="msg_syndic_email_error">Insira um email valido</string>
-    <string name="msg_syndic_password_error">Insira uma senha valida</string>
-    <string name="msg_syndic_confirm_password_error">A senha e a confirmação de senha são diferentes</string>
-    <string name="msg_syndic_phone_error">Insira um telefone valido</string>
+    <string name="msg_syndic_email_error">Email inválido. Use apenas letras (a-z), números e pontos.</string>
+    <string name="msg_syndic_password_error">Senha inválida. Tente uma senha com pelo menos 8 caracteres.</string>
+    <string name="msg_syndic_confirm_password_error">Essas senhas não coincidem. Tentar novamente?</string>
     <string name="msg_address_error">Insira um endereço valido.</string>
     <string name="msg_registration_success">Cadastrado com sucesso</string>
     <string name="msg_success_request">Morador atualizado</string>
     <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
     <string name="msg_success_send_message">Mensagem enviada com sucesso.</string>
-    <string name="msg_error_message">Insira uma mensagem valida. O tamanho minimo de uma mensagem é de 15 caracteres.</string>
+    <string name="msg_error_message">Mensagem inválida. O tamanho minimo de uma mensagem é de 5 caracteres.</string>
 
     <string-array name="states">
         <item>"*Estado"</item>

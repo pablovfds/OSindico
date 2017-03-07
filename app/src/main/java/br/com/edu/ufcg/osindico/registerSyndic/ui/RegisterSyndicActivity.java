@@ -98,12 +98,12 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
 
     @Override
     public void setNameError() {
-        editTextName.setError(getString(R.string.msg_syndic_name_error));
+        editTextName.setError(getString(R.string.msg_name_error));
     }
 
     @Override
     public void setEmailError() {
-        editTextEmail.setError(getString(R.string.msg_syndic_email_error));
+        editTextEmail.setError(getString(R.string.msg_name_error));
     }
 
     @Override
@@ -114,12 +114,11 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     @Override
     public void setConfirmPasswordError() {
         editTextConfirmPassword.setError(getString(R.string.msg_syndic_confirm_password_error));
-        editTextPassword.setError(getString(R.string.msg_syndic_confirm_password_error));
     }
 
     @Override
     public void setPhoneError() {
-        editTextPhone.setError(getString(R.string.msg_syndic_phone_error));
+        editTextPhone.setError(getString(R.string.msg_phone_error));
     }
 
     @Override
