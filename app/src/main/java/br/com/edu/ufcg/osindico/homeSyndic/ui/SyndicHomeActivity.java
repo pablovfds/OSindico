@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,15 +19,22 @@ import android.widget.Toast;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import java.util.List;
 import java.util.zip.Inflater;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
+import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
+import br.com.edu.ufcg.osindico.adapters.ResidentMessagesFeedAdapter;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
+import butterknife.BindView;
 
 public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContract.View {
 
@@ -35,8 +44,10 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_syndic_home);
+        setBottomBar();
 
-        presenter = new HomeSyndicPresenterImpl();
+        SyndicService service = new SyndicService();
+        presenter = new HomeSyndicPresenterImpl(service);
         presenter.setView(this);
 
         Button btn = (Button) findViewById(R.id.btn_openRequests);
@@ -46,24 +57,11 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
                 startActivity(new Intent(SyndicHomeActivity.this, RequestsResidentsActivity.class));
             }
         });
+    }
 
-        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                switch (tabId){
-                    case  R.id.tab_new_dweller:
-                        Toast.makeText(getApplicationContext(), "Novo morador", Toast.LENGTH_LONG).show();
-                        break;
-                    case R.id.tab_dwellers:
-                        Toast.makeText(getApplicationContext(), "Lista de moradores", Toast.LENGTH_LONG).show();
-                        break;
-                    case R.id.tab_rules:
-                        Toast.makeText(getApplicationContext(), "Regras do condominio", Toast.LENGTH_LONG).show();
-                        break;
-                }
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        return;
     }
 
     @Override
@@ -84,11 +82,6 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
     }
 
     @Override
-    public void onBackPressed() {
-        return;
-    }
-
-    @Override
     public void setSuccessLogout(String logoutResponse) {
         Log.e("Success", logoutResponse);
         startActivity(new Intent(SyndicHomeActivity.this, LoginUserActivity.class));
@@ -98,5 +91,30 @@ public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContra
     @Override
     public void setFailLogout(String logoutResponse) {
         Log.e("Fail", logoutResponse);
+    }
+
+    @Override
+    public void setServerError(String errorMessage) {
+
+    }
+
+    public void setBottomBar(){
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId){
+                    case  R.id.tab_new_dweller:
+                        Toast.makeText(getApplicationContext(), "Novo morador", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.tab_dwellers:
+                        Toast.makeText(getApplicationContext(), "Lista de moradores", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.tab_rules:
+                        Toast.makeText(getApplicationContext(), "Regras do condominio", Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        });
     }
 }

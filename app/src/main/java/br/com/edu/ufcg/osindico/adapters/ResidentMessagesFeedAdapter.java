@@ -11,16 +11,15 @@ import java.util.List;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 
 
 public class ResidentMessagesFeedAdapter extends RecyclerView.Adapter<ResidentMessagesFeedAdapter.ViewHolder> {
 
-    private List<MessageResponse> notificationResponses;
+    private List<MessageResponse> messageResponses;
     private ItemClickListener clickListener;
 
     public ResidentMessagesFeedAdapter(List<MessageResponse> responses) {
-        this.notificationResponses = responses;
+        this.messageResponses = responses;
     }
 
     @Override
@@ -37,14 +36,14 @@ public class ResidentMessagesFeedAdapter extends RecyclerView.Adapter<ResidentMe
 
     @Override
     public void onBindViewHolder(ResidentMessagesFeedAdapter.ViewHolder viewHolder, int i) {
-        //TODO get notification data from rest api
-        viewHolder.tv_notification.setText("");
-        viewHolder.tv_date.setText("");
+        String message = messageResponses.get(i).getMessage();
+        viewHolder.tv_notification.setText(message);
+        viewHolder.tv_date.setText("06/03/2017");
     }
 
     @Override
     public int getItemCount() {
-        return notificationResponses.size();
+        return messageResponses.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -60,7 +59,7 @@ public class ResidentMessagesFeedAdapter extends RecyclerView.Adapter<ResidentMe
 
         @Override
         public void onClick(View view) {
-            if (clickListener != null) clickListener.onClick(notificationResponses.get(getAdapterPosition()));
+            if (clickListener != null) clickListener.onClick(messageResponses.get(getAdapterPosition()));
         }
     }
 }

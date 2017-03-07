@@ -3,7 +3,11 @@ package br.com.edu.ufcg.osindico.homeSyndic.mvp;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.List;
+
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 
 
@@ -12,8 +16,8 @@ public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, Ho
     private HomeSyndicContract.View homeSyndicView;
     private HomeSyndicContract.Model homeSyndicModel;
 
-    public HomeSyndicPresenterImpl(){
-        this.homeSyndicModel = new HomeSyndicModelImpl();
+    public HomeSyndicPresenterImpl(SyndicService service){
+        this.homeSyndicModel = new HomeSyndicModelImpl(service);
     }
 
     @Override
@@ -25,7 +29,7 @@ public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, Ho
 
     @Override
     public void setView(HomeSyndicContract.View view) {
-
+        Log.e("set view", "");
         this.homeSyndicView = view;
     }
 
@@ -40,7 +44,8 @@ public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, Ho
     }
 
     @Override
-    public void onServerError(String message) {
+    public void onDestroy() {}
 
-    }
+    @Override
+    public void onServerError(String message) {}
 }
