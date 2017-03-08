@@ -33,8 +33,10 @@ public class CondominiumRulesModelImpl implements CondominiumRulesContract.Model
                 List<RuleResponse> ruleResponseList = response.body();
 
                 if (response.isSuccessful()) {
+                    Log.d("Sucesso", "OK");
                     listener.onSuccess(ruleResponseList);
                 } else {
+                    Log.d("status", Integer.toString(response.code()));
                     listener.onSuccess(new ArrayList<RuleResponse>());
                 }
             }

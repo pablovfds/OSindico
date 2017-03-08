@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
@@ -108,7 +109,7 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
+            Intent syndicIntent = new Intent(this, CondominiumRulesActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(syndicIntent);
         }

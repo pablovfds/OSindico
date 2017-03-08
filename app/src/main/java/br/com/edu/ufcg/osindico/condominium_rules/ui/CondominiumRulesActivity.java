@@ -90,5 +90,6 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
     public void setCondominiumRulesList(List<RuleResponse> ruleResponseList) {
         adapter = new CondominiumRulesAdapter(ruleResponseList);
         recyclerView.setAdapter(adapter);
+        Toast.makeText(this, "Existem " + ruleResponseList.size() + " regras cadastradas.", Toast.LENGTH_SHORT).show();
     }
 }
