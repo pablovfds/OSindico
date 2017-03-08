@@ -80,4 +80,8 @@
 
     <string name="prefs_theme_key">theme</string>
 
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>

@@ -1,10 +1,16 @@
 package br.com.edu.ufcg.osindico.adapters;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 import java.util.List;
 
@@ -48,13 +54,33 @@ public class ResidentMessagesFeedAdapter extends RecyclerView.Adapter<ResidentMe
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tv_notification, tv_date;
+        private ImageView iv_message;
 
         public ViewHolder(View view) {
             super(view);
 
             tv_notification = (TextView) view.findViewById(R.id.tv_notification);
             tv_date = (TextView) view.findViewById(R.id.tv_date);
+            iv_message = (ImageView) view.findViewById(R.id.message_image);
+
+            ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
+            // generate random color
+            int color = generator.getRandomColor();
+
+            TextDrawable drawable = TextDrawable.builder()
+                    .beginConfig()
+                    .textColor(Color.WHITE)
+                    .useFont(Typeface.DEFAULT)
+                    .fontSize(30) /* size in px */
+                    .bold()
+                    .toUpperCase()
+                    .endConfig()
+                    .buildRound("S", color);
+
+            iv_message.setImageDrawable(drawable);
             view.setOnClickListener(this);
+
+
         }
 
         @Override

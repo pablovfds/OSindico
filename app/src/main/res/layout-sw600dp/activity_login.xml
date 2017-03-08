@@ -11,13 +11,13 @@
     <RelativeLayout
         android:id="@+id/register"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:background="@drawable/dark_fade"
             android:id="@+id/imageV" />
 
@@ -45,8 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg"
-            android:layout_marginLeft="65dp"
-            android:layout_marginRight="65dp"
+            android:layout_marginLeft="98dp"
+            android:layout_marginRight="98dp"
             android:padding="@dimen/activity_horizontal_margin"
             android:layout_marginTop="-100dp"
             android:layout_below="@+id/imageView3"
@@ -61,7 +61,7 @@
                 android:inputType="textEmailAddress"
                 android:ems="10"
                 android:theme="@style/Theme.App.Base"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="100dp"
                 android:textSize="18sp"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
@@ -97,11 +97,11 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="225dp"
+            android:layout_height="250dp"
             android:background="@drawable/ic_logo"
             android:id="@+id/imageView3"
-            android:layout_marginLeft="75dp"
-            android:layout_marginRight="75dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginRight="105dp"
             tools:ignore="NotSibling"
             android:adjustViewBounds="true"
             android:layout_alignParentTop="true"

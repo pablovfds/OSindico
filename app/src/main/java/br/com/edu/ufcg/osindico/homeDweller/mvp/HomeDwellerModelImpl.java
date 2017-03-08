@@ -38,13 +38,6 @@ public class HomeDwellerModelImpl implements HomeDwellerContract.Model {
 
                 List<MessageResponse> messageResponses = response.body();
 
-                try {
-                    Log.e("get messages", response.errorBody().string() +  " ");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
                 if (response.isSuccessful() && messageResponses != null){
                     listener.onLoadMessagesSuccess(messageResponses);
                 } else {
