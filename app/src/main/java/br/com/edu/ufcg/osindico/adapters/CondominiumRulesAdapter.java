@@ -31,7 +31,7 @@ public class CondominiumRulesAdapter extends RecyclerView.Adapter<CondominiumRul
 
     @Override
     public void onBindViewHolder(CondominiumRulesAdapter.ViewHolder holder, int position) {
-        String rule = "Regra: " + rules.get(position).getRule();
+        String rule = rules.get(position).getRule();
         holder.tv_rule.setText(rule);
     }
 
