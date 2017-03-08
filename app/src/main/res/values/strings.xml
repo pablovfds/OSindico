@@ -25,7 +25,7 @@
     <string name="msg_success_request">Morador atualizado</string>
     <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
     <string name="msg_success_send_message">Mensagem enviada com sucesso.</string>
-    <string name="msg_error_message">Mensagem inválida. O tamanho minimo de uma mensagem é de 5 caracteres.</string>
+    <string name="msg_error_message">Mensagem inválida. O tamanho minimo de uma mensagem é de 10 caracteres.</string>
 
     <string-array name="states">
         <item>"*Estado"</item>

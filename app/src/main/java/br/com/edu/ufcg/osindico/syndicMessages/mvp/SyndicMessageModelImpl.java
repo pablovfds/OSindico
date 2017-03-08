@@ -15,7 +15,7 @@ public class SyndicMessageModelImpl implements SyndicMessageContract.Model {
 
     @Override
     public void sendMessage(String message, String token , final SyndicService service, final OnSendMessageListener listener) {
-        if (message == null || message.isEmpty() || message.length() < 5){
+        if (message == null || message.isEmpty() || message.length() < 10){
             listener.onMessageError();
         } else {
 
