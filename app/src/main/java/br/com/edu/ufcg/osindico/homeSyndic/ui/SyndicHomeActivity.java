@@ -1,13 +1,8 @@
 package br.com.edu.ufcg.osindico.homeSyndic.ui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,22 +14,13 @@ import android.widget.Toast;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import java.util.List;
-import java.util.zip.Inflater;
-
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
-import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
-import br.com.edu.ufcg.osindico.adapters.ResidentMessagesFeedAdapter;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
-import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
-import butterknife.BindView;
 
 public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContract.View {
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerPresenterImpl;
@@ -85,6 +88,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @Override
     public void navigateToMessageDweller() {
         Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
+        setFragment(new DwellerMessagesFragment());
     }
 
     @Override
@@ -111,5 +115,10 @@ public class NavigationDwellerActivity extends AppCompatActivity
     public void navigateToLogin() {
         startActivity(new Intent(this, LoginUserActivity.class));
         finish();
+    }
+
+    private void setFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 }

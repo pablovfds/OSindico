@@ -28,7 +28,6 @@
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
-        <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
         <activity
             android:name=".homeSyndic.ui.SyndicHomeActivity"
             android:theme="@style/AppTheme.TransNav"></activity>

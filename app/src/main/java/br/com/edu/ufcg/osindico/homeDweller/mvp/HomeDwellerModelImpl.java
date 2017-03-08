@@ -1,18 +1,12 @@
 package br.com.edu.ufcg.osindico.homeDweller.mvp;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.services.DwellerService;
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,21 +45,5 @@ public class HomeDwellerModelImpl implements HomeDwellerContract.Model {
                 listener.onServerError(t.getMessage());
             }
         });
-    }
-
-
-    @Override
-    public void logoutUser(Context context, HomeDwellerContract.Model.HomeDwellerListener homeDwellerListener) {
-
-        try{
-            SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.commit();
-            homeDwellerListener.onLogoutSuccess("Successful logout");
-        }catch (Exception e){
-            homeDwellerListener.onLogoutFail("Logout failed");
-        }
-
     }
 }

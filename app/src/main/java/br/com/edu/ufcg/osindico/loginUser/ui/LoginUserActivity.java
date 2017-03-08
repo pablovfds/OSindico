@@ -1,17 +1,12 @@
 package br.com.edu.ufcg.osindico.loginUser.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +22,10 @@ import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
-import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
+import br.com.edu.ufcg.osindico.navigationDweller.ui.NavigationDwellerActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.ui.RegisterSyndicActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,7 +118,7 @@ public class LoginUserActivity extends BaseActivity implements LoginUserContract
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
-            Intent dwellerIntent = new Intent(this, DwellerHomeActivity.class);
+            Intent dwellerIntent = new Intent(this, NavigationDwellerActivity.class);
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
