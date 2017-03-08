@@ -10,6 +10,7 @@ import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.RuleDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -44,16 +45,18 @@ public class RegisterRegraModelImpl implements RegisterRegraContract.Model {
         if(!error){
             Log.d("Nao:", "não deu erro");
             RuleDetails novaRegra = new RuleDetails(regra);
-            Call<DwellerServerResponse> mService = mSyndicService.getSyndicApi().registerRegra(token, novaRegra);
+            Call<RuleResponse> mService = mSyndicService.getSyndicApi().registerRegra(token, novaRegra);
 
-            mService.enqueue(new Callback<DwellerServerResponse>() {
+            mService.enqueue(new Callback<RuleResponse>() {
                 @Override
-                public void onResponse(Call<DwellerServerResponse> call, Response<DwellerServerResponse> response) {
+                public void onResponse(Call<RuleResponse> call, Response<RuleResponse> response) {
 
                     if(response.isSuccessful()){
+                        Log.d("Sucesso", "Regra criada");
                         listener.onSuccess();
                     }else{
-
+                        Log.d("Falha", "Regra nao criada");
+                        Log.d("status", Integer.toString(response.code()));
                         Converter<ResponseBody, CondoServerResponse> converter
                                 = mSyndicService.getRetrofit().responseBodyConverter(
                                 CondoServerResponse.class, new Annotation[0]);
@@ -71,7 +74,7 @@ public class RegisterRegraModelImpl implements RegisterRegraContract.Model {
                 }
 
                 @Override
-                public void onFailure(Call<DwellerServerResponse> call, Throwable t) {
+                public void onFailure(Call<RuleResponse> call, Throwable t) {
 
                     call.cancel();
                     listener.onServerError(t.getMessage());

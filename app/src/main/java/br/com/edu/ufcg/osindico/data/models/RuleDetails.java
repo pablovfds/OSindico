@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class RuleDetails implements Serializable {
 
 
-    @SerializedName("regraSyndic")
+    @SerializedName("ruleDetails")
     private String regraSyndic;
 
     public RuleDetails(String regraSyndic) {
