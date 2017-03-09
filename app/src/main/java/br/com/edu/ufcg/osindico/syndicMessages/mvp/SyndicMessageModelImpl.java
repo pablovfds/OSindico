@@ -15,8 +15,10 @@ public class SyndicMessageModelImpl implements SyndicMessageContract.Model {
 
     @Override
     public void sendMessage(String message, String token , final SyndicService service, final OnSendMessageListener listener) {
-        if (message == null || message.isEmpty() || message.length() < 10){
-            listener.onMessageError();
+        if (message == null || message.trim().isEmpty()){
+            listener.onMessageNullError();
+        } else if (message.length() < 10){
+            listener.onMessageLengthError();
         } else {
 
             Call<MessageResponse> mService = service.getSyndicApi().sendMessage(token, message);

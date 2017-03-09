@@ -33,10 +33,18 @@ public class SyndicMessagePresenterImpl implements SyndicMessageContract.Present
     }
 
     @Override
-    public void onMessageError() {
+    public void onMessageLengthError() {
         if (view != null){
             this.view.hideProgress();
-            this.view.setMessageError();
+            this.view.setMessageLengthError();
+        }
+    }
+
+    @Override
+    public void onMessageNullError() {
+        if (view != null){
+            this.view.hideProgress();
+            this.view.setMessageNullError();
         }
     }
 

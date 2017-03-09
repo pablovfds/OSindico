@@ -22,7 +22,7 @@ public class FormValidate {
     }
 
     public static boolean isValidPhone(CharSequence target) {
-        return !TextUtils.isEmpty(target) && Patterns.PHONE.matcher(target).matches();
+        return !TextUtils.isEmpty(target) || Patterns.PHONE.matcher(target).matches();
     }
 
 

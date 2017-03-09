@@ -10,26 +10,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text|textMultiLine"
-        android:lines="15"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp"
-        android:id="@+id/editTextMessage"
-        android:hint="Escreva a mensagem aqui!" />
-
     <Button
         android:text="Enviar mensagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
         android:id="@+id/btnSendMessage"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/editTextMessage"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textMultiLine"
+        android:lines="10"
+        android:ems="10"
+        android:id="@+id/editTextMessage"
+        android:hint="Escreva a mensagem aqui!"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="79dp" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -37,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/progressBar"
-        tools:visibility="gone" />
+        android:id="@+id/progressBar2"
+        android:visibility="gone" />
 </RelativeLayout>

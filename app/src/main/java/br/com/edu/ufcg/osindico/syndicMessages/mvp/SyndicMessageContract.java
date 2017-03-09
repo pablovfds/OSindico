@@ -7,7 +7,9 @@ public interface SyndicMessageContract {
     interface Model {
         interface OnSendMessageListener {
 
-            void onMessageError();
+            void onMessageLengthError();
+
+            void onMessageNullError();
 
             void onSuccess();
 
@@ -31,7 +33,9 @@ public interface SyndicMessageContract {
 
         void hideProgress();
 
-        void setMessageError();
+        void setMessageLengthError();
+
+        void setMessageNullError();
 
         void setServerFailed(String errorMessage);
 

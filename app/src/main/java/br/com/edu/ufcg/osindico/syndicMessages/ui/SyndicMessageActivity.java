@@ -23,7 +23,7 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
 
     @BindView(R.id.editTextMessage) EditText editTextMessage;
 
-    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.progressBar2) ProgressBar progressBar;
 
     private SyndicMessageContract.Presenter presenter;
 
@@ -62,8 +62,13 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
     }
 
     @Override
-    public void setMessageError() {
+    public void setMessageLengthError() {
         editTextMessage.setError(getString(R.string.msg_error_message));
+    }
+
+    @Override
+    public void setMessageNullError() {
+        editTextMessage.setError(getString(R.string.msg_error_message_null));
     }
 
     @Override
