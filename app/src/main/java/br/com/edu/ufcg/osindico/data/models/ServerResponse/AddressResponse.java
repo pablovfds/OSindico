@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.data.models.ServerResponse;
 
-
 import com.google.gson.annotations.SerializedName;
 
 public class AddressResponse {

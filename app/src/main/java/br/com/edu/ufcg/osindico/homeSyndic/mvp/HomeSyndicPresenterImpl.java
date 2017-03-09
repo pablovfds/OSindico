@@ -1,50 +1,38 @@
 package br.com.edu.ufcg.osindico.homeSyndic.mvp;
 
-import android.content.Context;
-import android.util.Log;
+import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
-
-/**
- * Created by Lucio on 22/02/2017.
- */
 
 public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, HomeSyndicContract.Model.HomeSyndicListener {
 
     private HomeSyndicContract.View homeSyndicView;
     private HomeSyndicContract.Model homeSyndicModel;
 
-    public HomeSyndicPresenterImpl(){
-
-        this.homeSyndicModel = new HomeSyndicModelImpl();
+    public HomeSyndicPresenterImpl(SyndicService service){
+        this.homeSyndicModel = new HomeSyndicModelImpl(service);
     }
 
     @Override
-    public void logout(Context context) {
-        if(context != null){
-            homeSyndicModel.logoutUser(context, this);
+    public void onItemClicked(int id) {
+        switch (id){
+            case  R.id.tab_new_dweller:
+                this.homeSyndicView.navigateToDwellerList();
+                break;
+            case R.id.tab_dwellers:
+                this.homeSyndicView.navigateToDwellerRequests();
+                break;
+            case R.id.tab_rules:
+                this.homeSyndicView.navigateToCondoRules();
+                break;
         }
     }
 
     @Override
     public void setView(HomeSyndicContract.View view) {
-
         this.homeSyndicView = view;
     }
 
     @Override
-    public void onLogoutSuccess(String logoutResponse) {
-        this.homeSyndicView.setSuccessLogout(logoutResponse);
-    }
-
-    @Override
-    public void onLogoutFail(String logoutResponse) {
-        this.homeSyndicView.setFailLogout(logoutResponse);
-    }
-
-    @Override
-    public void onServerError(String message) {
-
-    }
+    public void onDestroy() {}
 }

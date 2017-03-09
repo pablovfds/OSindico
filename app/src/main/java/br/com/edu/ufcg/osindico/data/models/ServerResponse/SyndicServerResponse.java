@@ -12,8 +12,7 @@ public class SyndicServerResponse {
     @SerializedName("springException")
     private SpringException springException;
 
-    public SyndicServerResponse() {
-    }
+    public SyndicServerResponse() {}
 
     public Long getId() {
         return id;

@@ -6,7 +6,7 @@ import java.lang.annotation.Annotation;
 import br.com.edu.ufcg.osindico.data.models.Address;
 import br.com.edu.ufcg.osindico.data.models.CondoDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
 import okhttp3.ResponseBody;
@@ -69,18 +69,18 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
         }
 
         if (!error) {
-            Call<CondoServerResponse> mService = mSyndicService.getSyndicApi().registerCondo(condoModel);
+            Call<MessageResponse> mService = mSyndicService.getSyndicApi().registerCondo(condoModel);
 
-            mService.enqueue(new Callback<CondoServerResponse>() {
+            mService.enqueue(new Callback<MessageResponse>() {
                 @Override
-                public void onResponse(Call<CondoServerResponse> call, Response<CondoServerResponse> response) {
+                public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
                     if (response.isSuccessful()) {
                         listener.onSuccess();
                     } else {
-                        Converter<ResponseBody, CondoServerResponse> converter
+                        Converter<ResponseBody, MessageResponse> converter
                                 = mSyndicService.getRetrofit().responseBodyConverter(
-                                CondoServerResponse.class, new Annotation[0]);
-                        CondoServerResponse errorResponse = null;
+                                MessageResponse.class, new Annotation[0]);
+                        MessageResponse errorResponse = null;
                         try {
                             errorResponse = converter.convert(response.errorBody());
                             listener.onServerError(errorResponse.getMessage());
@@ -91,7 +91,7 @@ public class RegisterCondoModelImpl implements RegisterCondoContract.Model {
                 }
 
                 @Override
-                public void onFailure(Call<CondoServerResponse> call, Throwable t) {
+                public void onFailure(Call<MessageResponse> call, Throwable t) {
                     call.cancel();
                     listener.onServerError(t.getMessage());
                 }

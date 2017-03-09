@@ -2,23 +2,15 @@ package br.com.edu.ufcg.osindico.data.models.exception;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SpringException {
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 
-    @SerializedName("message")
-    private String message;
+public class SpringException extends MessageResponse{
+
 
     @SerializedName("status")
     private int status;
 
     public SpringException() {
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public int getStatus() {
@@ -32,6 +24,6 @@ public class SpringException {
 
     @Override
     public String toString() {
-        return "status: " + status + " msg: " + message;
+        return "status: " + getStatus() + " msg: " + getMessage();
     }
 }
