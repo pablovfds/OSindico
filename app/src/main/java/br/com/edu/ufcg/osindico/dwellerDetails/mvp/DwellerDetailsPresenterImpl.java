@@ -1,16 +1,15 @@
-package br.com.edu.ufcg.osindico.residentDetails.mvp;
+package br.com.edu.ufcg.osindico.dwellerDetails.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
-public class ResidentDetailsPresenterImpl implements ResidentDetailsContract.Presenter,
-        ResidentDetailsContract.Model.OnResidentDetailsListener{
+public class DwellerDetailsPresenterImpl implements DwellerDetailsContract.Presenter,
+        DwellerDetailsContract.Model.OnDwellerDetailsListener {
 
-    private ResidentDetailsContract.Model model;
-    private ResidentDetailsContract.View view;
+    private DwellerDetailsContract.Model model;
+    private DwellerDetailsContract.View view;
 
-    public ResidentDetailsPresenterImpl(SyndicService service) {
-        this.model = new ResidentDetailsModelImpl(service);
+    public DwellerDetailsPresenterImpl(SyndicService service) {
+        this.model = new DwellerDetailsModelImpl(service);
     }
 
     @Override
@@ -22,7 +21,7 @@ public class ResidentDetailsPresenterImpl implements ResidentDetailsContract.Pre
     }
 
     @Override
-    public void setView(ResidentDetailsContract.View newView) {
+    public void setView(DwellerDetailsContract.View newView) {
         if (newView != null){
             this.view = newView;
         }
@@ -37,7 +36,7 @@ public class ResidentDetailsPresenterImpl implements ResidentDetailsContract.Pre
     public void onSuccess() {
         if (view != null){
             this.view.hideProgress();
-            this.view.navigateToRequestsResidents();
+            this.view.navigateToRequestsDweller();
         }
     }
 

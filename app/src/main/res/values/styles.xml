@@ -13,7 +13,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-
     </style>
 
     <!-- Base application theme for syndic -->
@@ -30,8 +29,8 @@
         <item name="colorPrimary">@color/colorPrimarySyndic</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkSyndic</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">

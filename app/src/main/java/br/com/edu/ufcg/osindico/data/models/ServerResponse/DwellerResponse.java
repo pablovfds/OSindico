@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import br.com.edu.ufcg.osindico.data.models.Contact;
 
-public class ResidentResponse implements Serializable {
+public class DwellerResponse implements Serializable {
 
     private Long id;
     private String name;
@@ -13,7 +13,7 @@ public class ResidentResponse implements Serializable {
     private boolean ativo;
     private Contact contact;
 
-    public ResidentResponse() {
+    public DwellerResponse() {
     }
 
     public Long getId() {

@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_syndic_home"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity">
+    android:layout_height="match_parent">
 
     <Button
         android:text="Solicitações de cadastro"

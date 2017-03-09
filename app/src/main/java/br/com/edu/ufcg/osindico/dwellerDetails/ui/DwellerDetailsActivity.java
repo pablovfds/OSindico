@@ -1,34 +1,31 @@
-package br.com.edu.ufcg.osindico.residentDetails.ui;
+package br.com.edu.ufcg.osindico.dwellerDetails.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
-import br.com.edu.ufcg.osindico.base.BaseActivity;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
-import br.com.edu.ufcg.osindico.residentDetails.mvp.ResidentDetailsContract;
-import br.com.edu.ufcg.osindico.residentDetails.mvp.ResidentDetailsPresenterImpl;
+import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
+import br.com.edu.ufcg.osindico.dwellerDetails.mvp.DwellerDetailsContract;
+import br.com.edu.ufcg.osindico.dwellerDetails.mvp.DwellerDetailsPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ResidentDetailsActivity extends BaseActivity implements ResidentDetailsContract.View{
+public class DwellerDetailsActivity extends AppCompatActivity implements DwellerDetailsContract.View{
 
     @BindView(R.id.tv_resident_name) TextView tv_resident_name;
     @BindView(R.id.tv_resident_email) TextView tv_resident_email;
     @BindView(R.id.tv_resident_phone) TextView tv_resident_phone;
 
-    private ResidentDetailsContract.Presenter presenter;
-    private ResidentResponse resident;
+    private DwellerDetailsContract.Presenter presenter;
+    private DwellerResponse resident;
     private String token;
 
     @Override
@@ -40,10 +37,10 @@ public class ResidentDetailsActivity extends BaseActivity implements ResidentDet
 
         SyndicService service = new SyndicService();
 
-        presenter = new ResidentDetailsPresenterImpl(service);
+        presenter = new DwellerDetailsPresenterImpl(service);
 
         Intent i = getIntent();
-        resident = (ResidentResponse) i.getSerializableExtra("resident");
+        resident = (DwellerResponse) i.getSerializableExtra("resident");
 
         tv_resident_name.setText(resident.getName());
         tv_resident_email.setText(resident.getEmail());
@@ -86,9 +83,9 @@ public class ResidentDetailsActivity extends BaseActivity implements ResidentDet
     }
 
     @Override
-    public void navigateToRequestsResidents() {
+    public void navigateToRequestsDweller() {
         Toast.makeText(this, getString(R.string.msg_success_request), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, RequestsResidentsActivity.class));
+        startActivity(new Intent(this, RequestsDwellersActivity.class));
         finish();
     }
 }

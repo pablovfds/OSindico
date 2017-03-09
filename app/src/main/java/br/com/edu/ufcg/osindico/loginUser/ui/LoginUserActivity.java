@@ -22,10 +22,10 @@ import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
 import br.com.edu.ufcg.osindico.navigationDweller.ui.NavigationDwellerActivity;
+import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.ui.RegisterSyndicActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,7 +123,7 @@ public class LoginUserActivity extends BaseActivity implements LoginUserContract
             UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
+            Intent syndicIntent = new Intent(this, NavigationSyndicActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             UpdateTheme.setTheme(getApplicationContext(), 1);
             startActivity(syndicIntent);

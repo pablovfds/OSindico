@@ -1,16 +1,16 @@
-package br.com.edu.ufcg.osindico.residentDetails.mvp;
+package br.com.edu.ufcg.osindico.dwellerDetails.mvp;
 
-public interface ResidentDetailsContract {
+public interface DwellerDetailsContract {
     interface Model {
 
-        interface OnResidentDetailsListener {
+        interface OnDwellerDetailsListener {
 
             void onSuccess();
 
             void onServerError(String message);
         }
 
-        void sendResponseRequest(String token, Long id, boolean status, OnResidentDetailsListener listener);
+        void sendResponseRequest(String token, Long id, boolean status, OnDwellerDetailsListener listener);
     }
 
     interface Presenter {
@@ -28,6 +28,6 @@ public interface ResidentDetailsContract {
 
         void setServerError(String errorMessage);
 
-        void navigateToRequestsResidents();
+        void navigateToRequestsDweller();
     }
 }

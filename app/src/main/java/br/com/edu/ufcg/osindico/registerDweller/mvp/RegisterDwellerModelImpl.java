@@ -8,7 +8,7 @@ import java.io.IOException;
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.Contact;
 import br.com.edu.ufcg.osindico.data.models.DwellerDetails;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.services.DwellerService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +23,9 @@ public class RegisterDwellerModelImpl implements RegisterDwellerContract.Model {
     }
 
     @Override
-    public void registerDweller(String name, Contact contact, String email, String password, String confirmPassword, Long condominiumId, final OnRegisterDwellerListener listener) {
+    public void registerDweller(String name, Contact contact, String email, String password,
+                                String confirmPassword, Long condominiumId,
+                                final OnRegisterDwellerListener listener) {
         boolean error = false;
 
         if (!FormValidate.isValidName(name)) {
@@ -57,19 +59,19 @@ public class RegisterDwellerModelImpl implements RegisterDwellerContract.Model {
 
             DwellerDetails dwellerDetails = new DwellerDetails(name, email, password, contact, condominiumId,fcmTokn);
 
-            Call<DwellerServerResponse> mService = service.getDwellerApi().registerDweller(dwellerDetails);
+            Call<MessageResponse> mService = service.getDwellerApi().registerDweller(dwellerDetails);
 
-            mService.enqueue(new Callback<DwellerServerResponse>() {
+            mService.enqueue(new Callback<MessageResponse>() {
                 @Override
-                public void onResponse(Call<DwellerServerResponse> call, Response<DwellerServerResponse> response) {
+                public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
 
                     if (response.isSuccessful()) {
                         listener.onSuccess(response.body().getMessage());
                     } else {
                         Gson gson = new Gson();
-                        DwellerServerResponse serverResponse = null;
+                        MessageResponse serverResponse = null;
                         try {
-                            serverResponse = gson.fromJson(response.errorBody().string(), DwellerServerResponse.class);
+                            serverResponse = gson.fromJson(response.errorBody().string(), MessageResponse.class);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -79,7 +81,7 @@ public class RegisterDwellerModelImpl implements RegisterDwellerContract.Model {
                 }
 
                 @Override
-                public void onFailure(Call<DwellerServerResponse> call, Throwable t) {
+                public void onFailure(Call<MessageResponse> call, Throwable t) {
                     call.cancel();
                     listener.onServerError("Erro ao tentar se conectar com servidor.");
                 }

@@ -24,23 +24,20 @@
         <activity
             android:name=".QRCodeReader.ReaderActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme"></activity>
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
-        <activity
-            android:name=".homeSyndic.ui.SyndicHomeActivity"
-            android:theme="@style/AppTheme.TransNav"></activity>
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
+        <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
+
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"
-            android:theme="@style/NoActionBarTheme"></activity>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".navigationSyndic.ui.NavigationSyndicActivity"
             android:label="@string/title_activity_navigation_syndic"
-            android:theme="@style/NoActionBarThemeSyndic"></activity>
+            android:theme="@style/NoActionBarThemeSyndic" />
 
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>

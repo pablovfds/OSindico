@@ -1,16 +1,16 @@
-package br.com.edu.ufcg.osindico.requests_residents.mvp;
+package br.com.edu.ufcg.osindico.dwellerRequests.mvp;
 
 
 import java.util.List;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 
 public interface RequestsResidentsContract {
     interface Model {
 
         interface OnRequestsResidentsListener {
 
-            void onSuccess(List<ResidentResponse> residents);
+            void onSuccess(List<DwellerResponse> residents);
 
             void onServerError(String message);
         }
@@ -33,7 +33,7 @@ public interface RequestsResidentsContract {
 
         void setServerError(String errorMessage);
 
-        void setRequestsResidentsList(List<ResidentResponse> residents);
+        void setRequestsResidentsList(List<DwellerResponse> residents);
     }
 
 }

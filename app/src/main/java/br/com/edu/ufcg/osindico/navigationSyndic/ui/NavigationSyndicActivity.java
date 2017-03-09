@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
+import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
@@ -25,7 +28,7 @@ import butterknife.ButterKnife;
 public class NavigationSyndicActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NavigationSyndicContract.View{
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbarSyndic) Toolbar toolbar;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
 
@@ -39,7 +42,7 @@ public class NavigationSyndicActivity extends BaseActivity
 
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -86,6 +89,7 @@ public class NavigationSyndicActivity extends BaseActivity
     @Override
     public void navigateToCondoDetails() {
         Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
+        setFragment(new SyndicHomeFragment());
     }
 
     @Override
@@ -112,5 +116,10 @@ public class NavigationSyndicActivity extends BaseActivity
     public void navigateToLogin() {
         startActivity(new Intent(this, LoginUserActivity.class));
         finish();
+    }
+
+    private void setFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame_syndic, fragment).commit();
     }
 }

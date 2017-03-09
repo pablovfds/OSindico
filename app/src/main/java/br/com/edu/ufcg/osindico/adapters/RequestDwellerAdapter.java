@@ -10,18 +10,18 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 
-public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResidentsAdapter.ViewHolder> {
-    private List<ResidentResponse> android;
+public class RequestDwellerAdapter extends RecyclerView.Adapter<RequestDwellerAdapter.ViewHolder> {
+    private List<DwellerResponse> android;
     private ItemClickListener clickListener;
 
-    public RequestsResidentsAdapter(List<ResidentResponse> android) {
+    public RequestDwellerAdapter(List<DwellerResponse> android) {
         this.android = android;
     }
 
     @Override
-    public RequestsResidentsAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public RequestDwellerAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.resident_card_row,
                 viewGroup, false);
         return new ViewHolder(view);
@@ -32,7 +32,7 @@ public class RequestsResidentsAdapter extends RecyclerView.Adapter<RequestsResid
     }
 
     @Override
-    public void onBindViewHolder(RequestsResidentsAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(RequestDwellerAdapter.ViewHolder viewHolder, int i) {
         String name = "Nome: " + android.get(i).getName();
         String email = "Email: " + android.get(i).getEmail();
         viewHolder.tv_name.setText(name);
