@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
@@ -109,6 +110,9 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @Override
     public void navigateToCondoDetails() {
         Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CondominiumRulesActivity.class);
+        intent.putExtra("type", "morador");
+        startActivity(intent);
     }
 
     @Override

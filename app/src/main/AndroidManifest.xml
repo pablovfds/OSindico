@@ -29,6 +29,8 @@
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
+        <activity android:name=".condominium_rules.ui.CondominiumRulesActivity"/>
+        <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity"/>
 
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"

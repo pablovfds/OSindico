@@ -7,7 +7,7 @@ import java.lang.annotation.Annotation;
 
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.RuleDetails;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import okhttp3.ResponseBody;
@@ -55,10 +55,10 @@ public class RegisterRegraModelImpl implements RegisterRegraContract.Model {
                     }else{
                         Log.d("Falha", "Regra nao criada");
                         Log.d("status", Integer.toString(response.code()));
-                        Converter<ResponseBody, CondoServerResponse> converter
+                        Converter<ResponseBody, MessageResponse> converter
                                 = mSyndicService.getRetrofit().responseBodyConverter(
-                                CondoServerResponse.class, new Annotation[0]);
-                        CondoServerResponse errorResponse = null;
+                                MessageResponse.class, new Annotation[0]);
+                        MessageResponse errorResponse = null;
 
                         try {
                             errorResponse = converter.convert(response.errorBody());

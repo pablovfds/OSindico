@@ -11,13 +11,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.roughike.bottombar.BottomBar;
-
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
+import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
 import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraContract;
 import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraPresenterImpl;
 import butterknife.BindView;
@@ -92,7 +90,7 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
 
     @Override
     public void navigateToRulesCondoList() {
-        startActivity(new Intent(this, CondominiumRulesActivity.class));
+        startActivity(new Intent(this, NavigationSyndicActivity.class));
         finish();
     }
 

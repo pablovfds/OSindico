@@ -16,6 +16,7 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
@@ -89,5 +90,8 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
     @Override
     public void navigateToCondoRules() {
         Toast.makeText(getActivity(), "Regras do condominio", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), CondominiumRulesActivity.class);
+        intent.putExtra("type", "sindico");
+        startActivity(intent);
     }
 }

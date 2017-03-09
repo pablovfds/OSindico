@@ -26,6 +26,8 @@ import br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.R.attr.type;
+
 public class CondominiumRulesActivity extends AppCompatActivity implements CondominiumRulesContract.View {
 
     @BindView(R.id.rules_recycler_view)
@@ -36,12 +38,15 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
 
     private CondominiumRulesContract.Presenter presenter;
     private CondominiumRulesAdapter adapter;
+    private String typeUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_condominium_rules);
         ButterKnife.bind(this);
+
+        typeUser = getIntent().getExtras().getString("type");
 
         RulesService service = new RulesService();
         presenter = new CondominiumRulesPresenterImpl(service);
@@ -100,8 +105,10 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_rules, menu);
+        if(typeUser.equals("sindico")){
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_rules, menu);
+        }
         return true;
     }
 
