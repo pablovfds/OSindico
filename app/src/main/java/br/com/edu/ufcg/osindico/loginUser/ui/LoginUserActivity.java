@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,18 +17,21 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import br.com.edu.ufcg.osindico.QRCodeReader.ReaderActivity;
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.FullscreenModeManager;
+import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 import br.com.edu.ufcg.osindico.data.services.LoginService;
-import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerHomeActivity;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
 import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserPresenterImpl;
+import br.com.edu.ufcg.osindico.navigationDweller.ui.NavigationDwellerActivity;
+import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.ui.RegisterSyndicActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginUserActivity extends AppCompatActivity implements LoginUserContract.View {
+public class LoginUserActivity extends BaseActivity implements LoginUserContract.View {
     @BindView(R.id.editTextEmail)
     EditText editTextEmail;
     @BindView(R.id.editTextSenha)
@@ -44,12 +46,16 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
 
     private LoginUserContract.Presenter presenter;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        FullscreenModeManager fullscreenModeManager = new FullscreenModeManager(this);
+        fullscreenModeManager.setFullscreenMode(R.id.activity_main);
 
         LoginService loginService = new LoginService();
         presenter = new LoginUserPresenterImpl(loginService);
@@ -73,14 +79,17 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         presenter.validateCredentials(email, senha);
     }
 
-    @OnClick(R.id.btn_cadastrar)
+    @OnClick(R.id.register)
     public void cadastrar() {
         new AlertDialog.Builder(this).setIcon(R.drawable.app_icon).setTitle("Selecione o tipo de conta:").setItems(R.array.user_types, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
+                    UpdateTheme.setTheme(getApplicationContext(), 2);
                     startActivity(new Intent(LoginUserActivity.this, ReaderActivity.class));
+
                 } else if (i == 1) { // sindico
+                    UpdateTheme.setTheme(getApplicationContext(), 1);
                     startActivity(new Intent(LoginUserActivity.this, RegisterSyndicActivity.class));
                 }
             }
@@ -109,12 +118,14 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
         editor.commit();
 
         if (loginResponse.getUsuario().getTipo().equals(MORADOR)) {
-            Intent dwellerIntent = new Intent(this, DwellerHomeActivity.class);
+            Intent dwellerIntent = new Intent(this, NavigationDwellerActivity.class);
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
+            Intent syndicIntent = new Intent(this, NavigationSyndicActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            UpdateTheme.setTheme(getApplicationContext(), 1);
             startActivity(syndicIntent);
         }
     }
@@ -123,6 +134,40 @@ public class LoginUserActivity extends AppCompatActivity implements LoginUserCon
     public void setServerError(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
+
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (hasFocus) {
+//            getWindow().getDecorView().setSystemUiVisibility(
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+//    }
+//
+//    public void UiChangeListener()
+//    {
+//        final View decorView = getWindow().getDecorView();
+//        decorView.setOnSystemUiVisibilityChangeListener (new View.OnSystemUiVisibilityChangeListener() {
+//            @Override
+//            public void onSystemUiVisibilityChange(int visibility) {
+//                if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+//                    decorView.setSystemUiVisibility(
+//                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//                }
+//            }
+//        });
+//    }
+
+
 }
 
 

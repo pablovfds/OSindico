@@ -1,7 +1,9 @@
 package br.com.edu.ufcg.osindico.registerCondo.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
@@ -24,7 +27,7 @@ import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterCondoActivity extends AppCompatActivity implements
+public class RegisterCondoActivity extends BaseActivity implements
         RegisterCondoContract.View {
 
     @BindView(R.id.editTextCondoName)
@@ -58,13 +61,13 @@ public class RegisterCondoActivity extends AppCompatActivity implements
 
     private Long syndicId;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_condo);
 
         syndicId = getIntent().getExtras().getLong("syndicId");
-
         ButterKnife.bind(this);
 
         SyndicService service = new SyndicService();

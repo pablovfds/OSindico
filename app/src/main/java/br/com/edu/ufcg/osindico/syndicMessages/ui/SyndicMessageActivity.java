@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
+import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
 import br.com.edu.ufcg.osindico.syndicMessages.mvp.SyndicMessageContract;
 import br.com.edu.ufcg.osindico.syndicMessages.mvp.SyndicMessagePresenterImpl;
 import butterknife.BindView;
@@ -79,7 +79,7 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
     @Override
     public void navigateToHomeSyndic() {
         Toast.makeText(this, getString(R.string.msg_success_send_message), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, SyndicHomeActivity.class));
+        startActivity(new Intent(this, NavigationSyndicActivity.class));
         finish();
     }
 

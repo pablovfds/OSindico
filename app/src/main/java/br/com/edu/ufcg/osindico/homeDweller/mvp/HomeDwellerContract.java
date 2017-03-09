@@ -1,35 +1,31 @@
 package br.com.edu.ufcg.osindico.homeDweller.mvp;
 
-import android.content.Context;
+import java.util.List;
 
-import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 
-/**
- * Created by Lucio on 22/02/2017.
- */
 
 public interface HomeDwellerContract {
 
     interface Model {
 
         interface HomeDwellerListener{
-            void onLogoutSuccess(String logoutResponse);
-            void onLogoutFail(String logoutResponse);
             void onServerError(String message);
+            void onLoadMessagesSuccess(List<MessageResponse> messages);
         }
-        void logoutUser(Context context, HomeDwellerContract.Model.HomeDwellerListener homeDwellerListener);
+
+        void getMessages(String token, HomeDwellerContract.Model.HomeDwellerListener homeDwellerListener);
     }
 
     interface Presenter {
-        void logout(Context context);
+        void loadMessages(String token);
         void setView(HomeDwellerContract.View view);
         //  void onDestroy();
     }
 
     interface View {
-        // void setServerError(String errorMessage);
-        void setSuccessLogout(String logoutResponse);
-        void setFailLogout(String logoutResponse);
+        void setMessagesList(List<MessageResponse> messages);
+        void setServerError(String errorMessage);
     }
 
 }

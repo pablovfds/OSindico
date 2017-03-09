@@ -6,32 +6,42 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/app_icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppThemeSyndic">
         <activity
             android:name=".loginUser.ui.LoginUserActivity"
-            android:theme="@style/NoActionBarTheme">
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QRCodeReader.ReaderActivity" />
+        <activity
+            android:name=".QRCodeReader.ReaderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
-        <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
-        <activity android:name=".homeSyndic.ui.SyndicHomeActivity" />
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
-        <activity android:name=".dwellerDetails.ui.DwellerDetailsActivity" />
-        <activity android:name=".syndicMessages.ui.SyndicMessageActivity" />
+
+        <activity
+            android:name=".navigationDweller.ui.NavigationDwellerActivity"
+            android:label="@string/title_activity_navigation_dweller"
+            android:theme="@style/NoActionBarTheme" />
+        <activity
+            android:name=".navigationSyndic.ui.NavigationSyndicActivity"
+            android:label="@string/title_activity_navigation_syndic"
+            android:theme="@style/NoActionBarThemeSyndic" />
 
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service android:name=".service.MyFirebaseInstanceIDService">

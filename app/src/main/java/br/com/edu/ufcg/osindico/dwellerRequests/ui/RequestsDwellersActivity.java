@@ -17,6 +17,7 @@ import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestDwellerAdapter;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsContract;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsPresenterImpl;
@@ -35,7 +36,7 @@ public class RequestsDwellersActivity extends AppCompatActivity implements
     private RequestDwellerAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests_residents);
 
@@ -103,6 +104,11 @@ public class RequestsDwellersActivity extends AppCompatActivity implements
         i.putExtra("resident", dwellerResponse);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    public void onClick(MessageResponse messageResponse) {
+
     }
 
     private  void updateAdapter(List<DwellerResponse> dwellerResponses){

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_new_dweller"
+        icon="@drawable/ic_new_dweller"
+        barColorWhenSelected="#FFC107"
+        badgeBackgroundColor="#FF0000"
+        title="Novo morador" />
+    <tab
+        id="@+id/tab_dwellers"
+        icon="@drawable/ic_dwellers"
+        barColorWhenSelected="#FFC107"
+        badgeBackgroundColor="#FF0000"
+        title="Moradores" />
+    <tab
+        id="@+id/tab_rules"
+        icon="@drawable/ic_rules"
+        barColorWhenSelected="#FFC107"
+        badgeBackgroundColor="#FF0000"
+        title="Regras" />
+</tabs>
