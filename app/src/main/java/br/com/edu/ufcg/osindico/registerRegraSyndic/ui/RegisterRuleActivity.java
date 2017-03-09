@@ -11,21 +11,18 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.roughike.bottombar.BottomBar;
-
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
-import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraContract;
-import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraPresenterImpl;
+import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRuleContract;
+import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRulePresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterRegraActivity extends BaseActivity implements RegisterRegraContract.View {
+public class RegisterRuleActivity extends BaseActivity implements RegisterRuleContract.View {
 
-    private RegisterRegraContract.Presenter presenter;
+    private RegisterRuleContract.Presenter presenter;
     private String token;
 
     @BindView(R.id.texto_nova_regra)
@@ -39,7 +36,7 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
 
         SyndicService service = new SyndicService();
 
-        presenter = new RegisterRegraPresenterImpl(this, service);
+        presenter = new RegisterRulePresenterImpl(this, service);
         presenter.setView(this);
 
         SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
@@ -63,7 +60,7 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
                     Toast.makeText(this, "Primeiro, escreva uma regra", Toast.LENGTH_LONG).show();
                 }else{
 
-                    presenter.validateRegra(novaRegra, token);
+                    presenter.validateRule(novaRegra, token);
                     Log.d("Regra antes:", editTextNovaRegra.getText().toString());
                     editTextNovaRegra.setText("");
                     return true;
@@ -76,24 +73,20 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
     }
 
     @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void setServerError(String errorMessage) {
-
-    }
-
-    @Override
     public void navigateToRulesCondoList() {
         startActivity(new Intent(this, CondominiumRulesActivity.class));
         finish();
+    }
+
+    @Override
+    public void setServerError(String serverError) {
+        Toast.makeText(this, serverError, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setRuleError() {
+        editTextNovaRegra.setError(getString(R.string.msg_register_rule_error));
+
     }
 
 }

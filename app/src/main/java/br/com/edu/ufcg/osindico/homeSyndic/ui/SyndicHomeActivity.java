@@ -20,8 +20,6 @@ import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
-import br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity;
-import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
 
 public class SyndicHomeActivity extends BaseActivity implements HomeSyndicContract.View {
 

@@ -20,22 +20,22 @@ import retrofit2.Response;
  * Created by Lucio on 04/03/2017.
  */
 
-public class RegisterRegraModelImpl implements RegisterRegraContract.Model {
+public class RegisterRuleModelImpl implements RegisterRuleContract.Model {
 
     private SyndicService mSyndicService;
 
-    public RegisterRegraModelImpl(SyndicService mSyndicService){
+    public RegisterRuleModelImpl(SyndicService mSyndicService){
         this.mSyndicService = mSyndicService;
 
     }
 
        @Override
-    public void registerRegraSyndic(String regra, String token, final OnRegisterRegraSyndicListener listener) {
+    public void registerRuleSyndic(String regra, String token, final OnRegisterRegraSyndicListener listener) {
 
         boolean error = false;
 
         if (!FormValidate.isValidName(regra)){
-            listener.onRegraError();
+            listener.onRuleError();
             error = true;
             Log.d("deu erro:", "ERROOOOOOOOOOOU");
         }

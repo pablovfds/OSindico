@@ -22,7 +22,7 @@ import br.com.edu.ufcg.osindico.condominium_rules.mvp.CondominiumRulesContract;
 import br.com.edu.ufcg.osindico.condominium_rules.mvp.CondominiumRulesPresenterImpl;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 import br.com.edu.ufcg.osindico.data.services.RulesService;
-import br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity;
+import br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRuleActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -108,7 +108,7 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_next){
-            startActivity(new Intent(this, RegisterRegraActivity.class));
+            startActivity(new Intent(this, RegisterRuleActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

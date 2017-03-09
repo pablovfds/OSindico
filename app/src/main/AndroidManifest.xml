@@ -30,7 +30,7 @@
         <activity android:name=".homeSyndic.ui.SyndicHomeActivity"/>
         <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
         <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
-        <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity"
+        <activity android:name=".registerRegraSyndic.ui.RegisterRuleActivity"
             android:theme="@style/AppTheme.TransNav">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
