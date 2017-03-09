@@ -20,10 +20,11 @@ import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.View{
-
 
     private HomeSyndicPresenterImpl presenter;
 
@@ -45,38 +46,48 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_syndic_home, container, false);
         ButterKnife.bind(this, view);
-        setBottomBar(view);
+        //setBottomBar(view);
         return view;
     }
 
-    public void setBottomBar(View view){
-        BottomBar bottomBar = (BottomBar) view.findViewById(R.id.bottomBar);
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                presenter.onItemClicked(tabId);
-            }
-        });
+//    public void setBottomBar(View view){
+//        BottomBar bottomBar = (BottomBar) view.findViewById(R.id.bottomBar);
+//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+//            @Override
+//            public void onTabSelected(@IdRes int tabId) {
+//                presenter.onItemClicked(tabId);
+//            }
+//        });
+//    }
+
+    @OnClick(R.id.btn_dweller_list)
+    public void openDwellerList(){
+        navigateToDwellerList();
+    }
+
+    @OnClick(R.id.btn_dweller_requests)
+    public void openDwellerRequests(){
+        navigateToDwellerRequests();
+    }
+
+    @OnClick(R.id.btn_condo_rules)
+    public void openCondoRules(){
+        navigateToCondoRules();
     }
 
     @Override
     public void navigateToDwellerList() {
         Toast.makeText(getActivity(), "Novo morador", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getActivity(), RequestsDwellersActivity.class));
     }
 
     @Override
     public void navigateToDwellerRequests() {
-        Toast.makeText(getActivity(), "Lista de moradores", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Lista de moradores", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), RequestsDwellersActivity.class));
     }
 
     @Override
     public void navigateToCondoRules() {
-        Toast.makeText(getActivity(), "Regras do condominio", Toast.LENGTH_LONG).show();
-    }
-
-    private void setFragment(Fragment fragment){
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame_syndic, fragment).commit();
+        Toast.makeText(getActivity(), "Regras do condominio", Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,11 +1,15 @@
 package br.com.edu.ufcg.osindico.syndicMessages.ui;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -19,28 +23,34 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SyndicMessageActivity extends AppCompatActivity implements SyndicMessageContract.View{
+public class SyndicMessageFragment extends Fragment implements SyndicMessageContract.View{
 
-    @BindView(R.id.editTextMessage) EditText editTextMessage;
+    @BindView(R.id.editTextMessage)
+    EditText editTextMessage;
 
-    @BindView(R.id.progressBar2) ProgressBar progressBar;
+    @BindView(R.id.progressBar2)
+    ProgressBar progressBar;
 
     private SyndicMessageContract.Presenter presenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_syndic_message);
-
-        ButterKnife.bind(this);
+    public SyndicMessageFragment() {
+        // Required empty public constructor
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         presenter = new SyndicMessagePresenterImpl();
         presenter.setView(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_syndic_message, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @OnClick(R.id.btnSendMessage)
@@ -73,19 +83,19 @@ public class SyndicMessageActivity extends AppCompatActivity implements SyndicMe
 
     @Override
     public void setServerFailed(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void navigateToHomeSyndic() {
-        Toast.makeText(this, getString(R.string.msg_success_send_message), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, NavigationSyndicActivity.class));
-        finish();
+        Toast.makeText(getActivity(), getString(R.string.msg_success_send_message), Toast.LENGTH_SHORT).show();
+        editTextMessage.setText("");
     }
 
     private String getToken(){
-        SharedPreferences sharedpreferences = getSharedPreferences(
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(
                 getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         return sharedpreferences.getString(getString(R.string.user_token), "");
     }
+
 }

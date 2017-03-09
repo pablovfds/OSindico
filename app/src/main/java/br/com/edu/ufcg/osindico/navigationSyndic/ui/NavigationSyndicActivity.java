@@ -22,6 +22,7 @@ import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
+import br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -57,6 +58,8 @@ public class NavigationSyndicActivity extends BaseActivity
 
         this.presenter = new NavigationSyndicPresenterImpl(sharedPreferences);
         this.presenter.setView(this);
+
+        setFragment(new SyndicHomeFragment());
     }
 
     @Override
@@ -95,6 +98,7 @@ public class NavigationSyndicActivity extends BaseActivity
     @Override
     public void navigateToSyndicMessages() {
         Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
+        setFragment(new SyndicMessageFragment());
     }
 
     @Override
