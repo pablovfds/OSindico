@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +15,7 @@ import java.util.List;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestsResidentsAdapter;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.requests_residents.mvp.RequestsResidentsContract;
@@ -24,7 +24,7 @@ import br.com.edu.ufcg.osindico.residentDetails.ui.ResidentDetailsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RequestsResidentsActivity extends AppCompatActivity implements
+public class RequestsResidentsActivity extends BaseActivity implements
         RequestsResidentsContract.View, ItemClickListener {
 
     @BindView(R.id.card_recycler_view) RecyclerView recyclerView;
@@ -35,7 +35,7 @@ public class RequestsResidentsActivity extends AppCompatActivity implements
     private RequestsResidentsAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests_residents);
 

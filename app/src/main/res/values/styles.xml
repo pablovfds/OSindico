@@ -1,18 +1,47 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme for dweller -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/primaryColorDweller</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColorDweller</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/primaryColorDweller</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColorDweller</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+    </style>
+
+    <!-- Base application theme for syndic -->
+    <style name="AppThemeSyndic" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimary">@color/colorPrimarySyndic</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkSyndic</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+    <style name="NoActionBarThemeSyndic" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimarySyndic</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkSyndic</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.TransNav" parent="AppTheme" />
 
 </resources>

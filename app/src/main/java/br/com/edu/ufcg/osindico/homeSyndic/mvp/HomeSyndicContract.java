@@ -2,9 +2,6 @@ package br.com.edu.ufcg.osindico.homeSyndic.mvp;
 
 import android.content.Context;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
-import br.com.edu.ufcg.osindico.loginUser.mvp.LoginUserContract;
-
 /**
  * Created by Lucio on 22/02/2017.
  */

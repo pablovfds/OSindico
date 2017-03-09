@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_nova_regra"
+        icon="@drawable/ic_rules"
+        barColorWhenSelected="#FFC107"
+        badgeBackgroundColor="#FF0000"
+        title="Cadastrar nova regra" />
+
+</tabs>

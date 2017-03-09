@@ -63,4 +63,7 @@
         <item>"Síndico"</item>
     </string-array>
 
+    <string name="prefs_theme_key">theme</string>
+    <string name="label_new_rule">Cadastrar</string>
+
 </resources>

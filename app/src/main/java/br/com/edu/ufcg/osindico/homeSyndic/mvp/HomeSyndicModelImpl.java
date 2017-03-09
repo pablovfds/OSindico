@@ -5,10 +5,6 @@ import android.content.SharedPreferences;
 
 import br.com.edu.ufcg.osindico.R;
 
-/**
- * Created by Lucio on 22/02/2017.
- */
-
 public class HomeSyndicModelImpl implements HomeSyndicContract.Model {
 
     @Override

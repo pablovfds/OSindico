@@ -14,17 +14,20 @@ public class DwellerDetails {
     private Contact contact;
     @SerializedName("condominiumId")
     private Long condominiumId;
+    @SerializedName("fcmToken")
+    private String fcmToken;
 
     public DwellerDetails() {
 
     }
 
-    public DwellerDetails(String name, String email, String password, Contact contact, Long condominiumId) {
+    public DwellerDetails(String name, String email, String password, Contact contact, Long condominiumId, String fcmToken) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.contact = contact;
         this.condominiumId = condominiumId;
+        this.fcmToken = fcmToken;
     }
 
     public String getName() {
@@ -65,5 +68,13 @@ public class DwellerDetails {
 
     public void setCondominiumId(Long condominiumId) {
         this.condominiumId = condominiumId;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 }

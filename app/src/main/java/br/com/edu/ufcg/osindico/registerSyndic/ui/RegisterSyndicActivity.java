@@ -2,7 +2,6 @@ package br.com.edu.ufcg.osindico.registerSyndic.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.registerCondo.ui.RegisterCondoActivity;
 import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicContract;
@@ -19,7 +19,7 @@ import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterSyndicActivity extends AppCompatActivity implements RegisterSyndicContract.View {
+public class RegisterSyndicActivity extends BaseActivity implements RegisterSyndicContract.View {
 
     @BindView(R.id.editTextSyndicName) EditText editTextName;
 
@@ -36,7 +36,7 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     RegisterSyndicContract.Presenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_syndic);
 

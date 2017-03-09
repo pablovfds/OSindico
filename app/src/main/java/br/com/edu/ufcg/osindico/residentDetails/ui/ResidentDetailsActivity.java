@@ -3,14 +3,12 @@ package br.com.edu.ufcg.osindico.residentDetails.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
-import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.requests_residents.ui.RequestsResidentsActivity;
@@ -20,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ResidentDetailsActivity extends AppCompatActivity implements ResidentDetailsContract.View{
+public class ResidentDetailsActivity extends BaseActivity implements ResidentDetailsContract.View{
 
     @BindView(R.id.tv_resident_name) TextView tv_resident_name;
     @BindView(R.id.tv_resident_email) TextView tv_resident_email;
@@ -31,7 +29,7 @@ public class ResidentDetailsActivity extends AppCompatActivity implements Reside
     private String token;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resident_details);
 

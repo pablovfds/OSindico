@@ -15,12 +15,15 @@ public class SyndicDetails {
 
     @SerializedName("contact")
     private Contact contact;
+    @SerializedName("fcmToken")
+    private String fcmToken;
 
-    public SyndicDetails(String name, String email, String password, Contact contact) {
+    public SyndicDetails(String name, String email, String password, Contact contact,String fcmToken) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.contact = contact;
+        this.fcmToken = fcmToken;
     }
 
     public String getName() {
@@ -53,5 +56,13 @@ public class SyndicDetails {
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 }

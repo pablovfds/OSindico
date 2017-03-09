@@ -1,7 +1,9 @@
 package br.com.edu.ufcg.osindico.residentDetails.mvp;
 
 import com.google.gson.Gson;
+
 import java.io.IOException;
+
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;

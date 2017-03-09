@@ -2,101 +2,114 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity">
+    tools:context="br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_cadastrar"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        android:layout_marginBottom="31dp"
-        android:layout_gravity="center|bottom"
-        android:text="Clique aqui para cadastrar-se!"
+
+    <RelativeLayout
+        android:id="@+id/register"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:orientation="vertical"
-        android:gravity="center_vertical|center_horizontal"
-        android:background="@drawable/transparent_bg"
-        android:paddingTop="-50dp"
-        android:layout_marginTop="205dp"
-        android:layout_marginBottom="50dp"
-        android:layout_above="@+id/btn_cadastrar">
+        android:layout_height="60dp">
 
-    </FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/dark_fade"
+            android:id="@+id/imageV" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_cadastrar"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="Clique aqui para cadastrar-se!"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/login"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/linearLayout"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:layout_above="@+id/btn_cadastrar"
-        android:weightSum="1">
+        android:layout_centerVertical="true"
+        android:paddingBottom="120dp">
 
-
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:textColorHint="#ffffff"
-            android:textColor="#ffffff"
-            android:id="@+id/editTextEmail"
-            android:hint="E-mail"
-            android:layout_marginTop="120dp"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:textColorHint="#ffffff"
-            android:textColor="#ffffff"
-            android:id="@+id/editTextSenha"
-            android:hint="Senha"
+            android:background="@drawable/bg"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="-100dp"
+            android:layout_below="@+id/imageView3"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
+            android:id="@+id/linearLayout"
+            tools:ignore="NotSibling">
 
-            />
 
-        <Button
-            android:text="Entrar"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:background="#2179cb"
-            android:id="@+id/btnLogin"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:theme="@style/Theme.App.Base"
+                android:layout_marginTop="70dp"
+                android:textSize="18sp"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:id="@+id/editTextEmail"
+                android:hint="E-mail"/>
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:theme="@style/Theme.App.Base"
+                android:textSize="18sp"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:id="@+id/editTextSenha"
+                android:hint="Senha"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"/>
 
-    <ImageView
-        android:layout_width="220dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/app_logo"
-        android:id="@+id/imageView3"
-        android:layout_marginTop="-10dp"
-        android:adjustViewBounds="false"
-        android:layout_alignTop="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+            <Button
+                android:text="Entrar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#3b4c56"
+                android:id="@+id/btnLogin"
+                android:textSize="16sp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:background="@drawable/ic_logo"
+            android:id="@+id/imageView3"
+            tools:ignore="NotSibling"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout" />
+
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>
