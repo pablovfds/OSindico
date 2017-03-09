@@ -1,11 +1,6 @@
 package br.com.edu.ufcg.osindico.registerRegraSyndic.mvp;
 
-
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-
-/**
- * Created by Lucio on 04/03/2017.
- */
 
 public class RegisterRegraPresenterImpl implements  RegisterRegraContract.Presenter, RegisterRegraContract.Model.OnRegisterRegraSyndicListener {
 
@@ -16,9 +11,6 @@ public class RegisterRegraPresenterImpl implements  RegisterRegraContract.Presen
         this.model = new RegisterRegraModelImpl(mSyndicService);
         this.view = view;
     }
-
-
-
 
     @Override
     public void onRegraError() {
@@ -32,7 +24,9 @@ public class RegisterRegraPresenterImpl implements  RegisterRegraContract.Presen
 
     @Override
     public void onSuccess() {
-
+        if(view != null){
+            this.view.navigateToRulesCondoList();
+        }
     }
 
     @Override

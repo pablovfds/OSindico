@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.registerRegraSyndic.mvp;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.lang.annotation.Annotation;
 import br.com.edu.ufcg.osindico.Utils.FormValidate;
 import br.com.edu.ufcg.osindico.data.models.RuleDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.CondoServerResponse;
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerServerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import okhttp3.ResponseBody;

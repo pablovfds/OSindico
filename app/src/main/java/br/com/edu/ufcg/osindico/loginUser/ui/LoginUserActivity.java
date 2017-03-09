@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -122,7 +121,7 @@ public class LoginUserActivity extends BaseActivity implements LoginUserContract
             UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
-            Intent syndicIntent = new Intent(this, CondominiumRulesActivity.class);
+            Intent syndicIntent = new Intent(this, SyndicHomeActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             UpdateTheme.setTheme(getApplicationContext(), 1);
             startActivity(syndicIntent);

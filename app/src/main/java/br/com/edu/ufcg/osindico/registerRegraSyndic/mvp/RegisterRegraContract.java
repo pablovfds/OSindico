@@ -1,10 +1,5 @@
 package br.com.edu.ufcg.osindico.registerRegraSyndic.mvp;
 
-
-/**
- * Created by Lucio on 04/03/2017.
- */
-
 public interface RegisterRegraContract {
 
     interface Model {
@@ -38,7 +33,7 @@ public interface RegisterRegraContract {
 
         void setServerError(String errorMessage);
 
-        void navigateToRegisterCondo(Long syndicId);
+        void navigateToRulesCondoList();
 
 
     }

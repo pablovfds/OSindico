@@ -23,13 +23,13 @@
             android:theme="@style/NoActionBarTheme"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".registerDweller.ui.RegisterDwellerActivity"></activity>
-        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"></activity>
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity"></activity>
+        <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
+        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
         <activity android:name=".homeDweller.ui.DwellerHomeActivity" />
         <activity android:name=".homeSyndic.ui.SyndicHomeActivity"/>
-        <activity android:name=".requests_residents.ui.RequestsResidentsActivity"></activity>
-        <activity android:name=".residentDetails.ui.ResidentDetailsActivity"></activity>
+        <activity android:name=".requests_residents.ui.RequestsResidentsActivity" />
+        <activity android:name=".residentDetails.ui.ResidentDetailsActivity" />
         <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity"
             android:theme="@style/AppTheme.TransNav">
             <intent-filter>
@@ -37,7 +37,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>></activity>
-
+        <activity android:name=".condominium_rules.ui.CondominiumRulesActivity"/>
 
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>

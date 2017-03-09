@@ -8,18 +8,26 @@ import com.google.gson.annotations.SerializedName;
 
 public class RuleResponse {
 
-    @SerializedName("message")
-    private String message;
+    private Long id;
+    @SerializedName("ruleDetails")
+    private String rule;
 
     public RuleResponse() {
-
     }
 
-    public String getMessage() {
-        return message;
+    public Long getId() {
+        return id;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
     }
 }

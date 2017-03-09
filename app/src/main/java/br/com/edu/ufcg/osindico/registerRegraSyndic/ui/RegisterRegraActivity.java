@@ -1,9 +1,9 @@
 package br.com.edu.ufcg.osindico.registerRegraSyndic.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,27 +12,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.BottomBarTab;
-import com.roughike.bottombar.OnTabSelectListener;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
-
+import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraContract;
 import br.com.edu.ufcg.osindico.registerRegraSyndic.mvp.RegisterRegraPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-/**
- * Created by Lucio on 04/03/2017.
- */
-
 public class RegisterRegraActivity extends BaseActivity implements RegisterRegraContract.View {
 
     private RegisterRegraContract.Presenter presenter;
-    private BottomBar bottomBar;
     private String token;
 
     @BindView(R.id.texto_nova_regra)
@@ -51,12 +44,6 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
 
         SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
         token = sharedpreferences.getString(getString(R.string.user_token), "");
-
-
-//        bottomBar = (BottomBar) findViewById(R.id.bottomBarRegrasSyndic);
-//
-//        bottomBar.setOnTabSelectListener(this);
-
     }
 
     @Override
@@ -72,7 +59,7 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
             case R.id.button_cadastrar_regra:
 
                 String novaRegra = editTextNovaRegra.getText().toString();
-                if(novaRegra.isEmpty()){
+                if(novaRegra.trim().isEmpty()){
                     Toast.makeText(this, "Primeiro, escreva uma regra", Toast.LENGTH_LONG).show();
                 }else{
 
@@ -104,7 +91,9 @@ public class RegisterRegraActivity extends BaseActivity implements RegisterRegra
     }
 
     @Override
-    public void navigateToRegisterCondo(Long syndicId) {
-
+    public void navigateToRulesCondoList() {
+        startActivity(new Intent(this, CondominiumRulesActivity.class));
+        finish();
     }
+
 }

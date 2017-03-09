@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.residentDetails.mvp;
 
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.ResidentResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
 public class ResidentDetailsPresenterImpl implements ResidentDetailsContract.Presenter,

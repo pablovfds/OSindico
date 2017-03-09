@@ -1,10 +1,6 @@
 package br.com.edu.ufcg.osindico.homeSyndic.mvp;
 
 import android.content.Context;
-import android.util.Log;
-
-import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeActivity;
 
 
 public class HomeSyndicPresenterImpl implements HomeSyndicContract.Presenter, HomeSyndicContract.Model.HomeSyndicListener {

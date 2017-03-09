@@ -2,8 +2,6 @@ package br.com.edu.ufcg.osindico.homeDweller.mvp;
 
 import android.content.Context;
 
-import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
-
 /**
  * Created by Lucio on 22/02/2017.
  */
