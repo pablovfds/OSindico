@@ -22,6 +22,10 @@ public interface SyndicApi {
     @POST("/api/register/condominium")
     Call<MessageResponse> registerCondo(@Body CondoDetails request);
 
+    @POST("/api/syndicate/rules")
+    Call<RuleResponse> registerRegra(@Header("Authorization") String authorization,
+                                     @Body RuleDetails ruleDetails);
+
     @GET("/api/syndicate/requests")
     Call<List<DwellerResponse>> loadRequestsResidents(@Header("Authorization") String authorization);
 

@@ -80,6 +80,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="prefs_theme_key">theme</string>
+    <string name="label_new_rule">Cadastrar</string>
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="dummy_button">Dummy Button</string>
