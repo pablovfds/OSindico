@@ -1,31 +1,43 @@
 package br.com.edu.ufcg.osindico.QRCodeReader;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.Utils.FullscreenModeManager;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.registerDweller.ui.RegisterDwellerActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ReaderActivity extends AppCompatActivity {
+public class ReaderActivity extends BaseActivity {
 
     private final String qrCodePrompt = "Posicione o QRCode para leitura.";
     private final String qrCodeFailMessage = "Não foi possível ler QRCode.";
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leitor);
+        int id = R.layout.activity_leitor;
+        setContentView(id);
         ButterKnife.bind(this);
+
+        FullscreenModeManager fullscreenModeManager = new FullscreenModeManager(this);
+        fullscreenModeManager.setFullscreenMode(R.id.activity_leitor);
     }
 
     @OnClick(R.id.ler_qrcode_btn)

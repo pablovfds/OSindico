@@ -5,8 +5,8 @@
     <string name="user_name">name</string>
     <string name="user_email">email</string>
     <string name="user_type">tipo</string>
-    <string name="msg_name_error">Insira um nome valido.</string>
-    <string name="msg_phone_error">Insira um telefone valido.</string>
+    <string name="msg_name_error">Nome inválido. Tente um nome com pelo menos 6 caracteres.</string>
+    <string name="msg_phone_error">Este formato de número de telefone não é válido.</string>
     <string name="msg_street_error">Insira uma rua valida.</string>
     <string name="msg_condo_number_error">Insira um número valido.</string>
     <string name="msg_neighborhood_error">Insira um bairro valido</string>
@@ -17,15 +17,16 @@
     <string name="msg_server_error">Erro na requisição.</string>
     <string name="label_register">Cadastrar</string>
     <string name="label_next">Proximo</string>
-    <string name="msg_syndic_name_error">Insira um nome valido.</string>
-    <string name="msg_syndic_email_error">Insira um email valido</string>
-    <string name="msg_syndic_password_error">Insira uma senha valida</string>
-    <string name="msg_syndic_confirm_password_error">A senha e a confirmação de senha são diferentes</string>
-    <string name="msg_syndic_phone_error">Insira um telefone valido</string>
+    <string name="msg_syndic_email_error">Email inválido. Use apenas letras (a-z), números e pontos.</string>
+    <string name="msg_syndic_password_error">Senha inválida. Tente uma senha com pelo menos 8 caracteres.</string>
+    <string name="msg_syndic_confirm_password_error">Essas senhas não coincidem. Tentar novamente?</string>
     <string name="msg_address_error">Insira um endereço valido.</string>
     <string name="msg_registration_success">Cadastrado com sucesso</string>
     <string name="msg_success_request">Morador atualizado</string>
     <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
+    <string name="msg_success_send_message">Mensagem enviada com sucesso.</string>
+    <string name="msg_error_message">Mensagem inválida. O tamanho minimo de uma mensagem é de 10 caracteres.</string>
+    <string name="msg_error_message_null">Campo Obrigátorio.</string>
 
     <string-array name="states">
         <item>"*Estado"</item>
@@ -62,5 +63,32 @@
         <item>"Morador"</item>
         <item>"Síndico"</item>
     </string-array>
+    <string name="title_activity_navigation_dweller">NavigationDwellerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_home">Página Inicial</string>
+    <string name="nav_messages">Mensagens</string>
+    <string name="nav_calendar">Calendário</string>
+    <string name="nav_my_condo">Meu condomínio</string>
+    <string name="nav_settings">Configurações</string>
+    <string name="nav_about">Sobre</string>
+    <string name="nav_logout">Sair</string>
+    <string name="title_activity_navigation_syndic">NavigationSyndicActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="prefs_theme_key">theme</string>
+    <string name="label_new_rule">Cadastrar</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_rules">Regras do condominio</string>
+    <string name="nav_dweller_list">Lista de moradores</string>
+    <string name="nav_dweller_requests">Novos moradores</string>
 
 </resources>
