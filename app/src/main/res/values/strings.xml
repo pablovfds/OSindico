@@ -97,5 +97,6 @@
     <string name="label_problem_description">Descreva seu problema ...</string>
     <string name="label_send">Enviar</string>
     <string name="label_title_request_service">Solicitar serviço</string>
+    <string name="label_title_request">Titulo da solicitação</string>
 
 </resources>

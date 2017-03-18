@@ -10,16 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.edu.ufcg.osindico.request_service.ui.RequestServiceActivity">
 
-    <TextView
-        android:text="@string/label_request_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
-        android:id="@+id/textView3"
-        android:textSize="15sp" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,4 +51,25 @@
             android:id="@+id/other_service"
             android:text="@string/label_other_service" />
     </RadioGroup>
+
+    <TextView
+        android:text="@string/label_request_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="109dp"
+        android:id="@+id/textView3"
+        android:textSize="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/editTextProblemDescription" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="44dp"
+        android:id="@+id/editText"
+        android:hint="@string/label_title_request" />
 </RelativeLayout>
