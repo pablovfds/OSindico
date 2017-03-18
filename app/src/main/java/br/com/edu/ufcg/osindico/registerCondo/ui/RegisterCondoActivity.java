@@ -73,7 +73,7 @@ public class RegisterCondoActivity extends BaseActivity implements
 
         ZipCodeService zipCodeService = new ZipCodeService();
 
-        this.presenter = new RegisterCondoPresenterImpl(service, zipCodeService, this);
+        this.presenter = new RegisterCondoPresenterImpl(service, zipCodeService);
 
         editTextZipCode.addTextChangedListener(new ZipCodeListener(this.presenter));
 
@@ -82,7 +82,12 @@ public class RegisterCondoActivity extends BaseActivity implements
                         R.array.states,
                         android.R.layout.simple_spinner_item);
         spStates.setAdapter(adapter);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        this.presenter.setView(this);
     }
 
     @Override
@@ -115,9 +120,8 @@ public class RegisterCondoActivity extends BaseActivity implements
                     editTextNumber.getText().toString().isEmpty()) {
                 number = 0;
             } else {
-                Integer.parseInt(editTextNumber.getText().toString());
+                number = Integer.parseInt(editTextNumber.getText().toString());
             }
-            Log.d("numver", "" + number);
             String neighbor = editTextNeighbor.getText().toString();
             String complement = editTextComplement.getText().toString();
             String zipCode = editTextZipCode.getText().toString();
@@ -175,11 +179,6 @@ public class RegisterCondoActivity extends BaseActivity implements
     @Override
     public void setNeighborError() {
         editTextNeighbor.setError(getString(R.string.msg_neighborhood_error));
-    }
-
-    @Override
-    public void setComplementError() {
-
     }
 
     @Override

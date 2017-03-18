@@ -101,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingTop="15dp"
+                    android:visibility="invisible"
                     android:text="Esqueci o CEP"
                     android:gravity="center"
                     android:textSize="18sp" />

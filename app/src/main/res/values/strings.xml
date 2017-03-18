@@ -90,5 +90,12 @@
     <string name="nav_rules">Regras do condominio</string>
     <string name="nav_dweller_list">Lista de moradores</string>
     <string name="nav_dweller_requests">Novos moradores</string>
+    <string name="label_request_service">Que tipo de service você gostaria de requisitar?</string>
+    <string name="label_hydraulic_service">Hidráulico</string>
+    <string name="label_electric_service">Elétrico</string>
+    <string name="label_other_service">Outro</string>
+    <string name="label_problem_description">Descreva seu problema ...</string>
+    <string name="label_send">Enviar</string>
+    <string name="label_title_request_service">Solicitar serviço</string>
 
 </resources>

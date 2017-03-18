@@ -12,14 +12,14 @@
         android:theme="@style/AppThemeSyndic">
         <activity
             android:name=".loginUser.ui.LoginUserActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".QRCodeReader.ReaderActivity"
@@ -29,9 +29,9 @@
         <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
         <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
-        <activity android:name=".condominium_rules.ui.CondominiumRulesActivity"/>
-        <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity"/>
-
+        <activity android:name=".condominium_rules.ui.CondominiumRulesActivity" />
+        <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity" />
+        <activity android:name=".dwellerDetails.ui.DwellerDetailsActivity" />
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"
@@ -52,6 +52,13 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".request_service.ui.RequestServiceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
