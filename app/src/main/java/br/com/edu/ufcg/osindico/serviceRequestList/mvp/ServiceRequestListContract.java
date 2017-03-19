@@ -9,6 +9,9 @@ public interface ServiceRequestListContract {
 
     interface Model {
         interface OnServiceRequestListListener {
+
+            void onTokenError();
+
             void onServerError(String message);
 
             void onSuccess(List<Object> servicesList);
