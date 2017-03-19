@@ -4,10 +4,13 @@ package br.com.edu.ufcg.osindico.homeSyndic.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.BottomNavigationView;
+import android.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
 
     private HomeSyndicPresenterImpl presenter;
 
+
     public SyndicHomeFragment() {
         // Required empty public constructor
     }
@@ -39,6 +43,8 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
         SyndicService service = new SyndicService();
         presenter = new HomeSyndicPresenterImpl(service);
         presenter.setView(this);
+
+
     }
 
     @Override
@@ -48,18 +54,23 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
         View view = inflater.inflate(R.layout.fragment_syndic_home, container, false);
         ButterKnife.bind(this, view);
         //setBottomBar(view);
+
+
+
+
+
         return view;
     }
 
-//    public void setBottomBar(View view){
-//        BottomBar bottomBar = (BottomBar) view.findViewById(R.id.bottomBar);
-//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelected(@IdRes int tabId) {
-//                presenter.onItemClicked(tabId);
-//            }
-//        });
-//    }
+    public void setBottomBar(View view){
+        BottomBar bottomBar = (BottomBar) view.findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                presenter.onItemClicked(tabId);
+            }
+        });
+    }
 
     @OnClick(R.id.btn_dweller_list)
     public void openDwellerList(){

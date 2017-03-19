@@ -89,7 +89,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @Override
     public void navigateToMessageDweller() {
         Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
-        setFragment(new DwellerMessagesFragment());
+        //setFragment(new DwellerMessagesFragment());
     }
 
     @Override

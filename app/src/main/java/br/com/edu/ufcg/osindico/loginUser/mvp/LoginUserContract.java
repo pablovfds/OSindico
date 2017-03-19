@@ -3,6 +3,7 @@ package br.com.edu.ufcg.osindico.loginUser.mvp;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.LoginResponse;
 
 public interface LoginUserContract {
+
     interface Model {
 
         interface OnLoginUserListener{

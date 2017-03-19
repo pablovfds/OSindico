@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="24dp"
         android:id="@+id/editTextProblemDescription"
         android:textAlignment="textStart"
         android:lines="7"
@@ -25,6 +25,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="15dp"
+        android:padding="16dp"
+        android:gravity="start"
         android:hint="@string/label_problem_description" />
 
     <RadioGroup
@@ -32,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:id="@+id/radioGroup"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true">
         <RadioButton
@@ -52,24 +54,34 @@
             android:text="@string/label_other_service" />
     </RadioGroup>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_request_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#000000"
+        android:layout_margin="@dimen/activity_vertical_margin">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:maxLines="1"
+            android:id="@+id/editText"
+            android:hint="@string/label_title_request"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editTextProblemDescription"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
     <TextView
         android:text="@string/label_request_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="24dp"
         android:id="@+id/textView3"
         android:textSize="15sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/editTextProblemDescription" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_above="@+id/radioGroup"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
-        android:id="@+id/editText"
-        android:hint="@string/label_title_request" />
+        android:layout_below="@+id/input_request_title"
+        android:layout_alignStart="@+id/radioGroup" />
 </RelativeLayout>
