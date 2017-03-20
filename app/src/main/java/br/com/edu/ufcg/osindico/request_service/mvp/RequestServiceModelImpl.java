@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.request_service.mvp;
 
+import br.com.edu.ufcg.osindico.base.BaseListener;
 import br.com.edu.ufcg.osindico.data.models.ServiceRequest;
 import br.com.edu.ufcg.osindico.data.services.DwellerService;
 
@@ -12,10 +13,10 @@ public class RequestServiceModelImpl implements RequestServiceContract.Model {
     }
 
     @Override
-    public void sendRequest(String token, ServiceRequest request, OnRequestServiceListener listener) {
+    public void sendRequest(String token, ServiceRequest request, BaseListener listener) {
 
     }
-
+/*
     @Override
     public boolean validateData(String token, String title, String type, String description, OnRequestServiceListener listener) {
         boolean error = false;
@@ -36,5 +37,5 @@ public class RequestServiceModelImpl implements RequestServiceContract.Model {
 
         return error;
     }
-
+*/
 }

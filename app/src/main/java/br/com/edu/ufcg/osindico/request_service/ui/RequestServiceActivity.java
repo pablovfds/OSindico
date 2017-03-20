@@ -11,10 +11,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.request_service.mvp.RequestServiceContract;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RequestServiceActivity extends AppCompatActivity {
+public class RequestServiceActivity extends AppCompatActivity implements RequestServiceContract.View {
 
     @BindView(R.id.radioGroup) RadioGroup radioGroupTypeProblem;
 
@@ -79,5 +80,30 @@ public class RequestServiceActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_window_close);
         }
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showTokenError() {
+
+    }
+
+    @Override
+    public void showTitleError() {
+
+    }
+
+    @Override
+    public void showDescriptionError() {
+
     }
 }
