@@ -1,5 +1,7 @@
 package br.com.edu.ufcg.osindico.request_service.mvp;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,31 +35,55 @@ public class RequestServicePresenterTest {
     }
 
     @Test
-    public void test() {
+    public void sendServiceRequestWithValidData() {
         presenter.validateService(TOKEN, TITLE, DESCRIPTION);
 
         verify(model).sendRequest(eq(TOKEN), any(ServiceRequest.class), (BaseListener) eq(presenter));
     }
 
     @Test
-    public void test2() {
+    public void sendServiceRequestWithTokenError() {
         presenter.validateService("", TITLE, DESCRIPTION);
 
         verify(view).showTokenError();
     }
 
     @Test
-    public void test3() {
+    public void sendServiceRequestWithTitleError() {
         presenter.validateService(TOKEN, "", DESCRIPTION);
 
         verify(view).showTitleError();
     }
 
     @Test
-    public void test4() {
+    public void sendServiceRequestWithDescriptionError() {
         presenter.validateService(TOKEN, TITLE, "");
 
         verify(view).showDescriptionError();
+    }
+
+    @Test
+    public void callOnSuccessView() {
+        ((BaseListener) presenter).onSuccess();
+
+        verify(view).setSuccess();
+    }
+
+    @Test
+    public void callOnServerErrorView() {
+        String errorMessage = "Error message";
+        ((BaseListener) presenter).onServerError(errorMessage);
+
+        verify(view).setServerError(eq(errorMessage));
+    }
+
+    @Test
+    public void changeView() {
+        RequestServiceContract.View newView = mock(RequestServiceActivity.class);
+
+        presenter.setView(newView);
+
+        Assert.assertEquals(presenter.getView(), newView);
     }
 
 }

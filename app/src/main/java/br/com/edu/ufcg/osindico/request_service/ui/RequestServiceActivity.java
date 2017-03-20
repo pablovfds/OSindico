@@ -93,6 +93,16 @@ public class RequestServiceActivity extends AppCompatActivity implements Request
     }
 
     @Override
+    public void setServerError(String message) {
+
+    }
+
+    @Override
+    public void setSuccess() {
+
+    }
+
+    @Override
     public void showTokenError() {
 
     }

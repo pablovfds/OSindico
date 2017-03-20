@@ -10,11 +10,11 @@ public interface RequestServiceContract {
 
         void sendRequest(String token, ServiceRequest request, BaseListener listener);
 
-        //boolean validateData(String token,String title, String type, String description,
-        //                    OnRequestServiceListener listener);
     }
 
     interface View extends BaseView {
+        void setSuccess();
+        void setServerError(String message);
         void showTokenError();
         void showTitleError();
         void showDescriptionError();
@@ -24,5 +24,7 @@ public interface RequestServiceContract {
         void validateService(String token, String title, String description);
 
         void setModel(Model model);
+
+        View getView();
     }
 }

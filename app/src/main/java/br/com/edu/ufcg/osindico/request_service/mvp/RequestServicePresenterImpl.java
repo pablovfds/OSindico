@@ -42,12 +42,33 @@ public class RequestServicePresenterImpl implements RequestServiceContract.Prese
 
     @Override
     public void setView(BaseView view) {
+        if (view != null) {
+            this.view = (RequestServiceContract.View) view;
+        }
+    }
 
+    @Override
+    public RequestServiceContract.View getView() {
+        return view;
     }
 
     @Override
     public void onDestroy() {
+        this.view = null;
+    }
 
+    @Override
+    public void onSuccess() {
+        if (view != null) {
+            view.setSuccess();
+        }
+    }
+
+    @Override
+    public void onServerError(String message) {
+        if (view != null) {
+            view.setServerError(message);
+        }
     }
 
     private void onTokenError() {
@@ -66,15 +87,5 @@ public class RequestServicePresenterImpl implements RequestServiceContract.Prese
         if (view != null) {
             view.showDescriptionError();
         }
-    }
-
-    @Override
-    public void onSuccess() {
-
-    }
-
-    @Override
-    public void onServerError(String message) {
-
     }
 }
