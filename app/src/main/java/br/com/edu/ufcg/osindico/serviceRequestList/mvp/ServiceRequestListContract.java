@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.base.BasePresenter;
 import br.com.edu.ufcg.osindico.base.BaseView;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 
 public interface ServiceRequestListContract {
 
@@ -14,7 +15,7 @@ public interface ServiceRequestListContract {
 
             void onServerError(String message);
 
-            void onSuccess(List<Object> servicesList);
+            void onSuccess(List<ServiceRequestResponse> servicesList);
         }
         void loadServicesList(String token, OnServiceRequestListListener listener);
     }
