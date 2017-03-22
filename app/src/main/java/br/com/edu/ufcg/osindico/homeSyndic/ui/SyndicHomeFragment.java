@@ -21,6 +21,7 @@ import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersActivity;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicContract;
 import br.com.edu.ufcg.osindico.homeSyndic.mvp.HomeSyndicPresenterImpl;
+import br.com.edu.ufcg.osindico.serviceRequestList.ui.ServiceRequestListActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -76,6 +77,11 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
         navigateToCondoRules();
     }
 
+    @OnClick(R.id.btn_service_request_list)
+    public void openServiceRequestList(){
+        navigateToServiceRequestList();
+    }
+
     @Override
     public void navigateToDwellerList() {
         Toast.makeText(getActivity(), "Novo morador", Toast.LENGTH_LONG).show();
@@ -93,5 +99,10 @@ public class SyndicHomeFragment extends Fragment implements HomeSyndicContract.V
         Intent intent = new Intent(getActivity(), CondominiumRulesActivity.class);
         intent.putExtra("type", "sindico");
         startActivity(intent);
+    }
+
+    @Override
+    public void navigateToServiceRequestList() {
+        startActivity(new Intent(getActivity(), ServiceRequestListActivity.class));
     }
 }

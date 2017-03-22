@@ -62,6 +62,4 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:9.6.1'
 }
 
-
-
 apply plugin: 'com.google.gms.google-services'

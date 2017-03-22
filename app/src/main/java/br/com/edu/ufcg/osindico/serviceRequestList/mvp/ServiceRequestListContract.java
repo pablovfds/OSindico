@@ -21,10 +21,12 @@ public interface ServiceRequestListContract {
     }
 
     interface View extends BaseView {
-
+        void setRequestList(List<ServiceRequestResponse> requestList);
+        void setTokenError();
+        void setServerError(String message);
     }
 
     interface Presenter extends BasePresenter {
-
+        void loadRequestList(String token);
     }
 }

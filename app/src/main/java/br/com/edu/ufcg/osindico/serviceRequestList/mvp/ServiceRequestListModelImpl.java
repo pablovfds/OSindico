@@ -35,10 +35,14 @@ public class ServiceRequestListModelImpl implements ServiceRequestListContract.M
                     List<ServiceRequestResponse> responses = response.body();
 
                     if (response.isSuccessful() && responses != null){
+                        Log.d("size", String.valueOf(responses.size()));
                         listener.onSuccess(responses);
                     } else {
+                        Log.d("size", "0");
                         listener.onSuccess(new ArrayList<ServiceRequestResponse>());
                     }
+
+                    Log.d("size", String.valueOf(responses.size()));
                 }
 
                 @Override
