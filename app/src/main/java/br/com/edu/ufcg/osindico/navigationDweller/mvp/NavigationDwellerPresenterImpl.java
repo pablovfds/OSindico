@@ -47,8 +47,11 @@ public class NavigationDwellerPresenterImpl implements NavigationDwellerContract
             case R.id.nav_messages_dweller:
                 this.view.navigateToMessageDweller();
                 break;
-            case R.id.nav_my_condo_dweller:
-                this.view.navigateToCondoDetails();
+            case R.id.nav_rules_list_dweller:
+                this.view.navigateToCondoRules();
+                break;
+            case R.id.nav_service_request_dweller:
+                this.view.navigateToServiceRequest();
                 break;
             case R.id.nav_settings_dweller:
                 this.view.navigateToSettingsDweller();

@@ -6,39 +6,41 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_dweller"
             android:title="@string/nav_home" />
-        <item
-            android:id="@+id/nav_messages_dweller"
-            android:icon="@drawable/ic_message"
-            android:title="@string/nav_messages" />
-        <item
-            android:id="@+id/nav_calendar_dweller"
-            android:icon="@drawable/ic_calendar"
-            android:title="@string/nav_calendar" />
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_my_condo_dweller"
-                    android:icon="@drawable/ic_home_syndic"
-                    android:title="@string/nav_my_condo" />
-            </group>
-        </menu>
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_settings_dweller"
-                    android:icon="@drawable/ic_settings"
-                    android:title="@string/nav_settings" />
-                <item
-                    android:id="@+id/nav_about_dweller"
-                    android:icon="@drawable/ic_about"
-                    android:title="@string/nav_about" />
-            </group>
-        </menu>
 
+        <item android:title="@string/nav_my_condo">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_messages_dweller"
+                        android:icon="@drawable/ic_message"
+                        android:title="@string/nav_messages" />
+                    <item
+                        android:id="@+id/nav_calendar_dweller"
+                        android:icon="@drawable/ic_calendar"
+                        android:title="@string/nav_calendar" />
+                    <item
+                        android:id="@+id/nav_rules_list_dweller"
+                        android:icon="@drawable/ic_home_syndic"
+                        android:title="@string/nav_rules_list" />
+                    <item
+                        android:id="@+id/nav_service_request_dweller"
+                        android:icon="@drawable/ic_home_syndic"
+                        android:title="@string/nav_service_request" />
+                </group>
+            </menu>
+        </item>
     </group>
 
     <item android:title="Opções">
         <menu>
+            <item
+                android:id="@+id/nav_settings_dweller"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/nav_settings" />
+            <item
+                android:id="@+id/nav_about_dweller"
+                android:icon="@drawable/ic_about"
+                android:title="@string/nav_about" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"

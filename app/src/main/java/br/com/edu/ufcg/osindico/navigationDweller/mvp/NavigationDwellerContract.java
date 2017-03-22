@@ -27,7 +27,8 @@ public interface NavigationDwellerContract {
         void navigateToSettingsDweller();
         void navigateToAboutDweller();
         void navigateToCalendarDweller();
-        void navigateToCondoDetails();
+        void navigateToCondoRules();
+        void navigateToServiceRequest();
         void navigateToLogin();
     }
 }

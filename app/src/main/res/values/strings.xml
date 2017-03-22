@@ -98,5 +98,7 @@
     <string name="msg_token_error">Token invalido.</string>
     <string name="msg_title_error">Titulo invalido. Tente inserir um titulo com pelo menos 5 caracteres</string>
     <string name="msg_description_error">Descrição invalida. Tente inserir uma descrição com pelo menos 10 caracteres</string>
+    <string name="nav_service_request">Solicitar serviço</string>
+    <string name="nav_rules_list">Regras do condominio</string>
 
 </resources>

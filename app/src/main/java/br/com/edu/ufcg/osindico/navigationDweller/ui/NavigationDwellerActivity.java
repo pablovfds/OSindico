@@ -21,6 +21,7 @@ import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerPresenterImpl;
+import br.com.edu.ufcg.osindico.request_service.ui.RequestServiceActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -108,10 +109,15 @@ public class NavigationDwellerActivity extends AppCompatActivity
     }
 
     @Override
-    public void navigateToCondoDetails() {
-        Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
+    public void navigateToCondoRules() {
         Intent intent = new Intent(this, CondominiumRulesActivity.class);
         intent.putExtra("type", "morador");
+        startActivity(intent);
+    }
+
+    @Override
+    public void navigateToServiceRequest() {
+        Intent intent = new Intent(this, RequestServiceActivity.class);
         startActivity(intent);
     }
 

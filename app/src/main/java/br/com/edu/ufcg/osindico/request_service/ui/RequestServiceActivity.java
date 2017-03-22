@@ -106,7 +106,7 @@ public class RequestServiceActivity extends AppCompatActivity implements Request
 
     @Override
     public void setSuccess() {
-        Toast.makeText(this, getString(R.string.msg_success_service_request), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.msg_success_request), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, NavigationDwellerActivity.class));
         finish();
     }
