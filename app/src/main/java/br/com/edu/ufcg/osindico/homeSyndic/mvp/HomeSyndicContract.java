@@ -20,5 +20,6 @@ public interface HomeSyndicContract {
         void navigateToDwellerList();
         void navigateToDwellerRequests();
         void navigateToCondoRules();
+        void navigateToServiceRequestList();
     }
 }
