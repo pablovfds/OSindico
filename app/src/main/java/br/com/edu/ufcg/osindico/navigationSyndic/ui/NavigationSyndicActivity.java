@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.navigationSyndic.ui;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +9,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-
-import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,11 +21,12 @@ import android.widget.Toast;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
+import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
-import br.com.edu.ufcg.osindico.homeSyndic.ui.SyndicHomeFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
+import br.com.edu.ufcg.osindico.serviceRequestList.ui.ServiceRequestListFragment;
 import br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,8 +37,7 @@ public class NavigationSyndicActivity extends BaseActivity
     @BindView(R.id.toolbarSyndic) Toolbar toolbar;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
-    BottomNavigationView mBottomNav;
-    FragmentManager fragmentManager = getSupportFragmentManager();
+    @BindView(R.id.navigation) BottomNavigationView mBottomNav;
 
     private NavigationSyndicContract.Presenter presenter;
 
@@ -70,10 +67,11 @@ public class NavigationSyndicActivity extends BaseActivity
 
         setFragment(new RequestsDwellersFragment());
 
-        mBottomNav =  (BottomNavigationView) findViewById(R.id.navigation);
+        setBottombarItemSelected();
 
+    }
 
-
+    private void setBottombarItemSelected(){
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,9 +86,23 @@ public class NavigationSyndicActivity extends BaseActivity
                         Log.e("lista", "lista moradores");
                         break;
                     case R.id.tab_rules:
-                        //setFragment();
+                        setFragment(new CondominiumRulesFragment());
                         Toast.makeText(NavigationSyndicActivity.this, "regras", Toast.LENGTH_SHORT).show();
                         Log.e("regras", "lista regras");
+                        break;
+                    case R.id.tab_messages:
+                        setFragment(new SyndicMessageFragment());
+                        Log.e("mensagens", "mensagens");
+                        break;
+                    case R.id.tab_request_services:
+                        setFragment(new ServiceRequestListFragment());
+                        Toast.makeText(NavigationSyndicActivity.this, "servicos", Toast.LENGTH_SHORT).show();
+                        Log.e("servicos", "servicos");
+                        break;
+                    case R.id.tab_claims:
+                        //setFragment();
+                        Toast.makeText(NavigationSyndicActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
+                        Log.e("reclamacoes", "reclamacoes");
                         break;
                 }
                 return true;
@@ -146,7 +158,8 @@ public class NavigationSyndicActivity extends BaseActivity
         mBottomNav.getMenu().clear();
         mBottomNav.inflateMenu(R.menu.menu_messages);
         mBottomNav.setVisibility(View.VISIBLE);
-        setFragment(new SyndicMessageFragment());
+        SyndicMessageFragment frag = new SyndicMessageFragment();
+        setFragment(frag);
     }
 
     @Override

@@ -1,12 +1,10 @@
 package br.com.edu.ufcg.osindico.syndicMessages.ui;
 
-
+import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
-import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
 import br.com.edu.ufcg.osindico.syndicMessages.mvp.SyndicMessageContract;
 import br.com.edu.ufcg.osindico.syndicMessages.mvp.SyndicMessagePresenterImpl;
 import butterknife.BindView;
@@ -50,6 +47,7 @@ public class SyndicMessageFragment extends Fragment implements SyndicMessageCont
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_syndic_message, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
 

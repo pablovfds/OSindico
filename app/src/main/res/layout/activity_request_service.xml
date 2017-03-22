@@ -67,7 +67,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:maxLines="1"
-            android:id="@+id/editText"
+            android:id="@+id/et_problem_title"
             android:hint="@string/label_title_request"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/editTextProblemDescription"/>

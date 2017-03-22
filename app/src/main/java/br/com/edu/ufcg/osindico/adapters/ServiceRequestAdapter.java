@@ -27,8 +27,15 @@ public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String title = "Titulo: " + serviceRequestResponses.get(position).getTitle();
+        String title = "Problema: " + serviceRequestResponses.get(position).getTitle();
+        //String sender = "De: " + serviceRequestResponses.get(position).getSender();
+        String sender = "De: Morador 1";
+        String location = "Local: Apt 18";
+        String description = "Descrição: " + serviceRequestResponses.get(position).getDescription();
         holder.tv_title_service.setText(title);
+        holder.tv_sender_service.setText(sender);
+        holder.tv_sender_location.setText(location);
+        holder.tv_description_service.setText(description);
     }
 
     @Override
@@ -38,11 +45,17 @@ public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAd
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_title_service;
+        private TextView tv_sender_service;
+        private TextView tv_sender_location;
+        private TextView tv_description_service;
 
         public ViewHolder(View view) {
             super(view);
 
             tv_title_service = (TextView) view.findViewById(R.id.tv_title_service);
+            tv_sender_service = (TextView) view.findViewById(R.id.tv_sender_service);
+            tv_sender_location = (TextView) view.findViewById(R.id.tv_service_location);
+            tv_description_service = (TextView) view.findViewById(R.id.tv_description_service);
         }
 
     }

@@ -2,23 +2,13 @@ package br.com.edu.ufcg.osindico.data.models;
 
 public class ServiceRequest {
 
-    private String type;
     private String description;
     private String title;
 
 
-    public ServiceRequest(String type, String description, String title) {
-        this.type = type;
-        this.description = description;
+    public ServiceRequest(String title, String description) {
         this.title = title;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        this.description = description;
     }
 
     public String getDescription() {

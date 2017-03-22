@@ -41,6 +41,8 @@ public class RequestsDwellersFragment extends Fragment implements
     private RequestsResidentsContract.Presenter presenter;
     private RequestDwellerAdapter adapter;
 
+    public RequestsDwellersFragment(){}
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

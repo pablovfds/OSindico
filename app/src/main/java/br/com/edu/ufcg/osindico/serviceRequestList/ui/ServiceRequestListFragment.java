@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,9 +27,9 @@ import butterknife.ButterKnife;
 
 public class ServiceRequestListFragment extends Fragment implements ServiceRequestListContract.View {
 
-    @BindView(R.id.rules_recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.service_request_list_recycler_view) RecyclerView recyclerView;
 
-    @BindView(R.id.rules_progressBar) ProgressBar progressBar;
+    @BindView(R.id.service_request_progressBar) ProgressBar progressBar;
 
     private ServiceRequestListContract.Presenter presenter;
     private ServiceRequestAdapter adapter;
@@ -49,8 +49,11 @@ public class ServiceRequestListFragment extends Fragment implements ServiceReque
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_service_request_list, container, false);
+        View view = inflater.inflate(R.layout.activity_service_request_list, container, false);
         ButterKnife.bind(this, view);
+
+        SyndicService service = new SyndicService();
+        presenter = new ServiceRequestListPresenter(service);
         presenter.setView(this);
         return view;
     }
@@ -69,8 +72,8 @@ public class ServiceRequestListFragment extends Fragment implements ServiceReque
     }
 
     private void loadServicesRequests() {
-        SharedPreferences sharedPreferences = getActivity()
-                .getSharedPreferences("preferencesOSindico", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
+                Context.MODE_PRIVATE);
         String token = sharedPreferences.getString(getString(R.string.user_token), null);
 
         presenter.setView(this);

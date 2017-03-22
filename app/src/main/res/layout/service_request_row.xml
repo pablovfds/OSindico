@@ -12,15 +12,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_title_service"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_weight="1.1">
+            <TextView
+                android:id="@+id/tv_sender_service"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:textSize="16sp"
+                android:text="Morador 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_service_location"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:text="Apt 14"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_title_service"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:textSize="16sp"
+                android:text="Titulo do problema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_description_service"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:text="Descricao do problema"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_accept_request_service"
+            android:layout_gravity="center"/>
     </LinearLayout>
+
+
 </android.support.v7.widget.CardView>

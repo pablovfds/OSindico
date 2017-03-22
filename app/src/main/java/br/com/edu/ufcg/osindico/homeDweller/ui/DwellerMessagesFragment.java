@@ -34,22 +34,21 @@ public class DwellerMessagesFragment extends Fragment implements HomeDwellerCont
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_dweller_home, container, false);
-
-        ButterKnife.bind(this, view);
-
-        return view;
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DwellerService service = new DwellerService();
         presenter = new HomeDwellerPresenterImpl(service);
         presenter.setView(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view =inflater.inflate(R.layout.fragment_dweller_home, container, false);
+        ButterKnife.bind(this, view);
+
+        return view;
     }
 
     @Override
