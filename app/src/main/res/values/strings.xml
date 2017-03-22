@@ -23,6 +23,7 @@
     <string name="msg_address_error">Insira um endereço valido.</string>
     <string name="msg_registration_success">Cadastrado com sucesso</string>
     <string name="msg_success_request">Morador atualizado</string>
+    <string name="msg_success_service_request">Solicitação enviada com sucesso para o sindico</string>
     <string name="msg_list_empty">Não existem solicitações de moradores no momento.</string>
     <string name="msg_success_send_message">Mensagem enviada com sucesso.</string>
     <string name="msg_error_message">Mensagem inválida. O tamanho minimo de uma mensagem é de 10 caracteres.</string>

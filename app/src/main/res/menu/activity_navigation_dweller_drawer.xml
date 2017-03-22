@@ -14,18 +14,27 @@
             android:id="@+id/nav_calendar_dweller"
             android:icon="@drawable/ic_calendar"
             android:title="@string/nav_calendar" />
-        <item
-            android:id="@+id/nav_my_condo_dweller"
-            android:icon="@drawable/ic_home_syndic"
-            android:title="@string/nav_my_condo" />
-        <item
-            android:id="@+id/nav_settings_dweller"
-            android:icon="@drawable/ic_settings"
-            android:title="@string/nav_settings" />
-        <item
-            android:id="@+id/nav_about_dweller"
-            android:icon="@drawable/ic_about"
-            android:title="@string/nav_about" />
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_my_condo_dweller"
+                    android:icon="@drawable/ic_home_syndic"
+                    android:title="@string/nav_my_condo" />
+            </group>
+        </menu>
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_settings_dweller"
+                    android:icon="@drawable/ic_settings"
+                    android:title="@string/nav_settings" />
+                <item
+                    android:id="@+id/nav_about_dweller"
+                    android:icon="@drawable/ic_about"
+                    android:title="@string/nav_about" />
+            </group>
+        </menu>
+
     </group>
 
     <item android:title="Opções">
