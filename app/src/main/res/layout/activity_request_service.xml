@@ -13,63 +13,37 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextTitleService"
+        android:hint="@string/label_title_request"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editTextProblemDescription"
+        android:layout_marginTop="13dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="67dp"
         android:id="@+id/editTextProblemDescription"
         android:textAlignment="textStart"
         android:lines="7"
         android:backgroundTint="?android:attr/colorButtonNormal"
         android:background="@color/bb_inActiveBottomBarItemColor"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="15dp"
-        android:hint="@string/label_problem_description" />
+        android:hint="@string/label_problem_description"
+        android:layout_alignTop="@+id/editTextTitleService"
+        android:layout_centerHorizontal="true" />
 
-    <RadioGroup
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:id="@+id/radioGroup"
-        android:layout_marginTop="14dp"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/hydraulic_service"
-            android:text="@string/label_hydraulic_service" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/electric_service"
-            android:text="@string/label_electric_service" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/other_service"
-            android:text="@string/label_other_service" />
-    </RadioGroup>
-
-    <TextView
-        android:text="@string/label_request_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="109dp"
-        android:id="@+id/textView3"
-        android:textSize="15sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/editTextProblemDescription" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_above="@+id/radioGroup"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
-        android:id="@+id/editText"
-        android:hint="@string/label_title_request" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/pbRequestService"
+        android:visibility="gone" />
 </RelativeLayout>

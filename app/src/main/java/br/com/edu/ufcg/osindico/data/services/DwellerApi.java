@@ -1,6 +1,5 @@
 package br.com.edu.ufcg.osindico.data.services;
 
-import java.security.Provider;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.DwellerDetails;
@@ -21,7 +20,7 @@ public interface DwellerApi {
     Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
 
     @Headers({"Content-Type: application/json"})
-    @POST("/api/syndicate/message")
+    @POST("/api/dweller/service")
     Call<MessageResponse> sendServiceRequest(@Header("Authorization") String authorization,
                                       @Body ServiceRequest request);
 

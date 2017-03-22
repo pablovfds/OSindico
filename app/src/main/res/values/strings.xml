@@ -90,13 +90,12 @@
     <string name="nav_rules">Regras do condominio</string>
     <string name="nav_dweller_list">Lista de moradores</string>
     <string name="nav_dweller_requests">Novos moradores</string>
-    <string name="label_request_service">Que tipo de service você gostaria de requisitar?</string>
-    <string name="label_hydraulic_service">Hidráulico</string>
-    <string name="label_electric_service">Elétrico</string>
-    <string name="label_other_service">Outro</string>
-    <string name="label_problem_description">Descreva seu problema ...</string>
+    <string name="label_problem_description">Descreva em detalhes a solicitação de serviço</string>
     <string name="label_send">Enviar</string>
     <string name="label_title_request_service">Solicitar serviço</string>
-    <string name="label_title_request">Titulo da solicitação</string>
+    <string name="label_title_request">Titulo da solicitação de serviço</string>
+    <string name="msg_token_error">Token invalido.</string>
+    <string name="msg_title_error">Titulo invalido. Tente inserir um titulo com pelo menos 5 caracteres</string>
+    <string name="msg_description_error">Descrição invalida. Tente inserir uma descrição com pelo menos 10 caracteres</string>
 
 </resources>
