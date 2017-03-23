@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,13 +69,11 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
         if (item.getItemId() == R.id.button_request) {
             String problemTitle = editTextProblemTitle.getText().toString();
             String problemDescription = editTextProblemDescription.getText().toString();
-            String typeProblem = getSelectedTypeProblem();
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
                     Context.MODE_PRIVATE);
             String token = sharedPreferences.getString(getString(R.string.user_token), null);
 
-            Toast.makeText(getActivity(), "Ok: " + problemDescription + " - " + typeProblem, Toast.LENGTH_SHORT).show();
             presenter.validateService(token, problemTitle, problemDescription);
 
         }
@@ -103,26 +102,30 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
 
     @Override
     public void setSuccess() {
+        Toast.makeText(getActivity(), "Sucesso", Toast.LENGTH_SHORT).show();
         setFragment(new RequestSuccessFragment());
     }
 
     @Override
     public void setServerError(String message) {
-
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        Log.d("error", message);
     }
 
     @Override
     public void showTokenError() {
-
+        Toast.makeText(getActivity(), "showTokenError", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showTitleError() {
+        Toast.makeText(getActivity(), "showTitleError", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void showDescriptionError() {
+        Toast.makeText(getActivity(), "showDescriptionError", Toast.LENGTH_SHORT).show();
 
     }
 
