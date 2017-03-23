@@ -34,10 +34,14 @@ public class AllowedVisitorsAdapter extends RecyclerView.Adapter<AllowedVisitors
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tv_rule;
+        private TextView tv_visitor_name;
+        private TextView tv_visitor_cpf;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            tv_visitor_name = (TextView) itemView.findViewById(R.id.tv_visitor_name);
+            tv_visitor_cpf = (TextView) itemView.findViewById(R.id.tv_visitor_cpf);
+
         }
     }
 

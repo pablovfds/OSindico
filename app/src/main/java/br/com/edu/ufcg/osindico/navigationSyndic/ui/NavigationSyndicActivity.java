@@ -28,6 +28,7 @@ import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
 import br.com.edu.ufcg.osindico.serviceRequestList.ui.ServiceRequestListFragment;
 import br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageFragment;
+import br.com.edu.ufcg.osindico.visitors_list.ui.AllowedVisitorsListFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -49,7 +50,7 @@ public class NavigationSyndicActivity extends BaseActivity
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("O Sindico");
 
         setSupportActionBar(toolbar);
 
@@ -91,6 +92,10 @@ public class NavigationSyndicActivity extends BaseActivity
                         setFragment(new CondominiumRulesFragment());
                         Toast.makeText(NavigationSyndicActivity.this, "regras", Toast.LENGTH_SHORT).show();
                         Log.e("regras", "lista regras");
+                        break;
+                    case R.id.tab_entrance:
+                        setFragment(new AllowedVisitorsListFragment());
+                        Toast.makeText(NavigationSyndicActivity.this, "Portaria", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.tab_messages:
                         setFragment(new SyndicMessageFragment());
