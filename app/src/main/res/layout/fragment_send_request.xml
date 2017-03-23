@@ -10,17 +10,17 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/ic_completed"/>
+            android:background="@drawable/send_request_service"/>
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="Sua solicitação de serviço foi enviada com sucesso!"/>
+            android:text="Sua solicitação de serviço foi enviada para o sindico!"/>
     </LinearLayout>
 
 </LinearLayout>

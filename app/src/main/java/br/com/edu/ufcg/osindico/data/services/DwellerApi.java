@@ -21,8 +21,8 @@ public interface DwellerApi {
     Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
 
     @Headers({"Content-Type: application/json"})
-    @POST("/api/syndicate/message")
+    @POST("/api/dweller/service")
     Call<MessageResponse> sendServiceRequest(@Header("Authorization") String authorization,
-                                      @Body ServiceRequest request);
+                                             @Body ServiceRequest request);
 
 }
