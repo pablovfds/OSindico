@@ -26,10 +26,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
-        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"
-            android:theme="@style/AppThemeSyndic"></activity>
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity"
-            android:theme="@style/AppThemeSyndic"></activity>
+        <activity
+            android:name=".registerSyndic.ui.RegisterSyndicActivity"
+            android:theme="@style/AppThemeSyndic" />
+        <activity
+            android:name=".registerCondo.ui.RegisterCondoActivity"
+            android:theme="@style/AppThemeSyndic" />
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
         <activity android:name=".condominium_rules.ui.CondominiumRulesActivity" />
         <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity" />
@@ -58,7 +60,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".serviceRequestList.ui.ServiceRequestListActivity"></activity>
     </application>
 
 </manifest>

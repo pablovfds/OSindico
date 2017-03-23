@@ -44,7 +44,10 @@ public class ServiceRequestListPresenter implements ServiceRequestListContract.P
 
     @Override
     public void onTokenError() {
-        this.view.setTokenError();
+        if (view != null) {
+            this.view.hideProgress();
+            this.view.setTokenError();
+        }
     }
 
     @Override
