@@ -68,7 +68,6 @@ public class NavigationDwellerActivity extends AppCompatActivity
 
         setFragment(new DwellerMessagesFragment());
         mBottomNav.setVisibility(View.GONE);
-
         setBottombarItemSelected();
     }
 
@@ -83,7 +82,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
                         break;
                     case R.id.tab_request_services_dweller:
                         setFragment(new RequestServicesFragment());
-                        Toast.makeText(NavigationDwellerActivity.this, "servicos", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(NavigationDwellerActivity.this, "servicos", Toast.LENGTH_SHORT).show();
                         Log.e("servicos", "servicos");
                         break;
                     case R.id.tab_claims_dweller:
@@ -124,9 +123,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         this.presenter.onItemClicked(id);
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -135,14 +132,14 @@ public class NavigationDwellerActivity extends AppCompatActivity
     public void navigateToHomeDweller() {
         Toast.makeText(this, getString(R.string.nav_home), Toast.LENGTH_SHORT).show();
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new DwellerMessagesFragment());
     }
 
     @Override
     public void navigateToMessageDweller() {
         Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
         mBottomNav.setVisibility(View.VISIBLE);
-        SyndicMessageFragment frag = new SyndicMessageFragment();
-        setFragment(frag);
+        setFragment(new DwellerMessagesFragment());
     }
 
     @Override

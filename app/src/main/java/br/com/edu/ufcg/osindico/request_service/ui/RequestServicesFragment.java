@@ -41,12 +41,17 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
     public RequestServicesFragment(){}
 
     @Override
+    public void onStart() {
+        super.onStart();
+        DwellerService dwellerService = new DwellerService();
+        this.presenter = new RequestServicePresenterImpl(dwellerService, null); //Revisar com manel
+        this.presenter.setView(this);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        DwellerService service = new DwellerService();
-        presenter = new RequestServicePresenterImpl(service, this);
-        presenter.setView(this);
     }
 
     @Nullable
@@ -67,14 +72,16 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_request) {
-            String problemTitle = editTextProblemTitle.getText().toString();
-            String problemDescription = editTextProblemDescription.getText().toString();
+            String titleService = editTextProblemTitle.getText().toString();
+            String serviceDescription = editTextProblemDescription.getText().toString();
+            String typeProblem = getSelectedTypeProblem();
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
                     Context.MODE_PRIVATE);
             String token = sharedPreferences.getString(getString(R.string.user_token), null);
 
-            presenter.validateService(token, problemTitle, problemDescription);
+            Toast.makeText(getActivity(), "Ok: " + serviceDescription + " - " + typeProblem, Toast.LENGTH_SHORT).show();
+            this.presenter.validateService(getToken(), titleService, serviceDescription);
 
         }
 
@@ -102,30 +109,26 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
 
     @Override
     public void setSuccess() {
-        Toast.makeText(getActivity(), "Sucesso", Toast.LENGTH_SHORT).show();
         setFragment(new RequestSuccessFragment());
     }
 
     @Override
     public void setServerError(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-        Log.d("error", message);
+
     }
 
     @Override
     public void showTokenError() {
-        Toast.makeText(getActivity(), "showTokenError", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public void showTitleError() {
-        Toast.makeText(getActivity(), "showTitleError", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void showDescriptionError() {
-        Toast.makeText(getActivity(), "showDescriptionError", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -138,4 +141,12 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
     public void hideProgress() {
 
     }
+
+    private String getToken(){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences(
+                getString(R.string.preferencesOSindico), Context.MODE_PRIVATE);
+        return sharedpreferences.getString(getString(R.string.user_token), "");
+    }
+
+
 }

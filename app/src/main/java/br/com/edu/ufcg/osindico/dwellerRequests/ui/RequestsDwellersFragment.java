@@ -52,10 +52,11 @@ public class RequestsDwellersFragment extends Fragment implements
 
         SyndicService service = new SyndicService();
         presenter = new RequestsResidentsPresenterImpl(service);
+        loadList();
 
         //getActivity().getActionBar().setTitle("Lista de solicitações de moradores");
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override

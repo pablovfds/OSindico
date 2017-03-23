@@ -26,15 +26,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".registerDweller.ui.RegisterDwellerActivity" />
-        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity" />
-        <activity android:name=".registerCondo.ui.RegisterCondoActivity" />
+        <activity android:name=".registerSyndic.ui.RegisterSyndicActivity"
+            android:theme="@style/AppThemeSyndic"></activity>
+        <activity android:name=".registerCondo.ui.RegisterCondoActivity"
+            android:theme="@style/AppThemeSyndic"></activity>
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
         <activity android:name=".condominium_rules.ui.CondominiumRulesActivity" />
         <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity" />
         <activity android:name=".dwellerDetails.ui.DwellerDetailsActivity" />
 
-        <activity android:name=".base.BaseActivity"
-            android:theme="@style/NoActionBarTheme">
+        <activity android:name=".base.BaseActivity">
         </activity>
 
         <activity

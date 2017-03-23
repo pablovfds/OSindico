@@ -42,7 +42,7 @@ public class ServiceRequestListModelImpl implements ServiceRequestListContract.M
                         listener.onSuccess(new ArrayList<ServiceRequestResponse>());
                     }
 
-                    Log.d("size", String.valueOf(responses.size()));
+                  //  Log.d("size", String.valueOf(responses.size()));
                 }
 
                 @Override
