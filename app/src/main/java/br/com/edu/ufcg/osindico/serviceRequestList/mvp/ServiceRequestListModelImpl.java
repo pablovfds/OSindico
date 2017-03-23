@@ -2,9 +2,13 @@ package br.com.edu.ufcg.osindico.serviceRequestList.mvp;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import retrofit2.Call;
@@ -36,10 +40,10 @@ public class ServiceRequestListModelImpl implements ServiceRequestListContract.M
 
                     if (response.isSuccessful() && responses != null){
                         Log.d("size", String.valueOf(responses.size()));
-                        listener.onSuccess(responses);
+                        listener.onLoadListSuccess(responses);
                     } else {
                         Log.d("size", "0");
-                        listener.onSuccess(new ArrayList<ServiceRequestResponse>());
+                        listener.onLoadListSuccess(new ArrayList<ServiceRequestResponse>());
                     }
 
                   //  Log.d("size", String.valueOf(responses.size()));
@@ -52,5 +56,36 @@ public class ServiceRequestListModelImpl implements ServiceRequestListContract.M
                 }
             });
         }
+    }
+
+    @Override
+    public void updateServiceRequestStatus(String token, Long id, final OnServiceRequestListListener listener) {
+        Call<MessageResponse> call = syndicService.getSyndicApi().updateServiceRequestStatus(token, id);
+
+        call.enqueue(new Callback<MessageResponse>() {
+            @Override
+            public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
+                MessageResponse messageResponse = response.body();
+                if (response.isSuccessful()){
+                    listener.onUpdateStatusSuccess(messageResponse.getMessage());
+                } else {
+                    Gson gson = new Gson();
+                    MessageResponse serverResponse = null;
+                    try {
+                        serverResponse = gson.fromJson(response.errorBody().string(), MessageResponse.class);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    if (serverResponse != null)
+                        listener.onServerError(serverResponse.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MessageResponse> call, Throwable t) {
+                call.cancel();
+                listener.onServerError("Erro ao tentar se conectar ao servidor.");
+            }
+        });
     }
 }

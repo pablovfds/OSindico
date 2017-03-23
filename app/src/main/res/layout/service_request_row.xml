@@ -58,7 +58,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_accept_request_service"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:id="@+id/btn_update_service_status" />
     </LinearLayout>
 
 

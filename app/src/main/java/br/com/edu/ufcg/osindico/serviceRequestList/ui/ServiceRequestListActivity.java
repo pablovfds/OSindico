@@ -86,4 +86,9 @@ public class ServiceRequestListActivity extends AppCompatActivity implements Ser
     public void setServerError(String message) {
 
     }
+
+    @Override
+    public void setUpdateStatusSuccess(String message) {
+
+    }
 }

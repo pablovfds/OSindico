@@ -98,5 +98,9 @@
     <string name="label_send">Enviar</string>
     <string name="label_title_request_service">Solicitar serviço</string>
     <string name="label_title_request">Titulo da solicitação</string>
+    <string name="label_update_service_status">O serviço foi realizado?</string>
+    <string name="label_no">Não</string>
+    <string name="label_yes">Sim</string>
+    <string name="msg_token_error">Token inválido.</string>
 
 </resources>

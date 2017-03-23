@@ -16,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface SyndicApi {
@@ -45,4 +46,9 @@ public interface SyndicApi {
     @GET("/api/syndicate/service")
     Call<List<ServiceRequestResponse>> loadServiceRequestsResidents(
             @Header("Authorization") String authorization);
+
+    @Headers({"Content-Type: application/json"})
+    @PUT("/api/syndicate/service/{id}")
+    Call<MessageResponse> updateServiceRequestStatus(@Header("Authorization") String authorization,
+                                               @Path("id") Long id);
 }

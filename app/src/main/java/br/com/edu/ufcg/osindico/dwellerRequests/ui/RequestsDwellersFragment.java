@@ -21,6 +21,7 @@ import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestDwellerAdapter;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerDetails.ui.DwellerDetailsActivity;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsContract;
@@ -121,7 +122,12 @@ public class RequestsDwellersFragment extends Fragment implements
 
     }
 
-    private  void updateAdapter(List<DwellerResponse> dwellerResponses){
+    @Override
+    public void onClick(ServiceRequestResponse serviceRequestResponse) {
+
+    }
+
+    private void updateAdapter(List<DwellerResponse> dwellerResponses){
         adapter = new RequestDwellerAdapter(dwellerResponses);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);

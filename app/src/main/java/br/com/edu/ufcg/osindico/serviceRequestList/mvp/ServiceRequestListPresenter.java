@@ -23,12 +23,23 @@ public class ServiceRequestListPresenter implements ServiceRequestListContract.P
 
     @Override
     public void onDestroy() {
-
+        this.view = null;
     }
 
     @Override
     public void loadRequestList(String token) {
-        this.model.loadServicesList(token, this);
+        if (view != null) {
+            this.view.showProgress();
+            this.model.loadServicesList(token, this);
+        }
+    }
+
+    @Override
+    public void updateServiceRequestStatus(String token, Long id) {
+        if (view != null) {
+            this.view.showProgress();
+            this.model.updateServiceRequestStatus(token, id, this);
+        }
     }
 
     @Override
@@ -42,7 +53,18 @@ public class ServiceRequestListPresenter implements ServiceRequestListContract.P
     }
 
     @Override
-    public void onSuccess(List<ServiceRequestResponse> servicesList) {
-        this.view.setRequestList(servicesList);
+    public void onLoadListSuccess(List<ServiceRequestResponse> servicesList) {
+        if (view != null) {
+            this.view.hideProgress();
+            this.view.setRequestList(servicesList);
+        }
+    }
+
+    @Override
+    public void onUpdateStatusSuccess(String message) {
+        if (view != null) {
+            this.view.hideProgress();
+            this.view.setUpdateStatusSuccess(message);
+        }
     }
 }

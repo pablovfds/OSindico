@@ -18,6 +18,7 @@ import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.adapters.RequestDwellerAdapter;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsContract;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsPresenterImpl;
@@ -108,6 +109,11 @@ public class RequestsDwellersActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(MessageResponse messageResponse) {
+
+    }
+
+    @Override
+    public void onClick(ServiceRequestResponse serviceRequestResponse) {
 
     }
 

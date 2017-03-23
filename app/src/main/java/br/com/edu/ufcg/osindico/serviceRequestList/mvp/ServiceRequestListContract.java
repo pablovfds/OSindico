@@ -15,18 +15,23 @@ public interface ServiceRequestListContract {
 
             void onServerError(String message);
 
-            void onSuccess(List<ServiceRequestResponse> servicesList);
+            void onLoadListSuccess(List<ServiceRequestResponse> servicesList);
+            void onUpdateStatusSuccess(String message);
         }
         void loadServicesList(String token, OnServiceRequestListListener listener);
+
+        void updateServiceRequestStatus(String token,Long id, OnServiceRequestListListener listener);
     }
 
     interface View extends BaseView {
         void setRequestList(List<ServiceRequestResponse> requestList);
         void setTokenError();
         void setServerError(String message);
+        void setUpdateStatusSuccess(String message);
     }
 
     interface Presenter extends BasePresenter {
         void loadRequestList(String token);
+        void updateServiceRequestStatus(String token,Long id);
     }
 }
