@@ -76,10 +76,6 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
             String serviceDescription = editTextProblemDescription.getText().toString();
             String typeProblem = getSelectedTypeProblem();
 
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
-                    Context.MODE_PRIVATE);
-            String token = sharedPreferences.getString(getString(R.string.user_token), null);
-
             Toast.makeText(getActivity(), "Ok: " + serviceDescription + " - " + typeProblem, Toast.LENGTH_SHORT).show();
             this.presenter.validateService(getToken(), titleService, serviceDescription);
 

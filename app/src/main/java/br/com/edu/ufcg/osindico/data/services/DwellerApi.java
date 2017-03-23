@@ -23,6 +23,6 @@ public interface DwellerApi {
     @Headers({"Content-Type: application/json"})
     @POST("/api/dweller/service")
     Call<MessageResponse> sendServiceRequest(@Header("Authorization") String authorization,
-                                      @Body ServiceRequest request);
+                                             @Body ServiceRequest request);
 
 }

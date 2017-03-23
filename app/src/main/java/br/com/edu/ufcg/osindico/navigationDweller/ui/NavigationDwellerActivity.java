@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.allow_visitors.ui.AllowVisitorsFragment;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
@@ -91,6 +92,12 @@ public class NavigationDwellerActivity extends AppCompatActivity
                         //setFragment();
                         Toast.makeText(NavigationDwellerActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
                         Log.e("reclamacoes", "reclamacoes");
+                        break;
+                    case R.id.tab_lobby:
+                        setFragment(new AllowVisitorsFragment());
+                        break;
+                    case R.id.tab_condo_rules:
+                        setFragment(new CondominiumRulesFragment());
                         break;
                 }
                 return true;
@@ -166,10 +173,13 @@ public class NavigationDwellerActivity extends AppCompatActivity
     public void navigateToCondoDetails() {
         Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, CondominiumRulesActivity.class);
-        intent.putExtra("type", "morador");
-        startActivity(intent);
-        mBottomNav.setVisibility(View.GONE);
+//        Intent intent = new Intent(this, CondominiumRulesActivity.class);
+//        intent.putExtra("type", "morador");
+//        startActivity(intent);
+        mBottomNav.getMenu().clear();
+        mBottomNav.inflateMenu(R.menu.menu_dweller_condominium);
+        mBottomNav.setVisibility(View.VISIBLE);
+        setFragment(new AllowVisitorsFragment());
     }
 
     @Override

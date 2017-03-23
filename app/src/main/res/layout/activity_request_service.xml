@@ -19,7 +19,7 @@
         android:id="@+id/editTextProblemDescription"
         android:textAlignment="textStart"
         android:lines="7"
-        android:backgroundTint="?android:attr/colorButtonNormal"
+        android:backgroundTint="#a7a7a7"
         android:background="@color/bb_inActiveBottomBarItemColor"
         android:layout_below="@+id/radioGroup"
         android:layout_alignParentStart="true"

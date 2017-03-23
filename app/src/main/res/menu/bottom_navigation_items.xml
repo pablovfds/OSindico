@@ -16,5 +16,10 @@
         android:icon="@drawable/ic_rules"
         android:title="Regras"
         app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/tab_entrance"
+        android:icon="@drawable/ic_allow_visitor"
+        android:title="Portaria"
+        app:showAsAction="collapseActionView"/>
 
 </menu>
