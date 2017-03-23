@@ -85,11 +85,11 @@ public class LoginUserActivity extends BaseActivity implements LoginUserContract
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) { // morador
-                    UpdateTheme.setTheme(getApplicationContext(), 2);
+                    //UpdateTheme.setTheme(getApplicationContext(), 2);
                     startActivity(new Intent(LoginUserActivity.this, ReaderActivity.class));
 
                 } else if (i == 1) { // sindico
-                    UpdateTheme.setTheme(getApplicationContext(), 1);
+                    //UpdateTheme.setTheme(getApplicationContext(), 1);
                     startActivity(new Intent(LoginUserActivity.this, RegisterSyndicActivity.class));
                 }
             }

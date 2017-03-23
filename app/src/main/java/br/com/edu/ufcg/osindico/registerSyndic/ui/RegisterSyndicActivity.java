@@ -2,6 +2,8 @@ package br.com.edu.ufcg.osindico.registerSyndic.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +21,7 @@ import br.com.edu.ufcg.osindico.registerSyndic.mvp.RegisterSyndicPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterSyndicActivity extends BaseActivity implements RegisterSyndicContract.View {
+public class RegisterSyndicActivity extends AppCompatActivity implements RegisterSyndicContract.View {
 
     @BindView(R.id.editTextSyndicName) EditText editTextName;
 
@@ -33,13 +35,15 @@ public class RegisterSyndicActivity extends BaseActivity implements RegisterSynd
 
     @BindView(R.id.register_syndic_progress) ProgressBar progressBar;
 
+    //@BindView(R.id.toolbar) Toolbar toolbar;
+
     RegisterSyndicContract.Presenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_syndic);
-
+        //setSupportActionBar(toolbar);
         ButterKnife.bind(this);
     }
 
@@ -59,8 +63,7 @@ public class RegisterSyndicActivity extends BaseActivity implements RegisterSynd
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.syndic_menu, menu);
+        getMenuInflater().inflate(R.menu.syndic_menu, menu);
         return true;
     }
 
@@ -82,7 +85,6 @@ public class RegisterSyndicActivity extends BaseActivity implements RegisterSynd
 
             presenter.validateCredentials(name, email, password, confirmPassword, phone);
         }
-
         return super.onOptionsItemSelected(item);
     }
 

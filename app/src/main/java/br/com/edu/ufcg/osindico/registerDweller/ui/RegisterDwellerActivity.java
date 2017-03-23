@@ -116,4 +116,6 @@ public class RegisterDwellerActivity extends BaseActivity implements RegisterDwe
     public void setServerError(String serverError) {
         Toast.makeText(this, serverError, Toast.LENGTH_LONG).show();
     }
+
+
 }

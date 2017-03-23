@@ -7,10 +7,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
-/**
- * Created by emanoel on 04/03/17.
- */
-
 public interface RulesApi {
     @GET("/api/syndicate/rules")
     Call<List<RuleResponse>> getCondominiumRules(@Header("Authorization") String authorization);

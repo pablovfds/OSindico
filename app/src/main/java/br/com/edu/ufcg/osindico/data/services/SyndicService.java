@@ -10,11 +10,13 @@ public class SyndicService {
     private Retrofit retrofit;
 
     public SyndicService() {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(SERVER_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        mSyndicApi = retrofit.create(SyndicApi.class);
+        if (mSyndicApi == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(SERVER_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            mSyndicApi = retrofit.create(SyndicApi.class);
+        }
     }
 
     public Retrofit getRetrofit() {

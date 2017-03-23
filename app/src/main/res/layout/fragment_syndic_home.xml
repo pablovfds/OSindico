@@ -48,4 +48,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
         android:id="@+id/btn_condo_rules" />
+
+    <Button
+        android:text="Lista de requisições de serviços"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_condo_rules"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/btn_service_request_list" />
 </RelativeLayout>

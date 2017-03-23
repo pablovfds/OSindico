@@ -24,6 +24,18 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="450dp"
+        android:layout_marginTop="57dp"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottombar_dweller"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"
+        app:menu="@menu/menu_messages_dweller"/>
 
 </android.support.design.widget.CoordinatorLayout>
