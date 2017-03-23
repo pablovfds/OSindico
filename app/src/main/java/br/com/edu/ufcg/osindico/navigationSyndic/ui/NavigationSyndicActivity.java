@@ -49,6 +49,8 @@ public class NavigationSyndicActivity extends BaseActivity
 
         ButterKnife.bind(this);
 
+        toolbar.setTitle("");
+
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

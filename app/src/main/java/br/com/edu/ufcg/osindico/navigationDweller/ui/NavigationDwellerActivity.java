@@ -53,6 +53,8 @@ public class NavigationDwellerActivity extends AppCompatActivity
 
         ButterKnife.bind(this);
 
+        toolbar.setTitle("");
+
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
