@@ -38,7 +38,6 @@ public class RequestServicePresenterImpl implements RequestServiceContract.Prese
         }
 
         if (!error) {
-            Log.e("send request", "send request" + title);
             model.sendRequest(token, new ServiceRequest(title, description), this);
         }
     }

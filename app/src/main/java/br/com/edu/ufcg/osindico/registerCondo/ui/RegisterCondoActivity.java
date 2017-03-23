@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
@@ -26,7 +28,7 @@ import br.com.edu.ufcg.osindico.registerCondo.mvp.RegisterCondoPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegisterCondoActivity extends BaseActivity implements
+public class RegisterCondoActivity extends AppCompatActivity implements
         RegisterCondoContract.View {
 
     @BindView(R.id.editTextCondoName)
@@ -56,6 +58,9 @@ public class RegisterCondoActivity extends BaseActivity implements
     @BindView(R.id.register_condo_progress)
     ProgressBar progressBar;
 
+//    @BindView(R.id.toolbar_condo)
+//    Toolbar toolbar;
+
     private RegisterCondoContract.Presenter presenter;
 
     private Long syndicId;
@@ -65,6 +70,7 @@ public class RegisterCondoActivity extends BaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_condo);
+       // setSupportActionBar(toolbar);
 
         syndicId = getIntent().getExtras().getLong("syndicId");
         ButterKnife.bind(this);
@@ -97,10 +103,10 @@ public class RegisterCondoActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.condo_menu, menu);
-        return true;
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.condo_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
