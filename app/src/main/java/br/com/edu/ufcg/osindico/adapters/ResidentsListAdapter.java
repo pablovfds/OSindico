@@ -3,6 +3,7 @@ package br.com.edu.ufcg.osindico.adapters;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,24 +22,26 @@ import br.com.edu.ufcg.osindico.data.models.ServerResponse.UserResponse;
 
 public class ResidentsListAdapter extends RecyclerView.Adapter<ResidentsListAdapter.ViewHolder>{
 
-    List<DwellerResponse> responseList;
+    private List<DwellerResponse> responseList;
 
     public ResidentsListAdapter(List<DwellerResponse> residentsList) {
         this.responseList = residentsList;
+        Log.e("bindview", responseList.get(0).getName());
     }
 
     @Override
-    public ResidentsListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.resident_card_row, parent, false);
-        return new ResidentsListAdapter.ViewHolder(view);
+    public ResidentsListAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.resident_card_row,
+                viewGroup, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        DwellerResponse response = responseList.get(position);
-        holder.tv_resident_name.setText(response.getName());
-        holder.tv_resident_email.setText(response.getEmail());
+    public void onBindViewHolder(ResidentsListAdapter.ViewHolder holder, int pos) {
+        Log.e("bindview test", responseList.get(pos).getName() + "pos" + pos);
+      //  DwellerResponse response = responseList.get(pos);
+        holder.tv_resident_name.setText(responseList.get(pos).getName());
+        holder.tv_resident_email.setText(responseList.get(pos).getEmail());
         holder.tv_resident_apt.setText("");
 
         ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
@@ -53,15 +56,15 @@ public class ResidentsListAdapter extends RecyclerView.Adapter<ResidentsListAdap
                 .bold()
                 .toUpperCase()
                 .endConfig()
-                .buildRound(response.getName().substring(0,1), color);
+                .buildRound(responseList.get(pos).getName().substring(0,1), color);
 
         holder.iv_resident_photo.setImageDrawable(drawable);
     }
 
     @Override
-    public int getItemCount() { return 0; }
+    public int getItemCount() { return responseList.size(); }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
 
         private TextView tv_resident_name;
         private TextView tv_resident_email;
