@@ -78,9 +78,7 @@ public class RequestServicesFragment extends Fragment implements RequestServiceC
 
             Toast.makeText(getActivity(), "Ok: " + serviceDescription + " - " + typeProblem, Toast.LENGTH_SHORT).show();
             this.presenter.validateService(getToken(), titleService, serviceDescription);
-
         }
-
         return super.onOptionsItemSelected(item);
     }
 

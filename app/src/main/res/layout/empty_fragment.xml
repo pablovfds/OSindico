@@ -12,17 +12,28 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_send_request_service"/>
+            android:background="@drawable/ic_empty" />
 
         <TextView
-            android:layout_width="200dp"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:textColor="#979797"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Ooops!"/>
+        <TextView
+            android:id="@+id/message"
+            android:layout_marginTop="5dp"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:gravity="center"
             android:textColor="#979797"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_gravity="center"
-            android:text="Sua solicitação de serviço foi enviada para o sindico!"/>
+            android:text="Nenhuma informação a ser exibida!"/>
     </LinearLayout>
+
 
 </LinearLayout>

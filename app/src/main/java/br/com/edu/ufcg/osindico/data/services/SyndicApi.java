@@ -20,18 +20,19 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface SyndicApi {
-    @POST("/api/register/syndicate")
-    Call<SyndicServerResponse> registerSyndic(@Body SyndicDetails request);
 
-    @POST("/api/register/condominium")
-    Call<MessageResponse> registerCondo(@Body CondoDetails request);
-
-    @POST("/api/syndicate/rules")
-    Call<RuleResponse> registerRegra(@Header("Authorization") String authorization,
-                                     @Body RuleDetails ruleDetails);
+    @GET("/api/syndicate/rules")
+    Call<List<RuleResponse>> getCondominiumRules(@Header("Authorization") String authorization);
 
     @GET("/api/syndicate/requests")
     Call<List<DwellerResponse>> loadRequestsResidents(@Header("Authorization") String authorization);
+
+    @GET("/api/syndicate/dweller")
+    Call<List<DwellerResponse>> loadResidentsList(@Header("Authorization") String authorization);
+
+    @GET("/api/syndicate/service")
+    Call<List<ServiceRequestResponse>> loadServiceRequestsResidents(
+            @Header("Authorization") String authorization);
 
     @Headers({"Content-Type: application/json"})
     @POST("/api/syndicate/requests/{id}/{accept}")
@@ -43,9 +44,15 @@ public interface SyndicApi {
     Call<MessageResponse> sendMessage(@Header("Authorization") String authorization,
                                       @Body String request);
 
-    @GET("/api/syndicate/service")
-    Call<List<ServiceRequestResponse>> loadServiceRequestsResidents(
-            @Header("Authorization") String authorization);
+    @POST("/api/register/syndicate")
+    Call<SyndicServerResponse> registerSyndic(@Body SyndicDetails request);
+
+    @POST("/api/register/condominium")
+    Call<MessageResponse> registerCondo(@Body CondoDetails request);
+
+    @POST("/api/syndicate/rules")
+    Call<RuleResponse> registerRegra(@Header("Authorization") String authorization,
+                                     @Body RuleDetails ruleDetails);
 
     @Headers({"Content-Type: application/json"})
     @PUT("/api/syndicate/service/{id}")

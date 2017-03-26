@@ -12,8 +12,7 @@ public class UserResponse {
     @SerializedName("ativo")
     private Boolean ativo;
 
-    public UserResponse() {
-    }
+    public UserResponse() {}
 
     public String getName() {
         return name;

@@ -1,6 +1,7 @@
 package br.com.edu.ufcg.osindico.dwellerRequests.ui;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,7 @@ import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.dwellerDetails.ui.DwellerDetailsActivity;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsContract;
 import br.com.edu.ufcg.osindico.dwellerRequests.mvp.RequestsResidentsPresenterImpl;
+import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -128,8 +130,22 @@ public class RequestsDwellersFragment extends Fragment implements
     }
 
     private void updateAdapter(List<DwellerResponse> dwellerResponses){
-        adapter = new RequestDwellerAdapter(dwellerResponses);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+        if(dwellerResponses.isEmpty()){
+            EmptyFragment emptyFragment = new EmptyFragment();
+            emptyFragment.setTitle("Nenhuma solicitação");
+            emptyFragment.setMessage("Você não possui solicitações pendentes!");
+            setFragment(emptyFragment);
+        }else{
+            adapter = new RequestDwellerAdapter(dwellerResponses);
+            adapter.setClickListener(this);
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
+    private void setFragment(Fragment newFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame_syndic, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

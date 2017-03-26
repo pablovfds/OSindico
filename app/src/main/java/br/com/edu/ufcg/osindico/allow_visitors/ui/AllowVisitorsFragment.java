@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.allow_visitors.mvp.AllowVisitorsContract;
+import br.com.edu.ufcg.osindico.request_service.mvp.RequestServiceContract;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -53,7 +55,7 @@ public class AllowVisitorsFragment extends Fragment implements AllowVisitorsCont
         linearLayout.addView(name);
         linearLayout.addView(cpf);
 
-        LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.activity_allow_visits);
+        RelativeLayout layout = (RelativeLayout) getActivity().findViewById(R.id.activity_allow_visits);
         layout.addView(linearLayout);
         Toast.makeText(getActivity(), "Adicionado!", Toast.LENGTH_SHORT).show();
     }

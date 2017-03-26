@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_cadastro_regra_syndic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#979797"
+            android:textSize="16sp"
+            android:text="Insira uma nova regra:"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -12,4 +21,4 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/texto_nova_regra" />
-</RelativeLayout>
+</LinearLayout>

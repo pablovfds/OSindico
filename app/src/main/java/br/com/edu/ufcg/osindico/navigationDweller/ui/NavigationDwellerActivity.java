@@ -25,6 +25,7 @@ import br.com.edu.ufcg.osindico.allow_visitors.ui.AllowVisitorsFragment;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
+import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
@@ -89,7 +90,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
                         Log.e("servicos", "servicos");
                         break;
                     case R.id.tab_claims_dweller:
-                        //setFragment();
+                        setFragment(new EmptyFragment());
                         Toast.makeText(NavigationDwellerActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
                         Log.e("reclamacoes", "reclamacoes");
                         break;
@@ -146,8 +147,10 @@ public class NavigationDwellerActivity extends AppCompatActivity
 
     @Override
     public void navigateToMessageDweller() {
-        Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
+        mBottomNav.getMenu().clear();
+        mBottomNav.inflateMenu(R.menu.menu_messages_dweller);
         mBottomNav.setVisibility(View.VISIBLE);
+        Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
         setFragment(new DwellerMessagesFragment());
     }
 
@@ -155,18 +158,21 @@ public class NavigationDwellerActivity extends AppCompatActivity
     public void navigateToSettingsDweller() {
         Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
     }
 
     @Override
     public void navigateToAboutDweller() {
         Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
     }
 
     @Override
     public void navigateToCalendarDweller() {
         Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
     }
 
     @Override

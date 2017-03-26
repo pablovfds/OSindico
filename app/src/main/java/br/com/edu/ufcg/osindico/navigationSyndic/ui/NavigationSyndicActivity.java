@@ -21,8 +21,10 @@ import android.widget.Toast;
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.Utils.UpdateTheme;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
+import br.com.edu.ufcg.osindico.condominiumResidents.ui.CondominiumResidentsFragment;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
+import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicContract;
 import br.com.edu.ufcg.osindico.navigationSyndic.mvp.NavigationSyndicPresenterImpl;
@@ -84,7 +86,7 @@ public class NavigationSyndicActivity extends BaseActivity
                         Log.e("novo morador", "novo morador");
                         break;
                     case R.id.tab_dwellers:
-                        //setFragment();
+                        setFragment(new CondominiumResidentsFragment());
                         Toast.makeText(NavigationSyndicActivity.this, "rlista de moradores", Toast.LENGTH_SHORT).show();
                         Log.e("lista", "lista moradores");
                         break;
@@ -107,7 +109,7 @@ public class NavigationSyndicActivity extends BaseActivity
                         Log.e("servicos", "servicos");
                         break;
                     case R.id.tab_claims:
-                        //setFragment();
+                        setFragment(new EmptyFragment());
                         Toast.makeText(NavigationSyndicActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
                         Log.e("reclamacoes", "reclamacoes");
                         break;
@@ -172,24 +174,29 @@ public class NavigationSyndicActivity extends BaseActivity
     @Override
     public void navigateToSyndicCalendar() {
         mBottomNav.setVisibility(View.GONE);
+        EmptyFragment emptyFragment = new EmptyFragment();
+        setFragment(emptyFragment);
         Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToSettings() {
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
         Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToAbout() {
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
         Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToLogin() {
         mBottomNav.setVisibility(View.GONE);
+        setFragment(new EmptyFragment());
         startActivity(new Intent(this, LoginUserActivity.class));
         finish();
     }
