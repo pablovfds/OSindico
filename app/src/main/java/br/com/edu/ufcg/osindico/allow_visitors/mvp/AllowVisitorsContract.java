@@ -9,13 +9,16 @@ public interface AllowVisitorsContract {
     interface View {
         void setSuccess();
         void setServerError(String message);
+        void setNameError();
+        void setCpfError();
     }
 
     interface Presenter {
-        void validateData(String token, String name, String cpf);
+        void sendVisitorsList(List<VisitorDetails> visitors);
+        void checkVisitor(String name, String cpf);
     }
 
     interface Model {
-        void sendVisitorsList(String token, List<VisitorDetails> visitorDetails);
+        void registerVisitorsList(String token, List<VisitorDetails> visitorDetails);
     }
 }
