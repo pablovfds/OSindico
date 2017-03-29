@@ -26,7 +26,7 @@ public class EmptyFragment extends Fragment {
     String title, message;
 
     public EmptyFragment(){
-        this.title = "Nada por aqui...";
+        this.title = "Vazio por aqui...";
         this.message = "Não temos nenhuma informação a ser exibida!";
     }
 

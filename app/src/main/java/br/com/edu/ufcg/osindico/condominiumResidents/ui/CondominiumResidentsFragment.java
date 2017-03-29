@@ -90,7 +90,7 @@ public class CondominiumResidentsFragment extends Fragment implements Condominiu
 
     @Override
     public void setCondominiumResidentsList(List<DwellerResponse> residentsResponseList) {
-        residentsResponseList.add(new DwellerResponse("Joao Silva", "joao@gmail.com"));
+
         if(residentsResponseList.isEmpty()){
             EmptyFragment emptyFragment = new EmptyFragment();
             emptyFragment.setTitle("Nenhum morador :(");
@@ -100,7 +100,6 @@ public class CondominiumResidentsFragment extends Fragment implements Condominiu
             Log.e("list", residentsResponseList.size() + "");
             adapter = new ResidentsListAdapter(residentsResponseList);
             recyclerView.setAdapter(adapter);
-
             Toast.makeText(this.getActivity(), "Existem " + residentsResponseList.size() + " moradores", Toast.LENGTH_SHORT).show();
 
         }

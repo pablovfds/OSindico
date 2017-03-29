@@ -1,5 +1,7 @@
 package br.com.edu.ufcg.osindico.adapters;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import br.com.edu.ufcg.osindico.Utils.ItemClickListener;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 
 public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAdapter.ViewHolder>{
+
     private List<ServiceRequestResponse> serviceRequestResponses;
     private ItemClickListener clickListener;
 
@@ -39,6 +42,17 @@ public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAd
         String sender = "De: Morador 1";
         String location = "Local: Apt 18";
         String description = "Descrição: " + serviceRequestResponses.get(position).getDescription();
+        String status = "";
+
+//        if(serviceRequestResponses.get(position).isStatus()){
+//            status = "Resolvido";
+//            holder.tv_status.setBackgroundColor(Color.parseColor("#82bd82"));
+//        }else{
+//            status = "Pendente";
+//            holder.tv_status.setBackgroundColor(Color.parseColor("#fa6868"));
+//        }
+//
+//        holder.tv_status.setText(status);
         holder.tv_title_service.setText(title);
         holder.tv_sender_service.setText(sender);
         holder.tv_sender_location.setText(location);
@@ -56,6 +70,7 @@ public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAd
         private TextView tv_sender_location;
         private TextView tv_description_service;
         private ImageButton btn_update_service_status;
+        private TextView tv_status;
 
         public ViewHolder(View view) {
             super(view);
@@ -65,7 +80,9 @@ public class ServiceRequestAdapter extends RecyclerView.Adapter<ServiceRequestAd
             tv_sender_location = (TextView) view.findViewById(R.id.tv_service_location);
             tv_description_service = (TextView) view.findViewById(R.id.tv_description_service);
             btn_update_service_status = (ImageButton) view.findViewById(R.id.btn_update_service_status);
+           // tv_status = (TextView) view.findViewById(R.id.status);
             btn_update_service_status.setOnClickListener(this);
+
         }
 
         @Override
