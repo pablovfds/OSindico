@@ -1,5 +1,7 @@
 package br.com.edu.ufcg.osindico.visitors_list.mvp;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -28,6 +30,7 @@ public class AllowedVisitorsListModelImpl implements AllowedVisitorsListContract
             @Override
             public void onResponse(Call<List<VisitorResponse>> call, Response<List<VisitorResponse>> response) {
                 List<VisitorResponse> responseList = response.body();
+
                 if (response.isSuccessful()){
                     listener.onSuccess(responseList);
                 } else {

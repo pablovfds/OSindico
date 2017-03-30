@@ -47,4 +47,9 @@ public class VisitorResponse {
     public void setVisitorDetailsList(List<VisitorDetails> visitorDetailsList) {
         this.visitorDetailsList = visitorDetailsList;
     }
+
+    @Override
+    public String toString() {
+        return nameDweller;
+    }
 }

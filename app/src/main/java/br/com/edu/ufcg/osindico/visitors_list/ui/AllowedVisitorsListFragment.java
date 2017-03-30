@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -31,6 +33,8 @@ import butterknife.ButterKnife;
 public class AllowedVisitorsListFragment extends Fragment implements AllowedVisitorsListContract.View{
 
     @BindView(R.id.elv_visitors) ExpandableListView elvVisitors;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private AllowedVisitorsAdapter adapter;
     private AllowedVisitorsListContract.Presenter presenter;
@@ -80,12 +84,12 @@ public class AllowedVisitorsListFragment extends Fragment implements AllowedVisi
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     private String getToken(){
