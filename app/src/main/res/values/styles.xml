@@ -15,6 +15,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="CustomDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
     <!-- Base application theme for syndic -->
     <style name="AppThemeSyndic" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimarySyndic</item>

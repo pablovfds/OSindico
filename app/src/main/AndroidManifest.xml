@@ -12,6 +12,7 @@
         android:theme="@style/AppThemeSyndic">
 
         <activity
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:name=".loginUser.ui.LoginUserActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -36,10 +37,10 @@
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
         <activity android:name=".condominium_rules.ui.CondominiumRulesActivity" />
         <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity" />
+
         <activity android:name=".allow_visitors.ui.AllowVisitorsActivity"/>
 
         <activity android:name=".base.BaseActivity"></activity>
-
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"
