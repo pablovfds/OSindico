@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,8 +57,6 @@ public class RequestsDwellersFragment extends Fragment implements
         SyndicService service = new SyndicService();
         presenter = new RequestsResidentsPresenterImpl(service);
         loadList();
-
-        //getActivity().getActionBar().setTitle("Lista de solicitações de moradores");
 
         return view;
     }

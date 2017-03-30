@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="57dp"
-        android:paddingBottom="25dp"/>
+        android:paddingBottom="30dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

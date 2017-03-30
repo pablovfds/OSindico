@@ -4,23 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class VisitorDetails {
 
-    @SerializedName("name")
     private String name;
-
-    @SerializedName("cpf")
     private String cpf;
 
-    @SerializedName("getvisitDay")
-    private String getvisitDay;
-
-    @SerializedName("id")
-    private Long id;
-
-    public VisitorDetails(String name, String cpf, String getvisitDay, Long id) {
+    public VisitorDetails(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
-        this.getvisitDay = getvisitDay;
-        this.id = id;
     }
 
     public String getName() {
@@ -37,13 +26,5 @@ public class VisitorDetails {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getGetvisitDay() {
-        return getvisitDay;
-    }
-
-    public void setGetvisitDay(String getvisitDay) {
-        this.getvisitDay = getvisitDay;
     }
 }

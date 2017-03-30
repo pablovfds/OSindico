@@ -35,7 +35,7 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
 
     @BindView(R.id.register_syndic_progress) ProgressBar progressBar;
 
-    //@BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.toolbar_condo) Toolbar toolbar;
 
     RegisterSyndicContract.Presenter presenter;
 
@@ -43,7 +43,7 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_syndic);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
     }
 
@@ -138,5 +138,9 @@ public class RegisterSyndicActivity extends AppCompatActivity implements Registe
         finish();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }

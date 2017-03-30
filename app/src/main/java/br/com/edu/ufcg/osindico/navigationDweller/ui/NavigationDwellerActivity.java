@@ -8,36 +8,30 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.allow_visitors.ui.AllowVisitorsFragment;
-import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
+import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
-import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
 import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerPresenterImpl;
-import br.com.edu.ufcg.osindico.navigationSyndic.ui.NavigationSyndicActivity;
+import br.com.edu.ufcg.osindico.outboxDweller.ui.OutBoxDwellerFragment;
 import br.com.edu.ufcg.osindico.request_service.ui.RequestServicesFragment;
-import br.com.edu.ufcg.osindico.serviceRequestList.ui.ServiceRequestListFragment;
-import br.com.edu.ufcg.osindico.syndicMessages.ui.SyndicMessageFragment;
+import br.com.edu.ufcg.osindico.serviceListRequestedDweller.ui.MyServicesFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NavigationDwellerActivity extends AppCompatActivity
+public class NavigationDwellerActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, NavigationDwellerContract.View {
 
     @BindView(R.id.toolbarDweller) Toolbar toolbar;
@@ -46,17 +40,17 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @BindView(R.id.bottombar_dweller) BottomNavigationView mBottomNav;
 
     private NavigationDwellerContract.Presenter presenter;
+    private Boolean changeMenuOnback;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_dweller);
-
         ButterKnife.bind(this);
-
-        toolbar.setTitle("");
-
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Página inicial");
+
+        changeMenuOnback = false;
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -70,7 +64,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
         this.presenter = new NavigationDwellerPresenterImpl(sharedPreferences);
         this.presenter.setView(this);
 
-        setFragment(new DwellerMessagesFragment());
+        setFragment(new DwellerMessagesFragment(), "messages");
         mBottomNav.setVisibility(View.GONE);
         setBottombarItemSelected();
     }
@@ -81,24 +75,53 @@ public class NavigationDwellerActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.tab_messages_dweller:
-                        setFragment(new DwellerMessagesFragment());
-                        Log.e("mensagens", "mensagens morador");
+                        changeMenuOnback = true;
+                        mBottomNav.getMenu().clear();
+                        mBottomNav.inflateMenu(R.menu.sub_menu_messages_dweller);
+                        setFragment(new DwellerMessagesFragment(), "messages");
+                        getSupportActionBar().setTitle("Caixa de entrada");
+                        break;
+                    case R.id.sub_menu_inbox:
+                        changeMenuOnback = true;
+                        setFragment(new DwellerMessagesFragment(), "inbox");
+                        getSupportActionBar().setTitle("Caixa de entrada");
+                        break;
+                    case R.id.sub_menu_outbox:
+                        changeMenuOnback = true;
+                        setFragment(new OutBoxDwellerFragment(), "outbox");
+                        getSupportActionBar().setTitle("Caixa de saída");
                         break;
                     case R.id.tab_request_services_dweller:
-                        setFragment(new RequestServicesFragment());
-                        //Toast.makeText(NavigationDwellerActivity.this, "servicos", Toast.LENGTH_SHORT).show();
-                        Log.e("servicos", "servicos");
+                        changeMenuOnback = true;
+                        mBottomNav.getMenu().clear();
+                        mBottomNav.inflateMenu(R.menu.submenu_services_dweller);
+                        setFragment(new RequestServicesFragment(), "request_service");
+                        getSupportActionBar().setTitle("Solicitar serviço");
+                        break;
+                    case R.id.sub_menu_request_service:
+                        changeMenuOnback = true;
+                        setFragment(new RequestServicesFragment(), "request_service");
+                        getSupportActionBar().setTitle("Solicitar serviço");
+                        break;
+                    case R.id.sub_menu_my_requests:
+                        changeMenuOnback = true;
+                        setFragment(new MyServicesFragment(), "request_service");
+                        getSupportActionBar().setTitle("Serviços solicitados");
                         break;
                     case R.id.tab_claims_dweller:
-                        setFragment(new EmptyFragment());
-                        Toast.makeText(NavigationDwellerActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
-                        Log.e("reclamacoes", "reclamacoes");
+                        changeMenuOnback = false;
+                        setFragment(new EmptyFragment(), "empty");
+                        getSupportActionBar().setTitle("Reclamações");
                         break;
                     case R.id.tab_lobby:
-                        setFragment(new AllowVisitorsFragment());
+                        changeMenuOnback = false;
+                        setFragment(new AllowVisitorsFragment(), "lobby");
+                        getSupportActionBar().setTitle("Portaria");
                         break;
                     case R.id.tab_condo_rules:
-                        setFragment(new CondominiumRulesFragment());
+                        changeMenuOnback = false;
+                        setFragment(new CondominiumRulesFragment(), "condo_rules");
+                        getSupportActionBar().setTitle("Regras do condomínio");
                         break;
                 }
                 return true;
@@ -107,9 +130,9 @@ public class NavigationDwellerActivity extends AppCompatActivity
     }
 
 
-    private void setFragment(android.app.Fragment newFragment) {
+    private void setFragment(android.app.Fragment newFragment, String tag) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_frame, newFragment);
+        transaction.replace(R.id.content_frame, newFragment, tag);
         transaction.addToBackStack(null);
         transaction.commit();
     }
@@ -127,6 +150,17 @@ public class NavigationDwellerActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        Log.e("change menu", "change" + changeMenuOnback);
+        if(changeMenuOnback){
+            Log.e("change menu", "change");
+            mBottomNav.getMenu().clear();
+            mBottomNav.inflateMenu(R.menu.menu_messages_dweller);
+            getSupportActionBar().setTitle("O síndico");
+            changeMenuOnback = false;
+        }else{
+            this.finish();
+        }
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -140,58 +174,62 @@ public class NavigationDwellerActivity extends AppCompatActivity
 
     @Override
     public void navigateToHomeDweller() {
-        Toast.makeText(this, getString(R.string.nav_home), Toast.LENGTH_SHORT).show();
+        changeMenuOnback = false;
         mBottomNav.setVisibility(View.GONE);
-        setFragment(new DwellerMessagesFragment());
+        setFragment(new DwellerMessagesFragment(), "home");
+        getSupportActionBar().setTitle("Página inicial");
     }
 
     @Override
     public void navigateToMessageDweller() {
+        changeMenuOnback = false;
         mBottomNav.getMenu().clear();
         mBottomNav.inflateMenu(R.menu.menu_messages_dweller);
         mBottomNav.setVisibility(View.VISIBLE);
-        Toast.makeText(this, getString(R.string.nav_messages), Toast.LENGTH_SHORT).show();
-        setFragment(new DwellerMessagesFragment());
+        setFragment(new DwellerMessagesFragment(), "messages");
+        getSupportActionBar().setTitle("Mensagens");
     }
 
     @Override
     public void navigateToSettingsDweller() {
-        Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
+        changeMenuOnback = false;
         mBottomNav.setVisibility(View.GONE);
-        setFragment(new EmptyFragment());
+        setFragment(new EmptyFragment(), "empty");
+        getSupportActionBar().setTitle("Configurações");
     }
 
     @Override
     public void navigateToAboutDweller() {
-        Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
+        changeMenuOnback = false;
         mBottomNav.setVisibility(View.GONE);
-        setFragment(new EmptyFragment());
+        setFragment(new EmptyFragment(), "empty");
+        getSupportActionBar().setTitle("Sobre");
     }
 
     @Override
     public void navigateToCalendarDweller() {
-        Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
+        changeMenuOnback = false;
         mBottomNav.setVisibility(View.GONE);
-        setFragment(new EmptyFragment());
+        setFragment(new EmptyFragment(), "empty");
+        getSupportActionBar().setTitle("Calendário");
     }
 
     @Override
     public void navigateToCondoDetails() {
-        Toast.makeText(this, getString(R.string.nav_my_condo), Toast.LENGTH_SHORT).show();
-
-//        Intent intent = new Intent(this, CondominiumRulesActivity.class);
-//        intent.putExtra("type", "morador");
-//        startActivity(intent);
+        changeMenuOnback = false;
         mBottomNav.getMenu().clear();
         mBottomNav.inflateMenu(R.menu.menu_dweller_condominium);
         mBottomNav.setVisibility(View.VISIBLE);
-        setFragment(new AllowVisitorsFragment());
+        setFragment(new AllowVisitorsFragment(), "allow_entrance");
+        getSupportActionBar().setTitle("Condomínio");
     }
 
     @Override
     public void navigateToLogin() {
+        changeMenuOnback = false;
         startActivity(new Intent(this, LoginUserActivity.class));
         mBottomNav.setVisibility(View.GONE);
         finish();
     }
+
 }

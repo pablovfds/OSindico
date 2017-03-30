@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,6 @@ public class SyndicMessageFragment extends Fragment implements SyndicMessageCont
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_syndic_message, container, false);
         ButterKnife.bind(this, view);
-
         return view;
     }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
@@ -102,6 +104,7 @@ public class ServiceRequestListFragment extends Fragment implements ServiceReque
 
     @Override
     public void setRequestList(List<ServiceRequestResponse> requestList) {
+        Collections.reverse(requestList);
         adapter = new ServiceRequestAdapter(requestList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);

@@ -11,11 +11,12 @@ public interface AllowVisitorsContract {
         void setServerError(String message);
         void setNameError();
         void setCpfError();
+        void onFinishAddDialog(String name, String cpf);
     }
 
     interface Presenter {
         void sendVisitorsList(String token, String date, List<VisitorDetails> visitors);
-        boolean checkVisitor(String name, String cpf);
+        void checkVisitor(String name, String cpf);
         void setView(View view);
         void onSuccess();
         void onServerError(String message);

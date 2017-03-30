@@ -89,6 +89,11 @@ public class AddVisitorDialogFragment extends DialogFragment implements AllowVis
         inputCpf.setError("Insira um numero de CPF.");
     }
 
+    @Override
+    public void onFinishAddDialog(String name, String cpf) {
+        
+    }
+
     interface OnAddVisitorDialogListener {
         void onFinishAddDialog(String name, String cpf);
     }

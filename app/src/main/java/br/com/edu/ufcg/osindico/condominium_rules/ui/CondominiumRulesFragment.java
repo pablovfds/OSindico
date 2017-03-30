@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
@@ -68,8 +70,6 @@ public class CondominiumRulesFragment extends Fragment implements CondominiumRul
         typeUser = "sindico";
         SyndicService service = new SyndicService();
         presenter = new CondominiumRulesPresenterImpl(service);
-
-        //getActivity().getActionBar().setTitle("Regras do Condomínio");
         return view;
     }
 
@@ -118,6 +118,7 @@ public class CondominiumRulesFragment extends Fragment implements CondominiumRul
 
     @Override
     public void setCondominiumRulesList(List<RuleResponse> ruleResponseList) {
+        Collections.reverse(ruleResponseList);
 //        if(ruleResponseList.isEmpty()){
 //            EmptyFragment emptyFragment = new EmptyFragment();
 //            emptyFragment.setTitle("Sem regras!");

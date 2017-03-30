@@ -27,6 +27,8 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
         this.context = context;
     }
 
+
+
     @Override
     public int getGroupCount() {
         return visitorsList.size();
@@ -74,7 +76,7 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
         }
 
         TextView heading = (TextView) convertView.findViewById(R.id.heading);
-        String header = "Nome do morador: " + visitorResponse.getNameDweller().trim();
+        String header = "Visitantes para: " + visitorResponse.getNameDweller().trim();
         heading.setText(header);
 
         return convertView;
@@ -105,4 +107,5 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
     }
+
 }

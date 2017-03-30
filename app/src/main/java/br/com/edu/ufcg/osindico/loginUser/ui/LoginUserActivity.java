@@ -122,17 +122,24 @@ public class LoginUserActivity extends BaseActivity implements LoginUserContract
             dwellerIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             UpdateTheme.setTheme(getApplicationContext(), 2);
             startActivity(dwellerIntent);
+            this.finish();
         } else if (loginResponse.getUsuario().getTipo().equals(SINDICO)) {
             Intent syndicIntent = new Intent(this, NavigationSyndicActivity.class);
             syndicIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             UpdateTheme.setTheme(getApplicationContext(), 1);
             startActivity(syndicIntent);
+            this.finish();
         }
     }
 
     @Override
     public void setServerError(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
     }
 
 //    @Override

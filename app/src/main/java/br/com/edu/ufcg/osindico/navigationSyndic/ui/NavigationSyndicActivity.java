@@ -12,6 +12,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -83,35 +84,31 @@ public class NavigationSyndicActivity extends BaseActivity
                 switch (item.getItemId()){
                     case R.id.tab_new_dweller:
                         setFragment(new RequestsDwellersFragment());
-                        Log.e("novo morador", "novo morador");
+                        getSupportActionBar().setTitle("Novos moradores");
                         break;
                     case R.id.tab_dwellers:
                         setFragment(new CondominiumResidentsFragment());
-                        Toast.makeText(NavigationSyndicActivity.this, "rlista de moradores", Toast.LENGTH_SHORT).show();
-                        Log.e("lista", "lista moradores");
+                        getSupportActionBar().setTitle("Moradores do condomínio");
                         break;
                     case R.id.tab_rules:
                         setFragment(new CondominiumRulesFragment());
-                        Toast.makeText(NavigationSyndicActivity.this, "regras", Toast.LENGTH_SHORT).show();
-                        Log.e("regras", "lista regras");
+                        getSupportActionBar().setTitle("Regras do condomínio");
                         break;
                     case R.id.tab_entrance:
                         setFragment(new AllowedVisitorsListFragment());
-                        Toast.makeText(NavigationSyndicActivity.this, "Portaria", Toast.LENGTH_SHORT).show();
+                        getSupportActionBar().setTitle("Portaria");
                         break;
                     case R.id.tab_messages:
                         setFragment(new SyndicMessageFragment());
-                        Log.e("mensagens", "mensagens");
+                        getSupportActionBar().setTitle("Mensagens");
                         break;
                     case R.id.tab_request_services:
                         setFragment(new ServiceRequestListFragment());
-                        Toast.makeText(NavigationSyndicActivity.this, "servicos", Toast.LENGTH_SHORT).show();
-                        Log.e("servicos", "servicos");
+                        getSupportActionBar().setTitle("Serviços requisitados");
                         break;
                     case R.id.tab_claims:
                         setFragment(new EmptyFragment());
-                        Toast.makeText(NavigationSyndicActivity.this, "reclamacoes", Toast.LENGTH_SHORT).show();
-                        Log.e("reclamacoes", "reclamacoes");
+                        getSupportActionBar().setTitle("Reclamações");
                         break;
                 }
                 return true;
@@ -158,6 +155,7 @@ public class NavigationSyndicActivity extends BaseActivity
         mBottomNav.inflateMenu(R.menu.bottom_navigation_items);
         mBottomNav.setVisibility(View.VISIBLE);
         setFragment(new RequestsDwellersFragment());
+        getSupportActionBar().setTitle("Meu condomínio");
     }
 
     @Override
@@ -168,6 +166,7 @@ public class NavigationSyndicActivity extends BaseActivity
         mBottomNav.inflateMenu(R.menu.menu_messages);
         mBottomNav.setVisibility(View.VISIBLE);
         SyndicMessageFragment frag = new SyndicMessageFragment();
+        getSupportActionBar().setTitle("Mensagens");
         setFragment(frag);
     }
 
@@ -176,21 +175,24 @@ public class NavigationSyndicActivity extends BaseActivity
         mBottomNav.setVisibility(View.GONE);
         EmptyFragment emptyFragment = new EmptyFragment();
         setFragment(emptyFragment);
-        Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setTitle("Calendário");
+        //Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToSettings() {
         mBottomNav.setVisibility(View.GONE);
         setFragment(new EmptyFragment());
-        Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setTitle("Configurações");
+        //Toast.makeText(this, getString(R.string.nav_settings), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void navigateToAbout() {
         mBottomNav.setVisibility(View.GONE);
         setFragment(new EmptyFragment());
-        Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setTitle("Sobre");
+        //Toast.makeText(this, getString(R.string.nav_about), Toast.LENGTH_SHORT).show();
     }
 
     @Override
