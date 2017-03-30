@@ -25,6 +25,7 @@ import br.com.edu.ufcg.osindico.allow_visitors.ui.AllowVisitorsFragment;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
 import br.com.edu.ufcg.osindico.dwellerRequests.ui.RequestsDwellersFragment;
+import br.com.edu.ufcg.osindico.dwellerServiceList.ui.DwellerServiceListFragment;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
 import br.com.edu.ufcg.osindico.navigationDweller.mvp.NavigationDwellerContract;
@@ -166,6 +167,7 @@ public class NavigationDwellerActivity extends AppCompatActivity
     @Override
     public void navigateToCalendarDweller() {
         Toast.makeText(this, getString(R.string.nav_calendar), Toast.LENGTH_SHORT).show();
+        setFragment(new DwellerServiceListFragment());
         mBottomNav.setVisibility(View.GONE);
     }
 
