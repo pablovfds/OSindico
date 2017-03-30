@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.DwellerDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 import br.com.edu.ufcg.osindico.data.models.ServiceRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,4 +26,7 @@ public interface DwellerApi {
     Call<MessageResponse> sendServiceRequest(@Header("Authorization") String authorization,
                                              @Body ServiceRequest request);
 
+    @GET("/api/dweller/service")
+    Call<List<ServiceRequestResponse>> loadServiceRequests(
+            @Header("Authorization") String authorization);
 }

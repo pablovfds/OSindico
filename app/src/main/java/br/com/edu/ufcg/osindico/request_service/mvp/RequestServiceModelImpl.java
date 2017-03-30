@@ -26,7 +26,6 @@ public class RequestServiceModelImpl implements RequestServiceContract.Model {
     public void sendRequest(String token, final ServiceRequest request, final BaseListener listener) {
         Call<MessageResponse> call = dwellerService.getDwellerApi()
                 .sendServiceRequest(token, request);
-        Log.e("token", token);
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
