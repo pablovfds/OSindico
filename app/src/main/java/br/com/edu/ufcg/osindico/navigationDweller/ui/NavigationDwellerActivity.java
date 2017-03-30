@@ -20,6 +20,7 @@ import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.allow_visitors.ui.AllowVisitorsFragment;
 import br.com.edu.ufcg.osindico.base.BaseActivity;
 import br.com.edu.ufcg.osindico.condominium_rules.ui.CondominiumRulesFragment;
+import br.com.edu.ufcg.osindico.dwellerServiceList.ui.DwellerServiceListFragment;
 import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import br.com.edu.ufcg.osindico.homeDweller.ui.DwellerMessagesFragment;
 import br.com.edu.ufcg.osindico.loginUser.ui.LoginUserActivity;
@@ -105,7 +106,7 @@ public class NavigationDwellerActivity extends BaseActivity
                         break;
                     case R.id.sub_menu_my_requests:
                         changeMenuOnback = true;
-                        setFragment(new MyServicesFragment(), "request_service");
+                        setFragment(new DwellerServiceListFragment(), "request_service");
                         getSupportActionBar().setTitle("Serviços solicitados");
                         break;
                     case R.id.tab_claims_dweller:
