@@ -60,7 +60,6 @@ public class AllowedVisitorsListFragment extends Fragment implements AllowedVisi
     }
 
     private void initializeViews() {
-
         loadVisitorsList();
     }
 

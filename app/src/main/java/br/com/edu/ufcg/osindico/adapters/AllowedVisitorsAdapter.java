@@ -86,12 +86,12 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.visitors_header_row, null);
+            convertView = inf.inflate(R.layout.visitor_row, null);
         }
 
         TextView tv_visitor_name = (TextView) convertView.findViewById(R.id.tv_visitor_name);
         TextView tv_visitor_cpf = (TextView) convertView.findViewById(R.id.tv_visitor_cpf);
-        tv_visitor_name.setText(visitorDetails.getName().trim());
+        tv_visitor_name.setText(childPosition + ". " + visitorDetails.getName().trim());
         tv_visitor_cpf.setText(visitorDetails.getCpf().trim());
 
         return convertView;

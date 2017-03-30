@@ -8,6 +8,7 @@ import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.DwellerResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.RuleResponse;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.VisitorResponse;
 import br.com.edu.ufcg.osindico.data.models.SyndicDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.SyndicServerResponse;
 import retrofit2.Call;
@@ -51,4 +52,7 @@ public interface SyndicApi {
     @PUT("/api/syndicate/service/{id}")
     Call<MessageResponse> updateServiceRequestStatus(@Header("Authorization") String authorization,
                                                @Path("id") Long id);
+
+    @GET("/api/syndicate/service")
+    Call<List<VisitorResponse>> loadDwellerVisitors(@Header("Authorization") String authorization);
 }
