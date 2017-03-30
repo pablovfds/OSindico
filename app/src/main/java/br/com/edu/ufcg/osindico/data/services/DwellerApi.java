@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.DwellerDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 import br.com.edu.ufcg.osindico.data.models.ServiceRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -19,6 +20,9 @@ public interface DwellerApi {
 
     @GET("/api/syndicate/message")
     Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
+
+    @POST("/api/dweller/visitor")
+    Call<MessageResponse> sendVisitorsList(@Header("Authorization") String authorization, String date, List<VisitorDetails> visitors);
 
     @Headers({"Content-Type: application/json"})
     @POST("/api/dweller/service")

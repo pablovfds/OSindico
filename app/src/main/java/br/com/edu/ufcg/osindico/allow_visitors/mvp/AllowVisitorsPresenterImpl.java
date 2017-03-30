@@ -1,19 +1,50 @@
 package br.com.edu.ufcg.osindico.allow_visitors.mvp;
 
-import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import java.util.List;
+
+import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
+import br.com.edu.ufcg.osindico.data.services.DwellerService;
 
 public class AllowVisitorsPresenterImpl implements AllowVisitorsContract.Presenter {
 
     private AllowVisitorsContract.View view;
     private AllowVisitorsContract.Model model;
 
-    public AllowVisitorsPresenterImpl(SyndicService service, AllowVisitorsContract.View view) {
+    public AllowVisitorsPresenterImpl(DwellerService service) {
         model = new AllowVisitorsModelImpl(service);
+    }
+
+    @Override
+    public void sendVisitorsList(String token, String date, List<VisitorDetails> visitors) {
+        model.registerVisitorsList(token, date, visitors, this);
+    }
+
+    @Override
+    public boolean checkVisitor(String name, String cpf) {
+        boolean error = false;
+        if (name.isEmpty()) {
+            view.setNameError();
+            error = true;
+        }
+        if (cpf.isEmpty()) {
+            view.setCpfError();
+            error = true;
+        }
+        return error;
+    }
+
+    @Override
+    public void setView(AllowVisitorsContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void validateData(String token, String name, String cpf) {
+    public void onSuccess() {
+        view.setSuccess();
+    }
 
+    @Override
+    public void onServerError(String message) {
+        view.setServerError(message);
     }
 }
