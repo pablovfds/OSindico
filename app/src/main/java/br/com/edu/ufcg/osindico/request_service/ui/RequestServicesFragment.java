@@ -6,9 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import java.util.zip.Inflater;
 
 import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.data.services.DwellerService;

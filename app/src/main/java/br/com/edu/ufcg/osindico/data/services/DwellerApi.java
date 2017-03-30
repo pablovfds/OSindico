@@ -31,4 +31,7 @@ public interface DwellerApi {
     Call<MessageResponse> sendServiceRequest(@Header("Authorization") String authorization,
                                              @Body ServiceRequest request);
 
+    @GET("/api/dweller/service")
+    Call<List<ServiceRequestResponse>> loadServiceRequests(
+            @Header("Authorization") String authorization);
 }
