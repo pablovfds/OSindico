@@ -74,8 +74,12 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
         }
 
         TextView heading = (TextView) convertView.findViewById(R.id.heading);
+        TextView subHeading = (TextView) convertView.findViewById(R.id.sub_heading);
         String header = "Nome do morador: " + visitorResponse.getNameDweller().trim();
+        String sub_header = "Data da visita: " + visitorResponse.getVisitorDetailsList()
+                .get(0).getGetvisitDay();
         heading.setText(header);
+        subHeading.setText(sub_header);
 
         return convertView;
     }
