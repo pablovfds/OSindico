@@ -174,7 +174,7 @@ public class AllowVisitorsFragment extends Fragment implements AllowVisitorsCont
     @Override
     public void onFinishAddDialog(String name, String cpf) {
         Log.e("dialog", name + cpf);
-        adapter.addVisitor(new VisitorDetails(name, cpf));
+        adapter.addVisitor(new VisitorDetails(name, cpf, "", 1L));
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }

@@ -84,9 +84,6 @@ public class AllowVisitorsActivity extends AppCompatActivity implements AllowVis
 
     @Override
     public void onFinishAddDialog(String name, String cpf) {
-
-
-            adapter.addVisitor(new VisitorDetails(name, cpf));
-
+         adapter.addVisitor(new VisitorDetails(name, cpf, "", 1L));
     }
 }

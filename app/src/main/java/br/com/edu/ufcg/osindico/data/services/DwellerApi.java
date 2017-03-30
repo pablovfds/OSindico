@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.edu.ufcg.osindico.data.models.DwellerDetails;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
 import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 import br.com.edu.ufcg.osindico.data.models.ServiceRequest;
 import br.com.edu.ufcg.osindico.data.models.VisitorsList;
