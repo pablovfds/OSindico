@@ -60,6 +60,6 @@ public interface SyndicApi {
     Call<MessageResponse> updateServiceRequestStatus(@Header("Authorization") String authorization,
                                                @Path("id") Long id);
 
-    @GET("/api/syndicate/service")
+    @GET("/api/syndicate/visitor")
     Call<List<VisitorResponse>> loadDwellerVisitors(@Header("Authorization") String authorization);
 }

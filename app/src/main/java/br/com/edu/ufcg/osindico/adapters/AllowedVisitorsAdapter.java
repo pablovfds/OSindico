@@ -2,6 +2,7 @@ package br.com.edu.ufcg.osindico.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,8 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
         }
 
         TextView heading = (TextView) convertView.findViewById(R.id.heading);
-        heading.setText(visitorResponse.getNameDweller().trim());
+        String header = "Nome do morador: " + visitorResponse.getNameDweller().trim();
+        heading.setText(header);
 
         return convertView;
     }
@@ -91,8 +93,10 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
 
         TextView tv_visitor_name = (TextView) convertView.findViewById(R.id.tv_visitor_name);
         TextView tv_visitor_cpf = (TextView) convertView.findViewById(R.id.tv_visitor_cpf);
-        tv_visitor_name.setText(childPosition + ". " + visitorDetails.getName().trim());
-        tv_visitor_cpf.setText(visitorDetails.getCpf().trim());
+        String visitorName = "Nome: " + visitorDetails.getName().trim();
+        String visitorCpf = "CPF: " + visitorDetails.getCpf().trim();
+        tv_visitor_name.setText(visitorName);
+        tv_visitor_cpf.setText(visitorCpf);
 
         return convertView;
     }
