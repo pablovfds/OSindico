@@ -54,13 +54,13 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:background="#979797">
-        </view>
+        </View>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -37,7 +37,6 @@ public class ServiceRequestListPresenter implements ServiceRequestListContract.P
     @Override
     public void updateServiceRequestStatus(String token, Long id) {
         if (view != null) {
-            this.view.showProgress();
             this.model.updateServiceRequestStatus(token, id, this);
         }
     }

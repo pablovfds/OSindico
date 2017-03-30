@@ -24,8 +24,9 @@
     <FrameLayout
         android:id="@+id/content_frame_syndic"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginTop="57dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="57dp"
+        android:paddingBottom="25dp"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

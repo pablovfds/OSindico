@@ -57,7 +57,7 @@ public class ServiceRequestListFragment extends Fragment implements ServiceReque
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_service_request_list, container, true);
+        View view = inflater.inflate(R.layout.activity_service_request_list, container, false);
         ButterKnife.bind(this, view);
 
         SyndicService service = new SyndicService();

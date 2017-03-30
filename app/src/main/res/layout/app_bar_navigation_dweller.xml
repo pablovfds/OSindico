@@ -25,7 +25,8 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="57dp" />
+        android:layout_marginTop="57dp"
+        android:paddingBottom="25dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottombar_dweller"
@@ -37,5 +38,6 @@
         app:itemIconTint="#ffffff"
         app:itemTextColor="#ffffff"
         app:menu="@menu/menu_messages_dweller"/>
+
 
 </android.support.design.widget.CoordinatorLayout>
