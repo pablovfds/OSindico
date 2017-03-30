@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,18 +21,32 @@ import br.com.edu.ufcg.osindico.R;
 import br.com.edu.ufcg.osindico.adapters.AllowedVisitorsAdapter;
 import br.com.edu.ufcg.osindico.adapters.ServiceRequestAdapter;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.ServiceRequestResponse;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.VisitorResponse;
+import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
+import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.visitors_list.mvp.AllowedVisitorsListContract;
+import br.com.edu.ufcg.osindico.visitors_list.mvp.AllowedVisitorsListPresenterImpl;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class AllowedVisitorsListFragment extends Fragment {
+public class AllowedVisitorsListFragment extends Fragment implements AllowedVisitorsListContract.View{
 
-    @BindView(R.id.visitors_list)
-    RecyclerView recyclerView;
+    @BindView(R.id.elv_visitors) ExpandableListView elvVisitors;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
     private AllowedVisitorsAdapter adapter;
+    private AllowedVisitorsListContract.Presenter presenter;
 
     public AllowedVisitorsListFragment(){}
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SyndicService service = new SyndicService();
+        this.presenter = new AllowedVisitorsListPresenterImpl(service);
+    }
 
     @Nullable
     @Override
@@ -41,27 +59,42 @@ public class AllowedVisitorsListFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        this.presenter.setView(this);
         initializeViews();
     }
 
     private void initializeViews() {
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
         loadVisitorsList();
     }
 
     private void loadVisitorsList() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
-                Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString(getString(R.string.user_token), null);
-
+        this.presenter.loadAllowedVisitorsList(getToken());
     }
 
-//    @Override
-//    public void setVisitorsList(List<ServiceVisitorsList> visitorsList) {
-//        adapter = new AllowedVisitorsAdapter(visitorsList);
-//        recyclerView.setAdapter(adapter);
-//    }
+    @Override
+    public void setAllowedVisitorsList(List<VisitorResponse> visitorsList) {
+        this.adapter = new AllowedVisitorsAdapter(getActivity(), visitorsList);
+        elvVisitors.setAdapter(adapter);
+    }
 
+    @Override
+    public void setServerError(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    private String getToken(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("preferencesOSindico",
+                Context.MODE_PRIVATE);
+        return sharedPreferences.getString(getString(R.string.user_token), null);
+    }
 }
