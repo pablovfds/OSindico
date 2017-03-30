@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sub_menu_request_service"
+        android:icon="@drawable/tab_request_service"
+        android:title="Pedir serviço"
+        app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/sub_menu_my_requests"
+        android:icon="@drawable/ic_outbox"
+        android:title="Serviços solicitados"
+        app:showAsAction="collapseActionView"/>
+</menu>

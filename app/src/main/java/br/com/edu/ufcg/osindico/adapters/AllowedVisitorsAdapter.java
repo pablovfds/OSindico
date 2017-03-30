@@ -27,6 +27,8 @@ public class AllowedVisitorsAdapter extends BaseExpandableListAdapter {
         this.context = context;
     }
 
+
+
     @Override
     public int getGroupCount() {
         return visitorsList.size();

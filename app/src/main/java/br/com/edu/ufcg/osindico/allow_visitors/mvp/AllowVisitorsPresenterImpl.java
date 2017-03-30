@@ -20,17 +20,18 @@ public class AllowVisitorsPresenterImpl implements AllowVisitorsContract.Present
     }
 
     @Override
-    public boolean checkVisitor(String name, String cpf) {
-        boolean error = false;
+    public void checkVisitor(String name, String cpf) {
+
         if (name.isEmpty()) {
             view.setNameError();
-            error = true;
         }
+
         if (cpf.isEmpty()) {
             view.setCpfError();
-            error = true;
         }
-        return error;
+
+        view.onFinishAddDialog(name, cpf);
+
     }
 
     @Override

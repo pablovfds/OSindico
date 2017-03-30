@@ -22,7 +22,7 @@ public class RequestDwellerAdapter extends RecyclerView.Adapter<RequestDwellerAd
 
     @Override
     public RequestDwellerAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.resident_card_row,
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.new_resident_row,
                 viewGroup, false);
         return new ViewHolder(view);
     }

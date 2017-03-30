@@ -60,4 +60,8 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="AppTheme.ProgressBar">
+        <item name="colorAccent">@color/colorAccent</item> <!-- Whatever color you want-->
+    </style>
+
 </resources>

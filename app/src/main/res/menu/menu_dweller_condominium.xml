@@ -4,7 +4,7 @@
     <item
         android:id="@+id/tab_lobby"
         android:icon="@drawable/ic_allow_visitor"
-        android:title="Portaria"
+        android:title="Autorizar entradas"
         app:showAsAction="collapseActionView"/>
     <item
         android:id="@+id/tab_condo_rules"

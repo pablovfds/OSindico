@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_allow_visitor"
+        android:icon="@drawable/ic_add"
+        android:title="Permitir entrada"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/send_visitors"
+        android:icon="@drawable/ic_check"
+        android:title="Mensagens enviadas"
+        app:showAsAction="always"/>
+</menu>

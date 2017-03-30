@@ -13,6 +13,8 @@ public interface CondominiumRulesContract {
     interface View {
         void showProgress();
 
+        void initializeViews();
+
         void hideProgress();
 
         void setServerError(String errorMessage);
@@ -25,6 +27,8 @@ public interface CondominiumRulesContract {
 
         void setView(View view);
 
+        void validateRule(String regra, String token);
+
         void onDestroy();
     }
 
@@ -34,8 +38,14 @@ public interface CondominiumRulesContract {
             void onSuccess(List<RuleResponse> ruleResponseList);
 
             void onServerError(String message);
+
+            void onRegraError();
+
+            void onCreateRuleSuccess();
         }
 
         void getCondominiumRules(String token, OnCondominiumRulesListener listener);
+
+        void registerRegraSyndic(String regra, String token, final CondominiumRulesContract.Model.OnCondominiumRulesListener listener);
     }
 }

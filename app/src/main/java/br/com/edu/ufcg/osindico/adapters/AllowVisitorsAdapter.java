@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
+import br.com.edu.ufcg.osindico.data.models.ServerResponse.VisitorResponse;
 import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 
 /**
@@ -22,6 +23,10 @@ public class AllowVisitorsAdapter extends RecyclerView.Adapter<AllowVisitorsAdap
 
     public AllowVisitorsAdapter(List<VisitorDetails> visitors) {
         this.visitors = visitors;
+    }
+
+    public List<VisitorDetails> getVisitorsList(){
+        return this.visitors;
     }
 
     @Override

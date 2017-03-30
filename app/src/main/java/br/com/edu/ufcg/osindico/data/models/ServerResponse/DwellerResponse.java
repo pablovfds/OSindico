@@ -16,6 +16,11 @@ public class DwellerResponse implements Serializable {
     public DwellerResponse() {
     }
 
+    public DwellerResponse(String nome, String email) {
+        this.name = nome;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

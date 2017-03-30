@@ -14,17 +14,6 @@
         android:layout_below="@+id/editTextMessage"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text|textMultiLine"
-        android:lines="10"
-        android:ems="10"
-        android:id="@+id/editTextMessage"
-        android:hint="Escreva a mensagem aqui!"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="79dp" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -34,5 +23,20 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/progressBar2"
         android:visibility="gone" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textMultiLine"
+        android:lines="10"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:background="#cdcdcc"
+        android:ems="10"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:id="@+id/editTextMessage"
+        android:hint="Escreva a mensagem aqui!"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

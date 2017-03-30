@@ -15,10 +15,10 @@ public class RequestServicePresenterTest {
 
     private RequestServicePresenterImpl presenter;
 
-    @Before
-    public void setUp() {
-        presenter = new RequestServicePresenterImpl();
-    }
+//    @Before
+//    public void setUp() {
+//        presenter = new RequestServicePresenterImpl();
+//    }
 
     @Test
     public void test() {

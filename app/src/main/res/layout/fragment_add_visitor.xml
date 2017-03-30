@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/input_visitor_cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,30 +33,4 @@
             android:paddingBottom="20dp" />
     </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <Button
-            android:id="@+id/buttonCancel"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Cancelar"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/buttonAdd"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Adicionar"
-            android:textSize="18dp" />
-    </LinearLayout>
 </LinearLayout>

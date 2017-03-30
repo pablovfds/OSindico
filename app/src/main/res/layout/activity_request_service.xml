@@ -20,7 +20,7 @@
         android:textAlignment="textStart"
         android:lines="7"
         android:backgroundTint="#a7a7a7"
-        android:background="@color/bb_inActiveBottomBarItemColor"
+        android:background="#cdcdcc"
         android:layout_below="@+id/radioGroup"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"

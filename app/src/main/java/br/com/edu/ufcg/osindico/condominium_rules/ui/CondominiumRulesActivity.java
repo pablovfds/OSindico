@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -48,8 +49,8 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
 
         typeUser = getIntent().getExtras().getString("type");
 
-        RulesService service = new RulesService();
-        presenter = new CondominiumRulesPresenterImpl(service);
+//        RulesService service = new RulesService();
+//        presenter = new CondominiumRulesPresenterImpl(service);
 
         getSupportActionBar().setTitle("Regras do Condomínio");
     }
@@ -60,7 +61,8 @@ public class CondominiumRulesActivity extends AppCompatActivity implements Condo
         initializeViews();
     }
 
-    private void initializeViews() {
+     public void initializeViews() {
+
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);

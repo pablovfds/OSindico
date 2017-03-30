@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sub_menu_inbox"
+        android:icon="@drawable/ic_inbox"
+        android:title="Mensagens recebidas"
+        app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/sub_menu_outbox"
+        android:icon="@drawable/ic_outbox"
+        android:title="Mensagens enviadas"
+        app:showAsAction="collapseActionView"/>
+</menu>
