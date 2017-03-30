@@ -29,7 +29,9 @@ public class AllowVisitorsModelImpl implements AllowVisitorsContract.Model {
             public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
                 if (response.isSuccessful()) {
                     listener.onSuccess();
+                    Log.d("sucess", "sucess");
                 } else {
+                    Log.d("Erro", "server error" + response.code());
                     listener.onServerError(response.message());
                 }
             }

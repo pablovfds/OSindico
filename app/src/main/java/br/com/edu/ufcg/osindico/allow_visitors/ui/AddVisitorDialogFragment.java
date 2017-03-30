@@ -40,18 +40,7 @@ public class AddVisitorDialogFragment extends DialogFragment implements AllowVis
         return inflater.inflate(R.layout.fragment_add_visitor, container);
     }
 
-    @OnClick(R.id.buttonAdd)
-    public void addVisitor() {
-        String name = inputName.getText().toString();
-        String cpf = inputCpf.getText().toString();
-        mListener.onFinishAddDialog(name, cpf);
-    }
-
-    @OnClick(R.id.buttonCancel)
-    public void dismissDialog() {
-        this.dismiss();
-    }
-
+   
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

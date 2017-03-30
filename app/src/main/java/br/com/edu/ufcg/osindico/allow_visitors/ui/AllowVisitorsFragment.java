@@ -2,6 +2,7 @@ package br.com.edu.ufcg.osindico.allow_visitors.ui;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -32,6 +33,7 @@ import br.com.edu.ufcg.osindico.condominium_rules.mvp.CondominiumRulesPresenterI
 import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 import br.com.edu.ufcg.osindico.data.services.DwellerService;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
+import br.com.edu.ufcg.osindico.emptyFragment.EmptyFragment;
 import br.com.edu.ufcg.osindico.request_service.mvp.RequestServiceContract;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,7 +81,15 @@ public class AllowVisitorsFragment extends Fragment implements AllowVisitorsCont
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new AllowVisitorsAdapter(new ArrayList<VisitorDetails>());
-        recyclerView.setAdapter(adapter);
+//        if(adapter.getVisitorsList().isEmpty()) {
+//            EmptyFragment emptyFragment = new EmptyFragment();
+//            emptyFragment.setTitle("Autorize visitantes");
+//            setFragment(emptyFragment);
+//        }else{
+            recyclerView.setAdapter(adapter);
+//        }
+
+
         //Toast.makeText(getActivity(), String.valueOf(adapter.getItemCount()), Toast.LENGTH_LONG).show();
     }
 
@@ -132,9 +142,16 @@ public class AllowVisitorsFragment extends Fragment implements AllowVisitorsCont
         dialog = builder.show();
     }
 
+    private void setFragment(Fragment newFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     @Override
     public void setSuccess() {
+        setFragment(new AllowVisitorsSuccessFragment());
         Toast.makeText(getActivity(), "Lista de visitas enviada com sucesso.", Toast.LENGTH_SHORT).show();
     }
 

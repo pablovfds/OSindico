@@ -8,6 +8,7 @@ import br.com.edu.ufcg.osindico.data.models.ServerResponse.MessageResponse;
 import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 import br.com.edu.ufcg.osindico.data.models.ServiceRequest;
 import br.com.edu.ufcg.osindico.data.models.VisitorsList;
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -23,7 +24,7 @@ public interface DwellerApi {
     Call<List<MessageResponse>> loadMessageRequests(@Header("Authorization") String authorization);
 
     @POST("/api/dweller/visitor")
-    Call<MessageResponse> sendVisitorsList(@Header("Authorization") String authorization, VisitorsList visitors);
+    Call<MessageResponse> sendVisitorsList(@Header("Authorization") String authorization, @Body VisitorsList visitors);
 
     @Headers({"Content-Type: application/json"})
     @POST("/api/dweller/service")
