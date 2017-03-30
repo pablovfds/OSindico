@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.registerSyndic.mvp;
 
+import br.com.edu.ufcg.osindico.base.BaseView;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 
 public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Presenter,
@@ -24,8 +25,8 @@ public class RegisterSyndicPresenterImpl implements RegisterSyndicContract.Prese
     }
 
     @Override
-    public void setView(RegisterSyndicContract.View view) {
-        this.registerSyndicView = view;
+    public void setView(BaseView view) {
+        this.registerSyndicView = (RegisterSyndicContract.View) view;
     }
 
     @Override

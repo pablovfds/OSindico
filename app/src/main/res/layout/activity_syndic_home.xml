@@ -14,20 +14,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/btn_openRequests" />
 
-    <FrameLayout
-        android:id="@+id/contentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        app:bb_tabXmlResource="@xml/bottom_bar_tabs"
-        app:bb_inActiveTabAlpha="0.6"
-        app:bb_tabletMode="true"
-        android:layout_below="@id/contentContainer"
-        app:bb_activeTabAlpha="1"
-        app:bb_behavior="shifting|underNavbar"/>
+
+
 </RelativeLayout>

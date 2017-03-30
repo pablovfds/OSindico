@@ -6,15 +6,10 @@
     android:layout_height="match_parent"
     tools:context="br.com.edu.ufcg.osindico.registerRegraSyndic.ui.RegisterRegraActivity">
 
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/texto_nova_regra" />
-
-
-
-
 </RelativeLayout>

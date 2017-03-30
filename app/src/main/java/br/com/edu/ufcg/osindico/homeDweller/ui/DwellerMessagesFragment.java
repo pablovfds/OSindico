@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,21 +30,8 @@ public class DwellerMessagesFragment extends Fragment implements HomeDwellerCont
     private HomeDwellerContract.Presenter presenter;
     private ResidentMessagesFeedAdapter adapter;
 
-    public DwellerMessagesFragment() {
-        // Required empty public constructor
-    }
+    public DwellerMessagesFragment() {}
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_dweller_home, container, false);
-
-        ButterKnife.bind(this, view);
-
-        return view;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +39,16 @@ public class DwellerMessagesFragment extends Fragment implements HomeDwellerCont
         DwellerService service = new DwellerService();
         presenter = new HomeDwellerPresenterImpl(service);
         presenter.setView(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view =inflater.inflate(R.layout.fragment_dweller_home, container, false);
+        ButterKnife.bind(this, view);
+
+        return view;
     }
 
     @Override

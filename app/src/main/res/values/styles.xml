@@ -11,8 +11,8 @@
         <item name="colorPrimary">@color/primaryColorDweller</item>
         <item name="colorPrimaryDark">@color/primaryDarkColorDweller</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="CustomDialog" parent="@style/Theme.AppCompat.Light.Dialog">
@@ -21,7 +21,6 @@
 
     <!-- Base application theme for syndic -->
     <style name="AppThemeSyndic" parent="Theme.AppCompat.Light.DarkActionBar">
-
         <item name="colorPrimary">@color/colorPrimarySyndic</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkSyndic</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -60,4 +59,5 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
 </resources>

@@ -1,5 +1,6 @@
 package br.com.edu.ufcg.osindico.registerCondo.mvp;
 
+import br.com.edu.ufcg.osindico.base.BaseView;
 import br.com.edu.ufcg.osindico.data.models.ServerResponse.AddressResponse;
 import br.com.edu.ufcg.osindico.data.services.SyndicService;
 import br.com.edu.ufcg.osindico.data.services.ZipCodeService;
@@ -10,10 +11,8 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
     private RegisterCondoContract.View view;
     private RegisterCondoContract.Model model;
 
-    public RegisterCondoPresenterImpl(SyndicService service,ZipCodeService zipCodeService,
-                                      RegisterCondoContract.View view) {
+    public RegisterCondoPresenterImpl(SyndicService service,ZipCodeService zipCodeService) {
         this.model = new RegisterCondoModelImpl(service, zipCodeService);
-        this.view = view;
     }
 
     @Override
@@ -31,6 +30,11 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
     @Override
     public void getAddressByZipCode(String zipcode) {
         this.model.loadAddressByZipCode(zipcode, this);
+    }
+
+    @Override
+    public void setView(BaseView view) {
+        this.view = (RegisterCondoContract.View) view;
     }
 
     @Override
@@ -92,11 +96,6 @@ public class RegisterCondoPresenterImpl implements RegisterCondoContract.Present
             view.hideProgress();
             view.setNeighborError();
         }
-    }
-
-    @Override
-    public void onComplementError() {
-
     }
 
     @Override
