@@ -28,8 +28,6 @@
             android:id="@+id/input_visitor_cpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
             android:hint="CPF"
             android:inputType="number"
             android:paddingBottom="20dp" />

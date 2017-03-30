@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ufcg.osindico.R;
@@ -18,6 +19,10 @@ import br.com.edu.ufcg.osindico.data.models.VisitorDetails;
 public class AllowVisitorsAdapter extends RecyclerView.Adapter<AllowVisitorsAdapter.ViewHolder> {
 
     private List<VisitorDetails> visitors;
+
+    public AllowVisitorsAdapter(List<VisitorDetails> visitors) {
+        this.visitors = visitors;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

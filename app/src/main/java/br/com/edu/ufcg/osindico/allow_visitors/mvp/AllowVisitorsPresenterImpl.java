@@ -15,16 +15,36 @@ public class AllowVisitorsPresenterImpl implements AllowVisitorsContract.Present
     }
 
     @Override
-    public void sendVisitorsList(List<VisitorDetails> visitors) {
-
+    public void sendVisitorsList(String token, String date, List<VisitorDetails> visitors) {
+        model.registerVisitorsList(token, date, visitors, this);
     }
 
     @Override
-    public void checkVisitor(String name, String cpf) {
-
+    public boolean checkVisitor(String name, String cpf) {
+        boolean error = false;
+        if (name.isEmpty()) {
+            view.setNameError();
+            error = true;
+        }
+        if (cpf.isEmpty()) {
+            view.setCpfError();
+            error = true;
+        }
+        return error;
     }
 
+    @Override
     public void setView(AllowVisitorsContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void onSuccess() {
+        view.setSuccess();
+    }
+
+    @Override
+    public void onServerError(String message) {
+        view.setServerError(message);
     }
 }

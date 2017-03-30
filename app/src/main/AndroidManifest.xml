@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeSyndic">
         <activity
-            android:name=".loginUser.ui.LoginUserActivity"
+            android:name=".allow_visitors.ui.AllowVisitorsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
@@ -31,7 +31,7 @@
         <activity android:name=".dwellerRequests.ui.RequestsDwellersActivity" />
         <activity android:name=".condominium_rules.ui.CondominiumRulesActivity" />
         <activity android:name=".registerRegraSyndic.ui.RegisterRegraActivity" />
-        <activity android:name=".allow_visitors.ui.AllowVisitorsActivity"/>
+        <activity android:name=".loginUser.ui.LoginUserActivity"/>
         <activity
             android:name=".navigationDweller.ui.NavigationDwellerActivity"
             android:label="@string/title_activity_navigation_dweller"

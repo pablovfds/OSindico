@@ -14,11 +14,14 @@ public interface AllowVisitorsContract {
     }
 
     interface Presenter {
-        void sendVisitorsList(List<VisitorDetails> visitors);
-        void checkVisitor(String name, String cpf);
+        void sendVisitorsList(String token, String date, List<VisitorDetails> visitors);
+        boolean checkVisitor(String name, String cpf);
+        void setView(View view);
+        void onSuccess();
+        void onServerError(String message);
     }
 
     interface Model {
-        void registerVisitorsList(String token, List<VisitorDetails> visitorDetails);
+        void registerVisitorsList(String token, String date, List<VisitorDetails> visitorDetails, AllowVisitorsContract.Presenter listener);
     }
 }
